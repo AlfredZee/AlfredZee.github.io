@@ -5,19 +5,20 @@
   
 
   
-  <title>Hexo</title>
+  <title>a simply PL0 compiler | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#编译原理课程设计–用C从零开始实现一个PL０编译器 ##copyright: 徐渊 大连理工大学电信学院 gitbub: Tiipitz.github.io reference: 编译原理（第三版） 王生原等 清华大学出版社 time: 2019-3-2 QQ: 1239820340（联系请注明原因） ## ##前言　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代">
+  <meta name="description" content="编译原理课程设计–用C从零开始实现一个PL０编译器##copyright: 徐渊 大连理工大学电信学院 gitbub: Tiipitz.github.io reference: 编译原理（第三版） 王生原等 清华大学出版社 time: 2019-3-2 QQ: 1239820340（联系请注明原因） ##  前言　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见">
+<meta name="keywords" content="project,compiler">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="a simply PL0 compiler">
 <meta property="og:url" content="http://yoursite.com/2019/03/02/compiler/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#编译原理课程设计–用C从零开始实现一个PL０编译器 ##copyright: 徐渊 大连理工大学电信学院 gitbub: Tiipitz.github.io reference: 编译原理（第三版） 王生原等 清华大学出版社 time: 2019-3-2 QQ: 1239820340（联系请注明原因） ## ##前言　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代">
+<meta property="og:description" content="编译原理课程设计–用C从零开始实现一个PL０编译器##copyright: 徐渊 大连理工大学电信学院 gitbub: Tiipitz.github.io reference: 编译原理（第三版） 王生原等 清华大学出版社 time: 2019-3-2 QQ: 1239820340（联系请注明原因） ##  前言　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-02T07:43:24.300Z">
+<meta property="og:updated_time" content="2019-03-02T07:53:47.083Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="#编译原理课程设计–用C从零开始实现一个PL０编译器 ##copyright: 徐渊 大连理工大学电信学院 gitbub: Tiipitz.github.io reference: 编译原理（第三版） 王生原等 清华大学出版社 time: 2019-3-2 QQ: 1239820340（联系请注明原因） ## ##前言　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代">
+<meta name="twitter:title" content="a simply PL0 compiler">
+<meta name="twitter:description" content="编译原理课程设计–用C从零开始实现一个PL０编译器##copyright: 徐渊 大连理工大学电信学院 gitbub: Tiipitz.github.io reference: 编译原理（第三版） 王生原等 清华大学出版社 time: 2019-3-2 QQ: 1239820340（联系请注明原因） ##  前言　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -67,24 +68,37 @@
         <section id="main"><article id="post-compiler" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/02/compiler/" class="article-date">
-  <time datetime="2019-03-02T06:48:30.085Z" itemprop="datePublished">2019-03-02</time>
+  <time datetime="2019-03-01T16:00:00.000Z" itemprop="datePublished">2019-03-02</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/项目记录/">项目记录</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      a simply PL0 compiler
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#编译原理课程设计–用C从零开始实现一个PL０编译器</p>
-<p>##<br>copyright: 徐渊 大连理工大学电信学院</p>
+        <h1 id="编译原理课程设计–用C从零开始实现一个PL０编译器"><a href="#编译原理课程设计–用C从零开始实现一个PL０编译器" class="headerlink" title="编译原理课程设计–用C从零开始实现一个PL０编译器"></a>编译原理课程设计–用C从零开始实现一个PL０编译器</h1><p>##<br>copyright: 徐渊 大连理工大学电信学院</p>
 <p>gitbub: Tiipitz.github.io</p>
 <p>reference: 编译原理（第三版） 王生原等 清华大学出版社</p>
 <p>time: 2019-3-2</p>
 <p>QQ: 1239820340（联系请注明原因）</p>
-<p>##</p>
-<p>##前言<br>　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见该书第370页，以下内容均为本人在仔细研读其代码后(约花了近10天），按其总体设计思想一步一步从零开始开始搭建实现（数周），阅读本篇博客可以节省您初次搭建编译器的时间，掌握编译器的总体设计思路，但本文不会对原语言文法等做出仔细的阐述，需要您对PL０语言语法有一定的了解，作者能力有限，如有错误请联系告知更正，谢谢。</p>
-<p>##词法分析<br>　　首先我们从词法分析入手，词法分析的主要功能是扫描一遍源程序，识别单词。单词主要有两种，一种是用户自定义标识符，另一种是该语言保留的符号，包括＇＋＇，＇－＇等的单字符和保留字（关键字）。</p>
+<p>## </p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见该书第370页，以下内容均为本人在仔细研读其代码后(约花了近10天），按其总体设计思想一步一步从零开始开始搭建实现（数周），阅读本篇博客可以节省您初次搭建编译器的时间，掌握编译器的总体设计思路，但本文不会对原语言文法等做出仔细的阐述，需要您对PL０语言语法有一定的了解，作者能力有限，如有错误请联系告知更正，谢谢。</p>
+<h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><p>　　首先我们从词法分析入手，词法分析的主要功能是扫描一遍源程序，识别单词。单词主要有两种，一种是用户自定义标识符，另一种是该语言保留的符号，包括＇＋＇，＇－＇等的单字符和保留字（关键字）。</p>
 <p>　　对于后者，我们要不断的将扫描到的符号和保留符号相比对，需要考虑使用合适的数据结构来存储，我们可以事先将保留符号存储起来，通过比照查表的方式来判断扫描到的符号的类别。</p>
 <p>　　我们利用枚举的方式规定符号的类别：</p>
 <pre><code>enum symbol {
@@ -276,7 +290,7 @@ int getsymbol(){
     }
     return 0;
 }
-</code></pre><p>##语法分析<br>　　一遍编扫的编译器通过语法分析调用词法分析来实现，递归下降的语法分析考虑的是你当前读取了一个符号，根据这个符号类别，你下一个应该读取的符号应该是什么类别。</p>
+</code></pre><h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><p>　　一遍编扫的编译器通过语法分析调用词法分析来实现，递归下降的语法分析考虑的是你当前读取了一个符号，根据这个符号类别，你下一个应该读取的符号应该是什么类别。</p>
 <p>　　我们以常量处理语法为例，读取了常量声明符号const,我们接下来需要一个ident，然后是=，再是数值，最后我们写入名字表，名字表是用来存储用户自定义的标识符的值，地址，类型等内容，于是我们给出下面的函数：</p>
 <pre><code>/*    常量声明处理    */
 int constdeclaration(int* ptx, int lev, int* pdx){
@@ -545,8 +559,7 @@ struct instruction{
     int l;    //层次差
     int a;    
 };
-</code></pre><p>##解释执行</p>
-<p>　　由上一段文字和getcode函数可知，与词法分析相同，解释执行的操作也需要用枚举存储：</p>
+</code></pre><h2 id="解释执行"><a href="#解释执行" class="headerlink" title="解释执行"></a>解释执行</h2><p>　　由上一段文字和getcode函数可知，与词法分析相同，解释执行的操作也需要用枚举存储：</p>
 <pre><code>/*     虚拟机代码      */
 enum fct{
     lit,    opr,    lod,
@@ -684,14 +697,16 @@ enum fct{
         }
     }while (p != 0);
 }
-</code></pre><p>##结语<br>　　本文介绍了一个一遍扫描，栈式运行的PL0编译器的总体框架和设计过程，本课程设计最后得分为90分，经实验可正确运行递归函数，显示输入错误，最后不再给出主调函数和各细节函数，如有需要可联系本人获取源码。</p>
+</code></pre><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>　　本文介绍了一个一遍扫描，栈式运行的PL0编译器的总体框架和设计过程，本课程设计最后得分为90分，经实验可正确运行递归函数，显示输入错误，最后不再给出主调函数和各细节函数，如有需要可联系本人获取源码。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/compiler/" data-id="cjsr6m89d0000zoupzm4pvg08" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/compiler/" data-id="cjsr6xgec00003kupne2qs85x" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/compiler/">compiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
+
     </footer>
   </div>
   
@@ -704,12 +719,33 @@ enum fct{
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/项目记录/">项目记录</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/compiler/">compiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/">project</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/compiler/" style="font-size: 10px;">compiler</a> <a href="/tags/project/" style="font-size: 10px;">project</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -728,7 +764,7 @@ enum fct{
       <ul>
         
           <li>
-            <a href="/2019/03/02/compiler/">(no title)</a>
+            <a href="/2019/03/02/compiler/">a simply PL0 compiler</a>
           </li>
         
       </ul>
