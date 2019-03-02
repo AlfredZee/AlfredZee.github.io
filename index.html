@@ -154,7 +154,7 @@ keyword[12] = writesym;
 　　
 　</p>
 <p>　　扫描器我们可以分为两大部分，其一是读取一行的输入，并且缓存，为另一部分服务，而另一部分指的就是将该行的缓存分解成一个一个的符号（单词）。</p>
-<p>　　我们可以这样设计，以扫描符号为主，调用进行行缓存的函数，同时，我们给行缓存函数分配一些额外的任务：如果改行未处理完，则该函数执行从行缓存中读取下一个字符的功能。于是我们先给出以下程序：</p>
+<p>　　我们可以这样设计，以扫描符号为主，调用进行行缓存的函数，同时，我们给行缓存函数分配一些额外的任务：如果该行未处理完，则该函数执行从行缓存中读取下一个字符的功能。于是我们先给出以下程序：</p>
 <pre><code>/*    行缓存并读取一个字符    */
 int getch(){
     if(firstp == lastp){
@@ -188,7 +188,7 @@ int getch(){
     firstp++;
     return 0;
 }
-</code></pre><p>　　而对于主调函数，通过调用上述功能，可以获得一串连续的字符输入，即符号的缓存，再配合分支语句去判别先前定义的符号的类型，既可以完成词法分析的功能，最后我们给出如下程序：</p>
+</code></pre><p>　　而对于主调函数，通过调用上述功能，可以获得一串连续的字符输入，即符号的缓存，再配合分支语句去判别先前定义的符号的类型，即可以完成词法分析的功能，最后我们给出如下程序：</p>
 <pre><code>/*    获取一串符号    */
 int getsymbol(){
 
@@ -700,7 +700,7 @@ enum fct{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/compiler/" data-id="cjsr7l4fd0000tcupfedaavjt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/compiler/" data-id="cjsr89rjv0000mgup4x60jc8e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/compiler/">compiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
