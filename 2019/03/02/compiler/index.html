@@ -5,19 +5,19 @@
   
 
   
-  <title>a simply PL0 compiler | Hexo</title>
+  <title>a simple PL0 compiler | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="编译原理课程设计–用C从零开始实现一个PL０编译器 copyright: 徐渊 大连理工大学电信学院 gitbub: Tiipitz.github.io reference: 编译原理（第三版） 王生原等 清华大学出版社 time: 2019-3-2 QQ: 1239820340（联系请注明原因）  前言　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见该书第3">
 <meta name="keywords" content="project,compiler">
 <meta property="og:type" content="article">
-<meta property="og:title" content="a simply PL0 compiler">
+<meta property="og:title" content="a simple PL0 compiler">
 <meta property="og:url" content="http://yoursite.com/2019/03/02/compiler/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="编译原理课程设计–用C从零开始实现一个PL０编译器 copyright: 徐渊 大连理工大学电信学院 gitbub: Tiipitz.github.io reference: 编译原理（第三版） 王生原等 清华大学出版社 time: 2019-3-2 QQ: 1239820340（联系请注明原因）  前言　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见该书第3">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-02T07:56:02.719Z">
+<meta property="og:updated_time" content="2019-03-02T08:12:07.365Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="a simply PL0 compiler">
+<meta name="twitter:title" content="a simple PL0 compiler">
 <meta name="twitter:description" content="编译原理课程设计–用C从零开始实现一个PL０编译器 copyright: 徐渊 大连理工大学电信学院 gitbub: Tiipitz.github.io reference: 编译原理（第三版） 王生原等 清华大学出版社 time: 2019-3-2 QQ: 1239820340（联系请注明原因）  前言　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见该书第3">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -72,7 +72,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/项目记录/">项目记录</a>
+    <a class="article-category-link" href="/categories/project-record/">project record</a>
   </div>
 
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      a simply PL0 compiler
+      a simple PL0 compiler
     </h1>
   
 
@@ -92,11 +92,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="编译原理课程设计–用C从零开始实现一个PL０编译器"><a href="#编译原理课程设计–用C从零开始实现一个PL０编译器" class="headerlink" title="编译原理课程设计–用C从零开始实现一个PL０编译器"></a>编译原理课程设计–用C从零开始实现一个PL０编译器</h1><hr>
-<p>copyright: 徐渊 大连理工大学电信学院</p>
-<p>gitbub: Tiipitz.github.io</p>
-<p>reference: 编译原理（第三版） 王生原等 清华大学出版社</p>
-<p>time: 2019-3-2</p>
-<p>QQ: 1239820340（联系请注明原因）</p>
+<p><strong>copyright: 徐渊 大连理工大学电信学院</strong></p>
+<p><strong>gitbub: Tiipitz.github.io</strong></p>
+<p><strong>reference: 编译原理（第三版） 王生原等 清华大学出版社</strong></p>
+<p><strong>time: 2019-3-2</strong></p>
+<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
 <hr>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见该书第370页，以下内容均为本人在仔细研读其代码后(约花了近10天），按其总体设计思想一步一步从零开始开始搭建实现（数周），阅读本篇博客可以节省您初次搭建编译器的时间，掌握编译器的总体设计思路，但本文不会对原语言文法等做出仔细的阐述，需要您对PL０语言语法有一定的了解，作者能力有限，如有错误请联系告知更正，谢谢。</p>
 <h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><p>　　首先我们从词法分析入手，词法分析的主要功能是扫描一遍源程序，识别单词。单词主要有两种，一种是用户自定义标识符，另一种是该语言保留的符号，包括＇＋＇，＇－＇等的单字符和保留字（关键字）。</p>
@@ -703,7 +703,7 @@ enum fct{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/compiler/" data-id="cjsr70hk50000e0upli0e73pi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/compiler/" data-id="cjsr7l4fd0000tcupfedaavjt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/compiler/">compiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
@@ -723,7 +723,7 @@ enum fct{
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/项目记录/">项目记录</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/project-record/">project record</a></li></ul>
     </div>
   </div>
 
@@ -765,7 +765,7 @@ enum fct{
       <ul>
         
           <li>
-            <a href="/2019/03/02/compiler/">a simply PL0 compiler</a>
+            <a href="/2019/03/02/compiler/">a simple PL0 compiler</a>
           </li>
         
       </ul>
