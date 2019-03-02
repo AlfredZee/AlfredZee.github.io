@@ -62,9 +62,107 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-compiler" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-malloc_and_new" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/03/02/compiler/" class="article-date">
+    <a href="/2019/03/02/malloc_and_new/" class="article-date">
+  <time datetime="2019-03-02T13:18:33.000Z" itemprop="datePublished">2019-03-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cppdetails/">cppdetails</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/02/malloc_and_new/">difference between new and malloc in cpp</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C-中new运算符和malloc的区别"><a href="#C-中new运算符和malloc的区别" class="headerlink" title="C++中new运算符和malloc的区别"></a>C++中new运算符和malloc的区别</h1><hr>
+<p><strong>copyright: 徐渊 大连理工大学电信学院</strong></p>
+<p><strong>gitbub: Tiipitz.github.io</strong></p>
+<p><strong>reference: <a href="http://blog.jobbole.com/102002/" target="_blank" rel="noopener">http://blog.jobbole.com/102002/</a></strong></p>
+<p><strong>time: 2019-3-2</strong></p>
+<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
+<hr>
+<h2 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h2><p>　　对new来说，其分配的内存在自由存储区（free store）。</p>
+<p>　　对malloc来说，其分配的内存在堆区（heap）。</p>
+<p>　　存储区大类可分为动态和静态，而动态存储区又可分为堆区和栈区，malloc申请的内存必定分配在堆区，而对new来说，则分配在称为自由存储区的位置，具体在堆区还是其他地方取决于operator new的实现，甚至有的将其分配在静态存储区，笔者在c++ primer plus中注意到提及new时，原文总是用“在自由存储区（free store或者堆区（heap））”。</p>
+<h2 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h2><p>　　这里的安全性指的返回类型。</p>
+<p>　　new的成功返回值是一个确定指向类型的指针，正如我们看到的，两处int确保了类型与对象的严格匹配：</p>
+<pre><code>int* p = new int;
+</code></pre><p>　　malloc的成功返回值是一个void*指针，也正如看到的，将其赋给左边时需要强制类型转换：</p>
+<pre><code>int* p = (int*)malloc(sizeof(ex));
+</code></pre><p>　　不用进行类型转换的new是安全的操作符。</p>
+<h2 id="失败返回值"><a href="#失败返回值" class="headerlink" title="失败返回值"></a>失败返回值</h2><p>　　new分配内存失败时抛出异常bac_alloc。</p>
+<pre><code>try{
+    int a = new int;
+}
+catch(bac_alloc){
+    pass;
+}
+</code></pre><p>　　malloc分配内存时返回NULL。</p>
+<pre><code>int* p = (int*)malloc(sizeof(ex));
+if(NULL == p){
+    pass;
+}
+</code></pre><p>　　不要再在使用new时用==NULL的方法。</p>
+<h2 id="指定内存大小"><a href="#指定内存大小" class="headerlink" title="指定内存大小"></a>指定内存大小</h2><p>　　new不需要指定内存大小，编译器根据类型自行计算。</p>
+<p>　　malloc需要显示地给出即其后面的sizeof()</p>
+<h2 id="是否调用析构构造函数"><a href="#是否调用析构构造函数" class="headerlink" title="是否调用析构构造函数"></a>是否调用析构构造函数</h2><p>　　使用new操作符来分配对象内存时会经历三个步骤：</p>
+<p>　　第一步：调用operator new 函数（对于数组是operator new[]）分配一块足够大的，原始的，未命名的内存空间以便存储特定类型的对象。</p>
+<p>　　第二步：编译器运行相应的构造函数以构造对象，并为其传入初值。</p>
+<p>　　第三部：对象构造完成后，返回一个指向该对象的指针。</p>
+<p>　　使用delete操作符来释放对象内存时会经历两个步骤：</p>
+<p>　　第一步：调用对象的析构函数。</p>
+<p>　　第二步：编译器调用operator delete(或operator delete[])函数释放内存空间。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>　　new需要配套使用new[]和delete[]来处理数组，防止内存泄漏（memory leak）。</p>
+<p>　　malloc需要手动定制数组长度。</p>
+<h2 id="相互调用"><a href="#相互调用" class="headerlink" title="相互调用"></a>相互调用</h2><p>　　new可以调用malloc，但malloc不能调用new。</p>
+<h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><p>　　new可以重载：</p>
+<pre><code> 1 //这些版本可能抛出异常
+ 2 void * operator new(size_t);
+ 3 void * operator new[](size_t);
+ 4 void * operator delete (void * )noexcept;
+ 5 void * operator delete[](void *0）noexcept;
+ 6 //这些版本承诺不抛出异常
+ 7 void * operator new(size_t ,nothrow_t&amp;) noexcept;
+ 8 void * operator new[](size_t, nothrow_t&amp; );
+ 9 void * operator delete (void *,nothrow_t&amp; )noexcept;
+10 void * operator delete[](void *0,nothrow_t&amp; ）noexcept;
+</code></pre><p>　　malloc不可以。</p>
+<h2 id="重新分配"><a href="#重新分配" class="headerlink" title="重新分配"></a>重新分配</h2><p>　　malloc可以使用realloc，首先判断是否有足够连续空间，有则原地扩大，否则重新找一片足够的空间，拷贝，释放。</p>
+<h2 id="客户处理内存分配不足"><a href="#客户处理内存分配不足" class="headerlink" title="客户处理内存分配不足"></a>客户处理内存分配不足</h2><p>　　new在抛出异常之前会调用一个用户指定的错误处理函数（使用new_handler）</p>
+<p>　　malloc直接返回NULL</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjsrl5eo50001pkup8xroeu75" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/">cpp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/malloc/">malloc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/new/">new</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PL0_compiler" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/02/PL0_compiler/" class="article-date">
   <time datetime="2019-03-01T16:00:00.000Z" itemprop="datePublished">2019-03-02</time>
 </a>
     
@@ -80,7 +178,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/02/compiler/">a simple PL0 compiler</a>
+      <a class="article-title" href="/2019/03/02/PL0_compiler/">a simple PL0 compiler</a>
     </h1>
   
 
@@ -700,7 +798,7 @@ enum fct{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/compiler/" data-id="cjsr89rjv0000mgup4x60jc8e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/PL0_compiler/" data-id="cjsrl5eo10000pkupwrdoftyz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/compiler/">compiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
@@ -722,7 +820,7 @@ enum fct{
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/project-record/">project record</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cppdetails/">cppdetails</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project-record/">project record</a></li></ul>
     </div>
   </div>
 
@@ -732,7 +830,7 @@ enum fct{
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/compiler/">compiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/">project</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/compiler/">compiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/malloc/">malloc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/new/">new</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/">project</a></li></ul>
     </div>
   </div>
 
@@ -742,7 +840,7 @@ enum fct{
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/compiler/" style="font-size: 10px;">compiler</a> <a href="/tags/project/" style="font-size: 10px;">project</a>
+      <a href="/tags/compiler/" style="font-size: 10px;">compiler</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/malloc/" style="font-size: 10px;">malloc</a> <a href="/tags/memory-management/" style="font-size: 10px;">memory management</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/project/" style="font-size: 10px;">project</a>
     </div>
   </div>
 
@@ -764,7 +862,11 @@ enum fct{
       <ul>
         
           <li>
-            <a href="/2019/03/02/compiler/">a simple PL0 compiler</a>
+            <a href="/2019/03/02/malloc_and_new/">difference between new and malloc in cpp</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/02/PL0_compiler/">a simple PL0 compiler</a>
           </li>
         
       </ul>
