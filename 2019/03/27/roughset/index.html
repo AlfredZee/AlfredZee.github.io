@@ -5,15 +5,19 @@
   
 
   
-  <title>Tag: memory management | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="#$1智能数据预处理及知识系统表达 ##数据表知识表达系统 ###智能数据 ###KRS ###表格表达法/决策表（dicision table） ##不完整不精确数据预处理 ###删除法 ###补偿法（特殊值，统计方法） ###不可分辨关系  扩充可辨识矩阵  ##属性值的离散归一化处理  属性值的定性定量描述都是连续值  满足：  每一离散归一化后的属性值种类尽量少 信息丢失尽量少  ###离">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/memory-management/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/27/roughset/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#$1智能数据预处理及知识系统表达 ##数据表知识表达系统 ###智能数据 ###KRS ###表格表达法/决策表（dicision table） ##不完整不精确数据预处理 ###删除法 ###补偿法（特殊值，统计方法） ###不可分辨关系  扩充可辨识矩阵  ##属性值的离散归一化处理  属性值的定性定量描述都是连续值  满足：  每一离散归一化后的属性值种类尽量少 信息丢失尽量少  ###离">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-27T03:18:59.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="#$1智能数据预处理及知识系统表达 ##数据表知识表达系统 ###智能数据 ###KRS ###表格表达法/决策表（dicision table） ##不完整不精确数据预处理 ###删除法 ###补偿法（特殊值，统计方法） ###不可分辨关系  扩充可辨识矩阵  ##属性值的离散归一化处理  属性值的定性定量描述都是连续值  满足：  每一离散归一化后的属性值种类尽量少 信息丢失尽量少  ###离">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,40 +64,127 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/03/02/malloc_and_new/" class="archive-article-date">
-  <time datetime="2019-03-02T13:18:33.000Z" itemprop="datePublished">Mar 2</time>
+        <section id="main"><article id="post-roughset" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/27/roughset/" class="article-date">
+  <time datetime="2019-03-27T00:45:23.802Z" itemprop="datePublished">2019-03-27</time>
 </a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/02/malloc_and_new/">difference between new and malloc in cpp</a>
-    </h1>
-  
-
-    </header>
+    
   </div>
-</article>
-  
-  
-    </div></section>
-  
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#$1智能数据预处理及知识系统表达</p>
+<p>##数据表知识表达系统</p>
+<p>###智能数据</p>
+<p>###KRS</p>
+<p>###表格表达法/决策表（dicision table）</p>
+<p>##不完整不精确数据预处理</p>
+<p>###删除法</p>
+<p>###补偿法（特殊值，统计方法）</p>
+<p>###不可分辨关系</p>
+<ul>
+<li>扩充可辨识矩阵</li>
+</ul>
+<p>##属性值的离散归一化处理</p>
+<ul>
+<li>属性值的定性定量描述都是连续值</li>
+</ul>
+<p>满足：</p>
+<ul>
+<li>每一离散归一化后的属性值种类尽量少</li>
+<li>信息丢失尽量少</li>
+</ul>
+<p>###离散化</p>
+<p>利用选取的断点来对条件属性构成的空间进行划分</p>
+<ul>
+<li>局部离散归一化</li>
+<li>全局离散归一化 </li>
+</ul>
+<p>#$2知识与分类，近似于粗集的基本概念</p>
+<p>##知识与分类</p>
+<p>###集合表达</p>
+<ul>
+<li>知识源于人类以及其他物种的分类能力</li>
+</ul>
+<p>###等价与不可分辨关系</p>
+<ul>
+<li>等价关系，等价类，分类</li>
+<li>分类族，知识库</li>
+<li>基本范畴(basic category)</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>分类概念清楚</li>
+<li><p>运算简单（信息运算转换为集合运算）可形成初等范畴</p>
+</li>
+<li><p>不可分辨关系 ind(R)</p>
+</li>
+<li>特化，推广 </li>
+</ul>
+<p>##集合近似与粗集概念</p>
+<p>###集合近似与粗集</p>
+<p>粗集基础概念：</p>
+<ul>
+<li>分类和范畴</li>
+</ul>
+<p>范畴：</p>
+<ul>
+<li>特征子集对对象的描述</li>
+</ul>
+<p>精确集与粗集</p>
+<ul>
+<li>下近似集</li>
+<li>上近似集</li>
+<li>边界</li>
+<li>正域</li>
+<li>负域</li>
+</ul>
+<p>###成员关系，粗等价，粗包含</p>
+<ul>
+<li>下成员关系</li>
+<li>上成员关系</li>
+<li>下等价</li>
+<li>上等价</li>
+</ul>
+<p>##集合近似以及分类近似的度量</p>
+<p>###集合近似以及分类近似的度量</p>
+<ul>
+<li>边界域</li>
+<li>近似精度d</li>
+<li>粗糙度p</li>
+<li>近似分类精度</li>
+</ul>
+<p>###分类近似质量与系统参数重要性</p>
+<ul>
+<li>系统参数的重要性</li>
+<li></li>
+</ul>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/27/roughset/" data-id="cjttioh5e0004bsupsaq4w6gl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/03/bio_info/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">FS and its application in lncRNA and miRNA network</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
