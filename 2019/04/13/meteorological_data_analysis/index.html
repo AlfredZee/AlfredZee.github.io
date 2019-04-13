@@ -32,7 +32,7 @@
 <meta property="og:image" content="d:/project/weather_als/result/dist_maxhumidity_conn_SVR">
 <meta property="og:image" content="d:/project/weather_als/result/dist_minpressure_conn_SVR">
 <meta property="og:image" content="d:/project/weather_als/result/dist_avespeed_conn_SVR">
-<meta property="og:updated_time" content="2019-04-13T15:36:53.896Z">
+<meta property="og:updated_time" content="2019-04-13T15:47:25.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="meteorological data analysis">
 <meta name="twitter:description" content="利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析 copyright: 徐渊 大连理工大学电信学部 gitbub: Tiipitz.github.io reference: python数据分析实战，实验楼 time: 2019-4-13 QQ: 1239820340（联系请注明原因）  $1项目的提出及意义本项目是个人项目，均由笔者一人完成，在确定项目的研究对象时，选取了笔者生活">
@@ -326,26 +326,22 @@ plt.savefig(&quot;/home/singularity/桌面/weather_ana/result/dist_avetemp_conn&
 plt.show()
 &apos;&apos;&apos;
 </code></pre><ul>
-<li><p>3.根据图像猜测可能存在的线性关系：</p>
-<ul>
-<li>通过下面的离海距离-日均气温，我们发现好像两者并没有什么关系，我们猜想可能最高气温和最低气温相互抵消，需要进一步分析离海距离和最高，最低气温的关系。</li>
-<li><img src="D:\project\weather_als\result\dist_avetemp_conn" alt="离海距离-日平均气温"></li>
-<li>由下面结果可知，果然，离海距离和最高最低气温存在着一定的关系，就最高气温而言，随着离海距离的增大，最高气温逐渐升高，到某一距离后，最高气温不变，因为白天温度高，最高气温一定出现再白天，由于海水比热容大，白天海边温度低，所以有以上现象。</li>
-<li><img src="D:\project\weather_als\result\dist_maxtemp_conn" alt="离海距离-日最高气温"></li>
-<li><img src="D:\project\weather_als\result\dist_mintemp_conn" alt="离海距离-日最低气温"></li>
-<li>同样我们可以分析离海距离和平均，最高，最低湿度的关系，下面平均湿度和最低湿度由于数据量问题，好像并发现不到什么线性关系，而就最高湿度而言，在某一距离之内，最高湿度和离海距离存在着线性关系</li>
-<li><img src="D:\project\weather_als\result\dist_avehumidity_conn" alt="离海距离-日平均湿度"></li>
-<li><img src="D:\project\weather_als\result\dist_maxhumidity_conn" alt="离海距离-日最高湿度"></li>
-<li><img src="D:\project\weather_als\result\dist_minhumidity_conn" alt="离海距离-日最低湿度"></li>
-<li>而对于平均气压，我们发现了与湿度类似的结论，只不过就气压而言，在某一距离之内，是最低气压和离海距离存在着线性关系，我们再进一步思考，其实着体现了湿度和气压之间的关系，湿度越大，空气中水汽越充分，气压就会越小</li>
-<li><img src="D:\project\weather_als\result\dist_avepressure_conn" alt="离海距离-日平均气压"></li>
-<li><img src="D:\project\weather_als\result\dist_maxpressure_conn" alt="离海距离-日最高气压"></li>
-<li><img src="D:\project\weather_als\result\dist_minpressure_conn" alt="离海距离-日最低气压"></li>
-<li>对于风速来说，我们得出了与常识一致的结果，一定距离内，离海越远，风速越小，而到了内陆，风速与离海距离没有什么关系</li>
-<li><img src="D:\project\weather_als\result\dist_avespeed_conn" alt="离海距离-日平均风速"></li>
+<li>3.根据图像猜测可能存在的线性关系：</li>
 </ul>
-</li>
-</ul>
+<p>通过下面的离海距离-日均气温，我们发现好像两者并没有什么关系，我们猜想可能最高气温和最低气温相互抵消，需要进一步分析离海距离和最高，最低气温的关系。</p>
+<p><img src="D:\project\weather_als\result\dist_avetemp_conn" alt="离海距离-日平均气温"></p>
+<p>由下面结果可知，果然，离海距离和最高最低气温存在着一定的关系，就最高气温而言，随着离海距离的增大，最高气温逐渐升高，到某一距离后，最高气温不变，因为白天温度高，最高气温一定出现再白天，由于海水比热容大，白天海边温度低，所以有以上现象。</p>
+<p><img src="D:\project\weather_als\result\dist_maxtemp_conn" alt="离海距离-日最高气温"></p>
+<p><img src="D:\project\weather_als\result\dist_mintemp_conn" alt="离海距离-日最低气温"></p>
+<p>同样我们可以分析离海距离和平均，最高，最低湿度的关系，下面平均湿度和最低湿度由于数据量问题，好像并发现不到什么线性关系，而就最高湿度而言，在某一距离之内，最高湿度和离海距离存在着线性关系</p>
+<p><img src="D:\project\weather_als\result\dist_avehumidity_conn" alt="离海距离-日平均湿度"></p>
+<p><img src="D:\project\weather_als\result\dist_maxhumidity_conn" alt="离海距离-日最高湿度"></p>
+<p><img src="D:\project\weather_als\result\dist_minhumidity_conn" alt="离海距离-日最低湿度"></p>
+<p>而对于平均气压，我们发现了与湿度类似的结论，只不过就气压而言，在某一距离之内，是最低气压和离海距离存在着线性关系，我们再进一步思考，其实着体现了湿度和气压之间的关系，湿度越大，空气中水汽越充分，气压就会越小</p>
+<p><img src="D:\project\weather_als\result\dist_avepressure_conn" alt="离海距离-日平均气压"></p>
+<p><img src="D:\project\weather_als\result\dist_maxpressure_conn" alt="离海距离-日最高气压"></p>
+<p><img src="D:\project\weather_als\result\dist_minpressure_conn" alt="离海距离-日最低气压"></p>
+<p>对于风速来说，我们得出了与常识一致的结果，一定距离内，离海越远，风速越小，而到了内陆，风速与离海距离没有什么关系<br><img src="D:\project\weather_als\result\dist_avespeed_conn" alt="离海距离-日平均风速"></p>
 <ul>
 <li><p>4.通过3中的分析使用SVR进行直线拟合，下以离海距离-日最高温度为例：</p>
 <pre><code>import dist_tmp_conn as dtc
@@ -410,17 +406,15 @@ plt.savefig(&quot;/home/singularity/桌面/weather_ana/result/dist_maxtemp_intse
 plt.show()
 </code></pre></li>
 <li><p>5.下面是4中得到的拟合结果</p>
-<ul>
-<li><img src="D:\project\weather_als\result\dist_maxtemp_conn_SVR" alt="离海距离-日最高气温"></li>
-<li><img src="D:\project\weather_als\result\dist_maxtemp_intersec" alt="离海距离-日最高气温交点"></li>
-<li><img src="D:\project\weather_als\result\dist_mintemp_conn_SVR" alt="离海距离-日最低气温"></li>
-<li><img src="D:\project\weather_als\result\dist_mintemp_intersec" alt="离海距离-日最低气温交点"></li>
-<li><img src="D:\project\weather_als\result\dist_maxhumidity_conn_SVR" alt="离海距离-日最高湿度"></li>
-<li><img src="D:\project\weather_als\result\dist_minpressure_conn_SVR" alt="离海距离-日最低气压"></li>
-<li><img src="D:\project\weather_als\result\dist_avespeed_conn_SVR" alt="离海距离-日平均风速"></li>
-</ul>
 </li>
 </ul>
+<p><img src="D:\project\weather_als\result\dist_maxtemp_conn_SVR" alt="离海距离-日最高气温"></p>
+<p><img src="D:\project\weather_als\result\dist_maxtemp_intersec" alt="离海距离-日最高气温交点"></p>
+<p><img src="D:\project\weather_als\result\dist_mintemp_conn_SVR" alt="离海距离-日最低气温"></p>
+<p><img src="D:\project\weather_als\result\dist_mintemp_intersec" alt="离海距离-日最低气温交点"></p>
+<p><img src="D:\project\weather_als\result\dist_maxhumidity_conn_SVR" alt="离海距离-日最高湿度"></p>
+<p><img src="D:\project\weather_als\result\dist_minpressure_conn_SVR" alt="离海距离-日最低气压"></p>
+<p><img src="D:\project\weather_als\result\dist_avespeed_conn_SVR" alt="离海距离-日平均风速"></p>
 <h2 id="5结论"><a href="#5结论" class="headerlink" title="$5结论"></a>$5结论</h2><p>由$4.5中的结果我们可以得出有关维度在30度左右长江三角洲地区气象数据和离海距离的一些结论：</p>
 <ul>
 <li>长江三角洲的城市离海距离越远，受气温海洋影响越弱，在170km左右最高气温达到饱和，更远基本不受海洋作用，在110km左右最低气温达到最低，而更远之后最低气温开始反常升高，可能与地势等原因相关</li>
@@ -442,7 +436,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjufnz60x0001lwupaxiw3y5a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjufoc2lp0005eoup89xut3eq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-data-processing/">python data processing</a></li></ul>
