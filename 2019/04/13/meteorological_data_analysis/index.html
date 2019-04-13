@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>meteorological data analysis | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析 copyright: 徐渊 大连理工大学电信学部 gitbub: Tiipitz.github.io reference: python数据分析实战，实验楼 time: 2019-4-13 QQ: 1239820340（联系请注明原因）  $1项目的提出及意义本项目是个人项目，均由笔者一人完成，在确定项目的研究对象时，选取了笔者生活">
+<meta name="keywords" content="project,python data processing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="meteorological data analysis">
+<meta property="og:url" content="http://yoursite.com/2019/04/13/meteorological_data_analysis/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析 copyright: 徐渊 大连理工大学电信学部 gitbub: Tiipitz.github.io reference: python数据分析实战，实验楼 time: 2019-4-13 QQ: 1239820340（联系请注明原因）  $1项目的提出及意义本项目是个人项目，均由笔者一人完成，在确定项目的研究对象时，选取了笔者生活">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="d:/project/weather_als/result/dist_avetemp_conn">
+<meta property="og:image" content="d:/project/weather_als/result/dist_maxtemp_conn">
+<meta property="og:image" content="d:/project/weather_als/result/dist_mintemp_conn">
+<meta property="og:image" content="d:/project/weather_als/result/dist_avehumidity_conn">
+<meta property="og:image" content="d:/project/weather_als/result/dist_maxhumidity_conn">
+<meta property="og:image" content="d:/project/weather_als/result/dist_minhumidity_conn">
+<meta property="og:image" content="d:/project/weather_als/result/dist_avepressure_conn">
+<meta property="og:image" content="d:/project/weather_als/result/dist_maxpressure_conn">
+<meta property="og:image" content="d:/project/weather_als/result/dist_minpressure_conn">
+<meta property="og:image" content="d:/project/weather_als/result/dist_avespeed_conn">
+<meta property="og:image" content="d:/project/weather_als/result/dist_maxtemp_conn_SVR">
+<meta property="og:image" content="d:/project/weather_als/result/dist_maxtemp_intersec">
+<meta property="og:image" content="d:/project/weather_als/result/dist_mintemp_conn_SVR">
+<meta property="og:image" content="d:/project/weather_als/result/dist_mintemp_intersec">
+<meta property="og:image" content="d:/project/weather_als/result/dist_maxhumidity_conn_SVR">
+<meta property="og:image" content="d:/project/weather_als/result/dist_minpressure_conn_SVR">
+<meta property="og:image" content="d:/project/weather_als/result/dist_avespeed_conn_SVR">
+<meta property="og:updated_time" content="2019-04-13T15:36:53.896Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="meteorological data analysis">
+<meta name="twitter:description" content="利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析 copyright: 徐渊 大连理工大学电信学部 gitbub: Tiipitz.github.io reference: python数据分析实战，实验楼 time: 2019-4-13 QQ: 1239820340（联系请注明原因）  $1项目的提出及意义本项目是个人项目，均由笔者一人完成，在确定项目的研究对象时，选取了笔者生活">
+<meta name="twitter:image" content="d:/project/weather_als/result/dist_avetemp_conn">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-meteorological_data_analysis" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/13/meteorological_data_analysis/" class="article-date">
+  <time datetime="2019-04-12T16:00:00.000Z" itemprop="datePublished">2019-04-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project-record/">project record</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      meteorological data analysis
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析"><a href="#利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析" class="headerlink" title="利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析"></a>利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析</h1><hr>
+<p><strong>copyright: 徐渊 大连理工大学电信学部</strong></p>
+<p><strong>gitbub: Tiipitz.github.io</strong></p>
+<p><strong>reference: python数据分析实战，实验楼</strong></p>
+<p><strong>time: 2019-4-13</strong></p>
+<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
+<hr>
+<h2 id="1项目的提出及意义"><a href="#1项目的提出及意义" class="headerlink" title="$1项目的提出及意义"></a>$1项目的提出及意义</h2><p>本项目是个人项目，均由笔者一人完成，在确定项目的研究对象时，选取了笔者生活的长江三角洲，主要目的是锻炼用python处理数据的能力，故选取了比较一般的，易获取的气象数据进行实验，同时也增进对故乡的了解</p>
+<h2 id="2数据获取"><a href="#2数据获取" class="headerlink" title="$2数据获取"></a>$2数据获取</h2><p>本次实验的气象数据取自Openweathermap，该网站上有全球各大城市的历史，实时以及未来预测的气象数据。</p>
+<p>该网站有以下注意点：</p>
+<ul>
+<li>但针对不同权限的用户，有不同的权限限制，freeer用户只能获取实时，未来5天每三小时预报的数据，具体可以参照<a href="https://openweathermap.org/price" target="_blank" rel="noopener">price</a></li>
+<li>下载该网站的数据需要先注册用户，然后用自己的API KEY去调用网站的API，API格式可以参照<a href="https://openweathermap.org/forecast5" target="_blank" rel="noopener">api</a>(5 days per 3 hours)</li>
+<li>调用API时可以按照city name查询（如果你不想自己写脚本去查城市对应的id），注意在城市后面加上country(比如中国CN)，不然可能检索到另一城市数据</li>
+<li>网站提供的数据为json格式核xml格式，如果您非常富有，可以花上10$/city去下载6年以内的数据，并且保存为csv格式，或者您可以查看第三部分数据预处理，将json格式数据转换为csv格式</li>
+<li>特别注意该API文档网站上的example链接并非调用api的链接，而是附着在文档网站上的静态链接，切勿像笔者对着它改了半天还是401，404</li>
+</ul>
+<p>本次实验的数据获取：</p>
+<ul>
+<li>气象数据：刚开始笔者从广泛的长三角地区获取数据（从浙江中部到江苏北部），处理了一部分后发现并没有规律可循，思考后觉得可能时维度跨越过大造成干扰，所以之后改选了维度在30左右（只含江苏中南部和安徽两城市），您在选取城市时请务必考虑此问题，不然就会像笔者一样在数据处理时发现问题再回来重新下载数据，非常浪费时间</li>
+<li>离海距离：该数据的获取可能不太精准，是笔者从高德地图测距获得（请务必选择高德地图）（离海距离这个数据好像实在没有直接获取的地方）</li>
+<li>本次实验选取的城市最好满足相同的条件（受外部干扰少），比如苏州和无锡，紧挨着太湖，一定有较大的偏差，因该避免选取</li>
+<li>最终选择的城市为：启东，南通，泰州，海门，南京，扬州，镇江，马鞍山，合肥，巢湖，滁州</li>
+</ul>
+<h2 id="3数据预处理"><a href="#3数据预处理" class="headerlink" title="$3数据预处理"></a>$3数据预处理</h2><p>本实验的数据预处理主要为json到csv的转换，以及添加离海距离这一列</p>
+<ul>
+<li><p>1.需要import的库：</p>
+<pre><code>import pandas as pd
+import numpy as np
+import json
+</code></pre></li>
+<li><p>2.从文件中加载数据：</p>
+<pre><code># get path and load data
+jsonfile_path = &quot;/home/singularity/桌面/weather_ana/jsonfile/maanshan.json&quot;
+with open(jsonfile_path, &quot;r&quot;, encoding = &quot;utf-8&quot;) as j_obj:
+json_data = json.load(j_obj)
+</code></pre></li>
+<li><p>3.从嵌套列表字典中获取相应key的value的两个函数：</p>
+<pre><code># 2 functions for data fetching
+def get_target_value(key, dic, tmp_list):
+    &quot;&quot;&quot;
+    :param key: 目标key值
+    :param dic: JSON数据
+    :param tmp_list: 用于存储获取的数据
+    :return: list
+    &quot;&quot;&quot;
+    if not isinstance(dic, dict) or not isinstance(tmp_list, list):  # 对传入数据进行格式校验
+        return &apos;argv[1] not an dict or argv[-1] not an list &apos;
+
+    if key in dic.keys():
+        tmp_list.append(dic[key])  # 传入数据存在则存入tmp_list
+    else:
+        for value in dic.values():  # 传入数据不符合则对其value值进行遍历
+            if isinstance(value, dict):
+                get_target_value(key, value, tmp_list)  # 传入数据的value值是字典，则直接调用自身
+            elif isinstance(value, (list, tuple)):
+                _get_value(key, value, tmp_list)  # 传入数据的value值是列表或者元组，则调用_get_value
+    return tmp_list
+
+def _get_value(key, val, tmp_list):
+    for val_ in val:
+        if isinstance(val_, dict):  
+            get_target_value(key, val_, tmp_list)  # 传入数据的value值是字典，则调用get_target_value
+        elif isinstance(val_, (list, tuple)):
+            _get_value(key, val_, tmp_list)
+</code></pre></li>
+<li><p>4.从内存取出数据（下载的数据每个城市有38条，而name这个key在json字典中只有1个，dist为自己添加的列）：</p>
+<pre><code># get data from json
+name_lst = get_target_value(&apos;name&apos;, json_data, [])
+city = name_lst[0]
+name_lst = [city for i in range (1, 39)]
+temp_lst = get_target_value(&apos;temp&apos;, json_data, [])
+temp_min_lst = get_target_value(&apos;temp_min&apos;, json_data, [])
+temp_max_lst = get_target_value(&apos;temp_max&apos;, json_data, [])
+sea_level_lst = get_target_value(&apos;sea_level&apos;, json_data, [])
+grnd_level_lst = get_target_value(&apos;grnd_level&apos;, json_data, [])
+pressure_lst = get_target_value(&apos;pressure&apos;, json_data, [])
+humidity_lst = get_target_value(&apos;humidity&apos;, json_data, [])
+speed_lst = get_target_value(&apos;speed&apos;, json_data, [])
+deg_lst = get_target_value(&apos;deg&apos;, json_data, [])
+description_lst = get_target_value(&apos;description&apos;, json_data, [])
+time_lst = get_target_value(&apos;dt_txt&apos;,json_data,[])
+dist_qidong_lst = [23.5 for i in range(1, 39)]
+dist_haimen_lst = [66.10 for i in range(1, 39)]
+dist_nantong_lst = [89 for i in range(1, 39)]
+dist_taizhou_lst = [122 for i in range(1, 39)]
+dist_yangzhou_lst = [182 for i in range(1, 39)]
+dist_zhenjiang_lst = [190 for i in range(1, 39)]
+dist_nanjing_lst = [258 for i in range(1, 39)]
+dist_chuzhou_lst = [293 for i in range(1, 39)]
+dist_maanshan_lst = [330 for i in range(1, 39)]
+dist_chaohu_lst = [390 for i in range(1, 39)]
+dist_hefei_lst = [440 for i in range(1, 39)]
+</code></pre></li>
+<li><p>5.利用pandas构建data frame，拼接后输出：</p>
+<pre><code># transform data to column
+name_se = pd.Series(name_lst, name = &apos;name&apos;)
+temp_se = pd.Series(temp_lst, name = &apos;temp&apos;)
+temp_min_se = pd.Series(temp_min_lst, name = &apos;temp_min&apos;)
+temp_max_se = pd.Series(temp_max_lst, name = &apos;temp_max&apos;)
+sea_level_se = pd.Series(sea_level_lst, name = &apos;sea_level&apos;)
+grnd_level_se = pd.Series(grnd_level_lst, name = &apos;grnd_level&apos;)
+pressure_se = pd.Series(pressure_lst, name = &apos;pressure&apos;)
+humidity_se = pd.Series(humidity_lst, name = &apos;humidity&apos;)
+speed_se = pd.Series(speed_lst, name = &apos;speed&apos;)
+deg_se = pd.Series(deg_lst, name = &apos;deg&apos;)
+description_se = pd.Series(description_lst, name = &apos;description&apos;)
+time_se = pd.Series(time_lst, name = &apos;time&apos;)
+
+# add dist column
+dist_qidong_se = pd.Series(dist_qidong_lst, name = &apos;dist&apos;)
+dist_haimen_se = pd.Series(dist_haimen_lst, name = &apos;dist&apos;)
+dist_nantong_se = pd.Series(dist_nantong_lst, name = &apos;dist&apos;)
+dist_taizhou_se = pd.Series(dist_taizhou_lst, name = &apos;dist&apos;)
+dist_yangzhou_se = pd.Series(dist_yangzhou_lst, name = &apos;dist&apos;)
+dist_zhenjiang_se = pd.Series(dist_zhenjiang_lst, name = &apos;dist&apos;)
+dist_nanjing_se = pd.Series(dist_nanjing_lst, name = &apos;dist&apos;)
+dist_chuzhou_se = pd.Series(dist_chuzhou_lst, name = &apos;dist&apos;)
+dist_maanshan_se = pd.Series(dist_maanshan_lst, name = &apos;dist&apos;)
+dist_chaohu_se = pd.Series(dist_chaohu_lst, name = &apos;dist&apos;)
+dist_hefei_se = pd.Series(dist_hefei_lst, name = &apos;dist&apos;)
+# put columns together and output
+result_df = pd.concat([name_se, temp_se,temp_min_se, temp_max_se, 
+                        sea_level_se, grnd_level_se, pressure_se, 
+                        humidity_se, speed_se, deg_se, description_se,
+                        time_se, dist_maanshan_se], axis = 1)
+result_df.to_csv(&apos;maanshan.csv&apos;, index = False, sep = &apos;,&apos;)
+</code></pre></li>
+<li><p>说明：上述处理脚本仅为马鞍山市的csv文件输出，其他城市请改变2中json加载文件和5中csv输出文件（由于是一个一个文件处理，如果一开始城市没选好就要重新改一遍文件名再一个一个输出，再次提醒确定好数据的重要性！）</p>
+<h2 id="4数据分析"><a href="#4数据分析" class="headerlink" title="$4数据分析"></a>$4数据分析</h2></li>
+<li><p>1.创建csv数据加载脚本</p>
+<pre><code>import pandas as pd
+
+df_qidong = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/qidong.csv&apos;)
+df_haimen = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/haimen.csv&apos;)
+df_nantong = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/nantong.csv&apos;)
+df_yangzhou = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/yangzhou.csv&apos;)
+df_zhenjiang = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/zhenjiang.csv&apos;)
+df_nanjing = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/nanjing.csv&apos;)
+df_chuzhou = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/chuzhou.csv&apos;)
+df_maanshan = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/maanshan.csv&apos;)
+df_chaohu = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/chaohu.csv&apos;)
+df_hefei = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/hefei.csv&apos;)
+df_taizhou = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/taizhou.csv&apos;)
+</code></pre></li>
+<li><p>2.生成离海距离-温度，离海距离-气压，离海距离-适度，离海距离-风速的图像，下以离海距离-温度为例：</p>
+</li>
+</ul>
+<pre><code>import data_load as dl
+
+import matplotlib.pyplot as plt
+
+dist_lst = [dl.df_qidong[&apos;dist&apos;][0],
+            dl.df_haimen[&apos;dist&apos;][0],
+            dl.df_nantong[&apos;dist&apos;][0],
+            dl.df_taizhou[&apos;dist&apos;][0],
+            dl.df_yangzhou[&apos;dist&apos;][0],
+            dl.df_zhenjiang[&apos;dist&apos;][0],
+            dl.df_nanjing[&apos;dist&apos;][0],
+            dl.df_chuzhou[&apos;dist&apos;][0],
+            dl.df_maanshan[&apos;dist&apos;][0],
+            dl.df_chaohu[&apos;dist&apos;][0],
+            dl.df_hefei[&apos;dist&apos;][0],
+]
+
+temp_lst = [dl.df_qidong[&apos;temp&apos;].sum()/38,
+            dl.df_haimen[&apos;temp&apos;].sum()/38,
+            dl.df_nantong[&apos;temp&apos;].sum()/38,
+            dl.df_taizhou[&apos;temp&apos;].sum()/38,
+            dl.df_yangzhou[&apos;temp&apos;].sum()/38,
+            dl.df_zhenjiang[&apos;temp&apos;].sum()/38,
+            dl.df_nanjing[&apos;temp&apos;].sum()/38,
+            dl.df_chuzhou[&apos;temp&apos;].sum()/38,
+            dl.df_maanshan[&apos;temp&apos;].sum()/38,
+            dl.df_chaohu[&apos;temp&apos;].sum()/38,
+            dl.df_hefei[&apos;temp&apos;].sum()/38,
+]
+
+temp_max_lst = [dl.df_qidong[&apos;temp&apos;].max(),
+            dl.df_haimen[&apos;temp&apos;].max(),
+            dl.df_nantong[&apos;temp&apos;].max(),
+            dl.df_taizhou[&apos;temp&apos;].max(),
+            dl.df_yangzhou[&apos;temp&apos;].max(),
+            dl.df_zhenjiang[&apos;temp&apos;].max(),
+            dl.df_nanjing[&apos;temp&apos;].max(),
+            dl.df_chuzhou[&apos;temp&apos;].max(),
+            dl.df_maanshan[&apos;temp&apos;].max(),
+            dl.df_chaohu[&apos;temp&apos;].max(),
+            dl.df_hefei[&apos;temp&apos;].max(),
+]
+
+temp_min_lst = [dl.df_qidong[&apos;temp&apos;].min(),
+            dl.df_haimen[&apos;temp&apos;].min(),
+            dl.df_nantong[&apos;temp&apos;].min(),
+            dl.df_taizhou[&apos;temp&apos;].min(),
+            dl.df_yangzhou[&apos;temp&apos;].min(),
+            dl.df_zhenjiang[&apos;temp&apos;].min(),
+            dl.df_nanjing[&apos;temp&apos;].min(),
+            dl.df_chuzhou[&apos;temp&apos;].min(),
+            dl.df_maanshan[&apos;temp&apos;].min(),
+            dl.df_chaohu[&apos;temp&apos;].min(),
+            dl.df_hefei[&apos;temp&apos;].min(),
+]
+
+&apos;&apos;&apos;
+    1.use codes below only when you need to get the fig for you still
+      need codes above to do SVR 
+    2.replace temp_lst with temp_min_lst and temp_max_lst
+&apos;&apos;&apos;
+
+&apos;&apos;&apos;
+fig, ax = plt.subplots()
+plt.plot(dist_lst, temp_lst, &apos;go&apos;)
+plt.savefig(&quot;/home/singularity/桌面/weather_ana/result/dist_avetemp_conn&quot;)
+plt.show()
+&apos;&apos;&apos;
+</code></pre><ul>
+<li><p>3.根据图像猜测可能存在的线性关系：</p>
+<ul>
+<li>通过下面的离海距离-日均气温，我们发现好像两者并没有什么关系，我们猜想可能最高气温和最低气温相互抵消，需要进一步分析离海距离和最高，最低气温的关系。</li>
+<li><img src="D:\project\weather_als\result\dist_avetemp_conn" alt="离海距离-日平均气温"></li>
+<li>由下面结果可知，果然，离海距离和最高最低气温存在着一定的关系，就最高气温而言，随着离海距离的增大，最高气温逐渐升高，到某一距离后，最高气温不变，因为白天温度高，最高气温一定出现再白天，由于海水比热容大，白天海边温度低，所以有以上现象。</li>
+<li><img src="D:\project\weather_als\result\dist_maxtemp_conn" alt="离海距离-日最高气温"></li>
+<li><img src="D:\project\weather_als\result\dist_mintemp_conn" alt="离海距离-日最低气温"></li>
+<li>同样我们可以分析离海距离和平均，最高，最低湿度的关系，下面平均湿度和最低湿度由于数据量问题，好像并发现不到什么线性关系，而就最高湿度而言，在某一距离之内，最高湿度和离海距离存在着线性关系</li>
+<li><img src="D:\project\weather_als\result\dist_avehumidity_conn" alt="离海距离-日平均湿度"></li>
+<li><img src="D:\project\weather_als\result\dist_maxhumidity_conn" alt="离海距离-日最高湿度"></li>
+<li><img src="D:\project\weather_als\result\dist_minhumidity_conn" alt="离海距离-日最低湿度"></li>
+<li>而对于平均气压，我们发现了与湿度类似的结论，只不过就气压而言，在某一距离之内，是最低气压和离海距离存在着线性关系，我们再进一步思考，其实着体现了湿度和气压之间的关系，湿度越大，空气中水汽越充分，气压就会越小</li>
+<li><img src="D:\project\weather_als\result\dist_avepressure_conn" alt="离海距离-日平均气压"></li>
+<li><img src="D:\project\weather_als\result\dist_maxpressure_conn" alt="离海距离-日最高气压"></li>
+<li><img src="D:\project\weather_als\result\dist_minpressure_conn" alt="离海距离-日最低气压"></li>
+<li>对于风速来说，我们得出了与常识一致的结果，一定距离内，离海越远，风速越小，而到了内陆，风速与离海距离没有什么关系</li>
+<li><img src="D:\project\weather_als\result\dist_avespeed_conn" alt="离海距离-日平均风速"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>4.通过3中的分析使用SVR进行直线拟合，下以离海距离-日最高温度为例：</p>
+<pre><code>import dist_tmp_conn as dtc
+
+from sklearn.svm import SVR
+from scipy.optimize import fsolve
+import matplotlib.pyplot as plt
+import numpy as np
+
+# set arange and change formatter
+dist1 = dtc.dist_lst[0:6]
+dist2 = dtc.dist_lst[4:11]
+dist1 = [[x] for x in dist1]
+dist2 = [[x] for x in dist2]
+temp1 = dtc.temp_max_lst[0:6]
+temp2 = dtc.temp_max_lst[4:11]
+
+# get linear SVR obj
+svr_line1 = SVR(kernel = &apos;linear&apos;, C = 1e3)
+svr_line2 = SVR(kernel = &apos;linear&apos;, C = 1e3)
+
+# input data
+svr_line1.fit(dist1, temp1)
+svr_line2.fit(dist2, temp2)
+
+# draw predicted line
+xp1 = np.arange(10, 210, 10).reshape((20, 1))
+xp2 = np.arange(150, 500, 50).reshape((7, 1))
+yp1 = svr_line1.predict(xp1)
+yp2 = svr_line2.predict(xp2)
+
+fig, ax = plt.subplots()
+&apos;&apos;&apos;
+# plot
+plt.plot(xp1, yp1, c = &apos;g&apos;, label = &apos;strong sea effect&apos;)
+plt.plot(xp2, yp2, c = &apos;b&apos;, label = &apos;weak sea effect&apos;)
+plt.plot(dtc.dist_lst, dtc.temp_max_lst, &apos;ro&apos;)
+plt.savefig(&quot;/home/singularity/桌面/weather_ana/result/dist_maxtemp_conn_SVR&quot;)
+plt.show()
+&apos;&apos;&apos;
+
+# get x,y
+
+def line1(x):
+    a1 = svr_line1.coef_[0][0]
+    b1 = svr_line1.intercept_[0]
+    return a1 * x + b1
+
+def line2(x):
+    a2 = svr_line2.coef_[0][0]
+    b2 = svr_line2.intercept_[0]
+    return a2 * x + b2
+
+def find_intersection(fun1, fun2, x0):
+    return fsolve(lambda x : fun1(x) - fun2(x), x0)
+
+result = find_intersection(line1, line2, 0.0)
+print(&quot;[x,y] = [%d,%d]&quot; % (result, line1(result)))
+x = np.linspace(150, 250, 10)
+plt.plot(x, line1(x), x, line2(x), result, line1(result), &apos;ro&apos;)
+plt.savefig(&quot;/home/singularity/桌面/weather_ana/result/dist_maxtemp_intsec&quot;)
+plt.show()
+</code></pre></li>
+<li><p>5.下面是4中得到的拟合结果</p>
+<ul>
+<li><img src="D:\project\weather_als\result\dist_maxtemp_conn_SVR" alt="离海距离-日最高气温"></li>
+<li><img src="D:\project\weather_als\result\dist_maxtemp_intersec" alt="离海距离-日最高气温交点"></li>
+<li><img src="D:\project\weather_als\result\dist_mintemp_conn_SVR" alt="离海距离-日最低气温"></li>
+<li><img src="D:\project\weather_als\result\dist_mintemp_intersec" alt="离海距离-日最低气温交点"></li>
+<li><img src="D:\project\weather_als\result\dist_maxhumidity_conn_SVR" alt="离海距离-日最高湿度"></li>
+<li><img src="D:\project\weather_als\result\dist_minpressure_conn_SVR" alt="离海距离-日最低气压"></li>
+<li><img src="D:\project\weather_als\result\dist_avespeed_conn_SVR" alt="离海距离-日平均风速"></li>
+</ul>
+</li>
+</ul>
+<h2 id="5结论"><a href="#5结论" class="headerlink" title="$5结论"></a>$5结论</h2><p>由$4.5中的结果我们可以得出有关维度在30度左右长江三角洲地区气象数据和离海距离的一些结论：</p>
+<ul>
+<li>长江三角洲的城市离海距离越远，受气温海洋影响越弱，在170km左右最高气温达到饱和，更远基本不受海洋作用，在110km左右最低气温达到最低，而更远之后最低气温开始反常升高，可能与地势等原因相关</li>
+<li>在各自对应的距离内，最高湿度（300km）和最低气压（100km）符合一致的趋势：离海距离越远，最高湿度越小，最低气压越大，此处进一步分析可知，最后两个点代表的城市：巢湖市和合肥市，边上有一个较大的巢湖，可能会影响到这两个城市气压和湿度，也就是说最高湿度和最低气压符合的下降趋势的距离可能超过当前得出海洋的作用距离，需要进一步实验搜集更多数据验证</li>
+<li>由于海洋和大陆比热容的不同，在两者交界处存在大量的气流交换，所以越是离海岸近，风速越大，对于长江三角洲而言，该作用范围在150km左右以内</li>
+</ul>
+<h2 id="6总结"><a href="#6总结" class="headerlink" title="$6总结"></a>$6总结</h2><p>重现本项目可获得的经验：</p>
+<ul>
+<li>利用API获得网络数据</li>
+<li>永久性掌握json格式转csv格式</li>
+<li>熟悉pandas的.Series .concat .read_csv方法</li>
+<li>掌握json文件数据的读取</li>
+<li>熟悉matplotlib中pyplot库的一般使用</li>
+<li>了解sklearn中svm的SVR直线拟合</li>
+<li>了解scipy中optimize的fsolve方法</li>
+<li>了解如何一步一步发现，分析数据中的规律</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjufnz60x0001lwupaxiw3y5a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-data-processing/">python data processing</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/29/roughset/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">roughset</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cppdetails/">cppdetails</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project-record/">project record</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/scientific-research/">scientific research</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FS/">FS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compiler/">compiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/malloc/">malloc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/new/">new</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-data-processing/">python data processing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/FS/" style="font-size: 10px;">FS</a> <a href="/tags/bioinformatics/" style="font-size: 10px;">bioinformatics</a> <a href="/tags/compiler/" style="font-size: 10px;">compiler</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/malloc/" style="font-size: 10px;">malloc</a> <a href="/tags/memory-management/" style="font-size: 10px;">memory management</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/project/" style="font-size: 20px;">project</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python-data-processing/" style="font-size: 10px;">python data processing</a> <a href="/tags/roughset/" style="font-size: 10px;">roughset</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/13/meteorological_data_analysis/">meteorological data analysis</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/29/roughset/">roughset</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/03/bio_info/">FS and its application in lncRNA and miRNA network</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/02/malloc_and_new/">difference between new and malloc in cpp</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/02/pl0_compiler/">a simple PL0 compiler</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
