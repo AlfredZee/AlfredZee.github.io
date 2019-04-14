@@ -311,17 +311,17 @@ plt.show()
 <p>this is a test</p>
 <p><img src="dist_avetemp_conn.png" alt="离海距离-日平均气温"></p>
 <p>由下面结果可知，果然，离海距离和最高最低气温存在着一定的关系，就最高气温而言，随着离海距离的增大，最高气温逐渐升高，到某一距离后，最高气温不变，因为白天温度高，最高气温一定出现再白天，由于海水比热容大，白天海边温度低，所以有以上现象。</p>
-<p><img src="dist_maxtemp_conn" alt="离海距离-日最高气温"></p>
-<p><img src="dist_mintemp_conn" alt="离海距离-日最低气温"></p>
+<p><img src="dist_maxtemp_conn.png" alt="离海距离-日最高气温"></p>
+<p><img src="dist_mintemp_conn.png" alt="离海距离-日最低气温"></p>
 <p>同样我们可以分析离海距离和平均，最高，最低湿度的关系，下面平均湿度和最低湿度由于数据量问题，好像并发现不到什么线性关系，而就最高湿度而言，在某一距离之内，最高湿度和离海距离存在着线性关系</p>
-<p><img src="dist_avehumidity_conn" alt="离海距离-日平均湿度"></p>
-<p><img src="dist_maxhumidity_conn" alt="离海距离-日最高湿度"></p>
-<p><img src="dist_minhumidity_conn" alt="离海距离-日最低湿度"></p>
+<p><img src="dist_avehumidity_conn.png" alt="离海距离-日平均湿度"></p>
+<p><img src="dist_maxhumidity_conn.png" alt="离海距离-日最高湿度"></p>
+<p><img src="dist_minhumidity_conn.png" alt="离海距离-日最低湿度"></p>
 <p>而对于平均气压，我们发现了与湿度类似的结论，只不过就气压而言，在某一距离之内，是最低气压和离海距离存在着线性关系，我们再进一步思考，其实着体现了湿度和气压之间的关系，湿度越大，空气中水汽越充分，气压就会越小</p>
-<p><img src="dist_avepressure_conn" alt="离海距离-日平均气压"></p>
-<p><img src="dist_maxpressure_conn" alt="离海距离-日最高气压"></p>
-<p><img src="dist_minpressure_conn" alt="离海距离-日最低气压"></p>
-<p>对于风速来说，我们得出了与常识一致的结果，一定距离内，离海越远，风速越小，而到了内陆，风速与离海距离没有什么关系<br><img src="dist_avespeed_conn" alt="离海距离-日平均风速"></p>
+<p><img src="dist_avepressure_conn.png" alt="离海距离-日平均气压"></p>
+<p><img src="dist_maxpressure_conn.png" alt="离海距离-日最高气压"></p>
+<p><img src="dist_minpressure_conn.png" alt="离海距离-日最低气压"></p>
+<p>对于风速来说，我们得出了与常识一致的结果，一定距离内，离海越远，风速越小，而到了内陆，风速与离海距离没有什么关系<br><img src="dist_avespeed_conn.png" alt="离海距离-日平均风速"></p>
 <ul>
 <li><p>4.通过3中的分析使用SVR进行直线拟合，下以离海距离-日最高温度为例：</p>
 <pre><code>import dist_tmp_conn as dtc
@@ -388,13 +388,13 @@ plt.show()
 <li><p>5.下面是4中得到的拟合结果</p>
 </li>
 </ul>
-<p><img src="dist_maxtemp_conn_SVR" alt="离海距离-日最高气温"></p>
-<p><img src="dist_maxtemp_intersec" alt="离海距离-日最高气温交点"></p>
-<p><img src="dist_mintemp_conn_SVR" alt="离海距离-日最低气温"></p>
-<p><img src="dist_mintemp_intersec" alt="离海距离-日最低气温交点"></p>
-<p><img src="dist_maxhumidity_conn_SVR" alt="离海距离-日最高湿度"></p>
-<p><img src="dist_minpressure_conn_SVR" alt="离海距离-日最低气压"></p>
-<p><img src="dist_avespeed_conn_SVR" alt="离海距离-日平均风速"></p>
+<p><img src="dist_maxtemp_conn_SVR.png" alt="离海距离-日最高气温"></p>
+<p><img src="dist_maxtemp_intersec.png" alt="离海距离-日最高气温交点"></p>
+<p><img src="dist_mintemp_conn_SVR.png" alt="离海距离-日最低气温"></p>
+<p><img src="dist_mintemp_intersec.png" alt="离海距离-日最低气温交点"></p>
+<p><img src="dist_maxhumidity_conn_SVR.png" alt="离海距离-日最高湿度"></p>
+<p><img src="dist_minpressure_conn_SVR.png" alt="离海距离-日最低气压"></p>
+<p><img src="dist_avespeed_conn_SVR.png" alt="离海距离-日平均风速"></p>
 <h2 id="5结论"><a href="#5结论" class="headerlink" title="$5结论"></a>$5结论</h2><p>由$4.5中的结果我们可以得出有关维度在30度左右长江三角洲地区气象数据和离海距离的一些结论：</p>
 <ul>
 <li>长江三角洲的城市离海距离越远，受气温海洋影响越弱，在170km左右最高气温达到饱和，更远基本不受海洋作用，在110km左右最低气温达到最低，而更远之后最低气温开始反常升高，可能与地势等原因相关</li>
@@ -416,7 +416,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjug6fe4h0004d8uppxscc2l0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjug6jio600019kupq0dvg4ig" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-data-processing/">python data processing</a></li></ul>
@@ -750,7 +750,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/roughset/" data-id="cjug6fe4h0006d8upcfd6362j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/29/roughset/" data-id="cjug6jio600049kupj6bha2yf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
@@ -858,7 +858,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/03/bio_info/" data-id="cjug6fe410000d8up90wqyiif" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/03/bio_info/" data-id="cjug6jino00009kupmqlmohxw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FS/">FS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -956,7 +956,7 @@ if(NULL == p){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjug6fe410001d8upjh7eeyk6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjug6jio600059kupdryzu3eo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/">cpp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/malloc/">malloc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/new/">new</a></li></ul>
@@ -1606,7 +1606,7 @@ enum fct{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/pl0_compiler/" data-id="cjug6fe4h0005d8upb4qjfvhy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/pl0_compiler/" data-id="cjug6jioh00069kup9tf0pf6e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/compiler/">compiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
