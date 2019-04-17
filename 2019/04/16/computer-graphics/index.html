@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>computer_graphics | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="计算机图形学基础原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直，等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="computer_graphics">
+<meta property="og:url" content="http://yoursite.com/2019/04/16/computer-graphics/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="计算机图形学基础原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直，等">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg1.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg3.png">
+<meta property="og:updated_time" content="2019-04-17T13:35:02.205Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="computer_graphics">
+<meta name="twitter:description" content="计算机图形学基础原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直，等">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-computer-graphics" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/16/computer-graphics/" class="article-date">
+  <time datetime="2019-04-16T05:22:06.000Z" itemprop="datePublished">2019-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      computer_graphics
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="计算机图形学基础原理及实现"><a href="#计算机图形学基础原理及实现" class="headerlink" title="计算机图形学基础原理及实现"></a>计算机图形学基础原理及实现</h1><h2 id="光栅化"><a href="#光栅化" class="headerlink" title="光栅化"></a>光栅化</h2><p>本篇博客的算法及实现皆基于光栅</p>
+<ul>
+<li>几个重要概念：<ul>
+<li>光子：显示器能显示的最小发光点</li>
+<li>屏幕（光栅）分辨率：屏幕能显示的光子个数</li>
+<li>显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于：<ul>
+<li>文本显示：屏幕能显示的字符数</li>
+<li>图形显示：屏幕能显示的像素点</li>
+</ul>
+</li>
+<li>像素点：图形显示时按图形显示分辨率所能显示的最小的元素点</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>光栅化：<ul>
+<li>把一个显示屏幕看成许多水平，垂直，等距离的直线</li>
+<li>只有直线的交点可以被显示</li>
+<li>求图形在光栅上的最佳逼近点</li>
+</ul>
+</li>
+</ul>
+<h2 id="DDA（Digital-Differential-Analyzer）"><a href="#DDA（Digital-Differential-Analyzer）" class="headerlink" title="DDA（Digital Differential Analyzer）"></a>DDA（Digital Differential Analyzer）</h2><p>如何在光栅化的视角下构建直线：</p>
+<h3 id="David-F-Rogers描述（所有象限）"><a href="#David-F-Rogers描述（所有象限）" class="headerlink" title="David F.Rogers描述（所有象限）"></a>David F.Rogers描述（所有象限）</h3><p>1.原理</p>
+<p>我们在光栅下任意画一条直线：</p>
+<p><img src="cg1.png" alt="直线与栅格"></p>
+<p>发现：</p>
+<ul>
+<li>一条直线和栅格有许多交点</li>
+<li>交点的个数被起始点和终止点确定</li>
+<li>我们要模拟的直线可以用和交点最近的栅格点来刻画</li>
+<li>从起始点起，我们可以按照某种方式找到所有需要的栅格点，比如说0 &lt;= k &lt; 1时，我们可以从起始点的round(x)值起，每次增1， 求出下一个在栅格上的点的y值。</li>
+<li>基于以上的思考我们有如下实现 </li>
+</ul>
+<p>2.实现</p>
+<pre><code>void DFR(float xe, float ye, float xs, float ys, int value){
+
+    float len, steptx, stepty;
+    len = max(abs(xe - xs), abs(ye - ys));
+    steptx = (xe - xs) / len;
+    stepty = (ye - ys) / len;
+
+    float x, y
+    x = xs;
+    y = ys;
+
+    int i = 1;
+    while(i &lt;= len){
+        darw_point(round(x), round(y), value);
+        x += steptx;
+        y += stepty;
+        i++;
+    }
+}
+</code></pre><h3 id="James-D-Foley描述（第一象限，k-lt-1）"><a href="#James-D-Foley描述（第一象限，k-lt-1）" class="headerlink" title="James D.Foley描述（第一象限，k &lt; 1）"></a>James D.Foley描述（第一象限，k &lt; 1）</h3><p>1.原理</p>
+<p>J的算法其实是省去了D的i变量，既然如果以x为搜索方向，x每次加1，那么可以用x去做循环量，实质上是D的算法的特殊化，且未考虑首点不在光栅上    </p>
+<p>2.实现</p>
+<pre><code>void JDF(int xe, int ye, int xs, int ys, int value){//注意这里的int
+
+    float dx, dy, k;
+    dx = xe - xe;
+    dy = ye - ys;
+    k = dy / dx;
+
+    float y = ys;
+    for(int x = xs; x &lt;= xe; x++){
+        darw_point(x, round(y), value);
+        y += k;
+    }
+}
+</code></pre><h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ul>
+<li>David F.Rogers:<ul>
+<li>逼近点不是直线的一个最好的逼近</li>
+</ul>
+</li>
+<li>James D.Foley:<ul>
+<li>首点可能不在象素点上</li>
+<li>只给出0-45第一个八卦象限的描述</li>
+<li>为了避免累计误差采用斜率k</li>
+</ul>
+</li>
+</ul>
+<h3 id="任意方向直线插补算法"><a href="#任意方向直线插补算法" class="headerlink" title="任意方向直线插补算法"></a>任意方向直线插补算法</h3><h2 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h2><p>进一步从光栅角度理解直线，总存在一个方向，当前点在该方向增加1，下一个点在另一个方向要么增加0，要么增加1，中点0.5是一个衡量的标准。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>假设上述方向为x</p>
+<p>（xi,y）为直线上当前点的坐标</p>
+<p>（xi,yi）为当前点对应的栅格点</p>
+<p>d定义为y + k - yi，初值为0</p>
+<p>若d &gt; 1, d -= 1;</p>
+<p>若d &gt;= 0.5, yi+1 = yi + 1; </p>
+<p>若d &lt; 0.5, yi+1 = yi;</p>
+<p>d += k</p>
+<p>0.5有点不舒服，我们加个偏量-0.5</p>
+<p>e定义为d - 0.5, 初值为-0.5</p>
+<p>若e &gt;= 0, …，e -= 1;</p>
+<p>若e &lt; 0, …</p>
+<p>e += k</p>
+<p>注意：这里没有判断e &gt; 0.5是对d的进一步分析，实际是合到了d &gt;= 0.5的判断处处理，只使用d的方法判断会有问题，比如当d增加到0.7，而k=0.1，则yi+1在yi上一行，而yi+2又在yi+1上一行，而实际yi+1和yi+2在同一行，如果使用e的处理，则e&gt;=0，d&gt;=0.5时，就已经-1，这样再增加k就不会造成上述问题。</p>
+<h3 id="Rogers描述"><a href="#Rogers描述" class="headerlink" title="Rogers描述"></a>Rogers描述</h3><pre><code>void BresenhamR(float xe, float ye, float xs, float ys){
+
+    int x, y, dx, dy;
+    float e;
+    x = xs;
+    y = ys;
+    dx = xe - xs;
+    dy = ye - ys;
+    e = dy / dx - 0.5;
+
+    for(int i = 1 ; i &lt;= x; i++){
+
+        draw_point(x, y, value);
+
+        if(e &gt;= 0){
+            y += 1;
+            e -= 1;    
+        }
+        x += 1;
+        e += dy / dx;
+    }
+}
+</code></pre><h3 id="整数Bresenham算法"><a href="#整数Bresenham算法" class="headerlink" title="整数Bresenham算法"></a>整数Bresenham算法</h3><pre><code>void Bresenhan(float xe, float ye, float xs, float ys){
+    int x, y, dx, dy, e;
+    x = xs;
+    y = ys;
+    dx = xe - xs;
+    dy = ye - ys;
+    e = 2 * dy - dxl;
+
+    for(int i = 1; i &lt;= xe; i++){
+
+        draw_point(x, y, value);
+
+        if(e &gt; 0){
+            y += 1;
+            e -= 2 * dx;
+        }
+        x += 1;
+        e += 2 * dy;
+    }
+}
+</code></pre><h3 id="一般Bresenham算法"><a href="#一般Bresenham算法" class="headerlink" title="一般Bresenham算法"></a>一般Bresenham算法</h3><h2 id="中点圆算法"><a href="#中点圆算法" class="headerlink" title="中点圆算法"></a>中点圆算法</h2><p>中点圆算法的思想其实继承于Bresenham算法，也是已知当前点的格点,下一个点的逼近点有两个候选点，同一行的，或者下一行的（对于角度再45-90来说），利用这两个候选点是否在圆内可以选定候选点：在圆内，选取同一行的，否则选取下一行的，可参照下图：</p>
+<p><img src="cg3.png" alt="中点圆算法示意"></p>
+<h3 id="中点圆整数算法实现"><a href="#中点圆整数算法实现" class="headerlink" title="中点圆整数算法实现"></a>中点圆整数算法实现</h3><p>我们可以定义函数d = F(x,y) = x<em>x + y</em>y - r*r</p>
+<p>根据上图，我们可以求出dm</p>
+<p>再求出dmt,相减得 2*x + 3</p>
+<p>同理求出dmb,相减得 2<em>x - 2</em>y + 5</p>
+<p>这意味着什么，我们求一次d需要做3次乘方，但是通过我们求得的递推式，可以化简到用简单乘法来实现。</p>
+<pre><code>void MidPointCircle(int r, int value){
+    int x = 0, y = r;
+    float d = 1 - r; // 注意1
+    while(y &gt; x){
+        draw_point(x, y, value);
+        if(d &lt; 0){
+            d = 2 * x + 3;
+        }
+        else{
+            d = 2 * x - 2 * y + 5;
+            y--;
+        }
+        x++;
+    }
+}
+</code></pre><h3 id="中点圆整数优化算法实现"><a href="#中点圆整数优化算法实现" class="headerlink" title="中点圆整数优化算法实现"></a>中点圆整数优化算法实现</h3><p>####我们重新考虑上述化简算法的思想，其实如果大家对高中圆相关的题目比较有感觉的话，就会知道（x+a）<em> (x+a) + (y +b)</em>(y + b) - r*r这个式子非常好，如果我们用两个点带入其中，将他们相减，就可以约去乘方项，如果再结合一下递推公式我们又可以化去一次方项，从而得到常数加法量级的算法！####</p>
+<p>我们将dmt和dmb都递推一项，比如对于dmt来 说，当前点的下一个点为T，而下一个点又为T，则d2t为(2<em>(x + 1) + 3) - (2</em>x + 3） = 2,<br>同理求得如果下一个点为B，则为2；若当前点的下一个点为B，而下一个点为T，则为2，否则为4；</p>
+<pre><code>void MidPOintCircle(int r, int value){
+    int x = 0, y = r, d = 1 - r, dt = 3, db = - 2 * r + 5;
+    while(y &gt;= x){
+        draw_point(x, y, value);
+        if(d &lt; 0){
+            d = d + dt;
+            dt += 2;
+            db += 2;
+        }
+        else{
+            d = d + db;
+            dt += 2;
+            db += 4;
+            y--;
+        }
+        x++;
+    }
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjula33r3000154upuz7xzxrz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/13/meteorological_data_analysis/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">meteorological data analysis</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cppdetails/">cppdetails</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project-record/">project record</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/scientific-research/">scientific research</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FS/">FS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compiler/">compiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/malloc/">malloc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/new/">new</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-data-processing/">python data processing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/FS/" style="font-size: 10px;">FS</a> <a href="/tags/bioinformatics/" style="font-size: 10px;">bioinformatics</a> <a href="/tags/compiler/" style="font-size: 10px;">compiler</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/malloc/" style="font-size: 10px;">malloc</a> <a href="/tags/memory-management/" style="font-size: 10px;">memory management</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/project/" style="font-size: 20px;">project</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python-data-processing/" style="font-size: 10px;">python data processing</a> <a href="/tags/roughset/" style="font-size: 10px;">roughset</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/16/computer-graphics/">computer_graphics</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/13/meteorological_data_analysis/">meteorological data analysis</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/29/roughset/">roughset</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/03/bio_info/">FS and its application in lncRNA and miRNA network</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/02/malloc_and_new/">difference between new and malloc in cpp</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -62,6 +62,223 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-computer-graphics" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/16/computer-graphics/" class="article-date">
+  <time datetime="2019-04-16T05:22:06.000Z" itemprop="datePublished">2019-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/16/computer-graphics/">computer_graphics</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="计算机图形学基础原理及实现"><a href="#计算机图形学基础原理及实现" class="headerlink" title="计算机图形学基础原理及实现"></a>计算机图形学基础原理及实现</h1><h2 id="光栅化"><a href="#光栅化" class="headerlink" title="光栅化"></a>光栅化</h2><p>本篇博客的算法及实现皆基于光栅</p>
+<ul>
+<li>几个重要概念：<ul>
+<li>光子：显示器能显示的最小发光点</li>
+<li>屏幕（光栅）分辨率：屏幕能显示的光子个数</li>
+<li>显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于：<ul>
+<li>文本显示：屏幕能显示的字符数</li>
+<li>图形显示：屏幕能显示的像素点</li>
+</ul>
+</li>
+<li>像素点：图形显示时按图形显示分辨率所能显示的最小的元素点</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>光栅化：<ul>
+<li>把一个显示屏幕看成许多水平，垂直，等距离的直线</li>
+<li>只有直线的交点可以被显示</li>
+<li>求图形在光栅上的最佳逼近点</li>
+</ul>
+</li>
+</ul>
+<h2 id="DDA（Digital-Differential-Analyzer）"><a href="#DDA（Digital-Differential-Analyzer）" class="headerlink" title="DDA（Digital Differential Analyzer）"></a>DDA（Digital Differential Analyzer）</h2><p>如何在光栅化的视角下构建直线：</p>
+<h3 id="David-F-Rogers描述（所有象限）"><a href="#David-F-Rogers描述（所有象限）" class="headerlink" title="David F.Rogers描述（所有象限）"></a>David F.Rogers描述（所有象限）</h3><p>1.原理</p>
+<p>我们在光栅下任意画一条直线：</p>
+<p><img src="cg1.png" alt="直线与栅格"></p>
+<p>发现：</p>
+<ul>
+<li>一条直线和栅格有许多交点</li>
+<li>交点的个数被起始点和终止点确定</li>
+<li>我们要模拟的直线可以用和交点最近的栅格点来刻画</li>
+<li>从起始点起，我们可以按照某种方式找到所有需要的栅格点，比如说0 &lt;= k &lt; 1时，我们可以从起始点的round(x)值起，每次增1， 求出下一个在栅格上的点的y值。</li>
+<li>基于以上的思考我们有如下实现 </li>
+</ul>
+<p>2.实现</p>
+<pre><code>void DFR(float xe, float ye, float xs, float ys, int value){
+
+    float len, steptx, stepty;
+    len = max(abs(xe - xs), abs(ye - ys));
+    steptx = (xe - xs) / len;
+    stepty = (ye - ys) / len;
+
+    float x, y
+    x = xs;
+    y = ys;
+
+    int i = 1;
+    while(i &lt;= len){
+        darw_point(round(x), round(y), value);
+        x += steptx;
+        y += stepty;
+        i++;
+    }
+}
+</code></pre><h3 id="James-D-Foley描述（第一象限，k-lt-1）"><a href="#James-D-Foley描述（第一象限，k-lt-1）" class="headerlink" title="James D.Foley描述（第一象限，k &lt; 1）"></a>James D.Foley描述（第一象限，k &lt; 1）</h3><p>1.原理</p>
+<p>J的算法其实是省去了D的i变量，既然如果以x为搜索方向，x每次加1，那么可以用x去做循环量，实质上是D的算法的特殊化，且未考虑首点不在光栅上    </p>
+<p>2.实现</p>
+<pre><code>void JDF(int xe, int ye, int xs, int ys, int value){//注意这里的int
+
+    float dx, dy, k;
+    dx = xe - xe;
+    dy = ye - ys;
+    k = dy / dx;
+
+    float y = ys;
+    for(int x = xs; x &lt;= xe; x++){
+        darw_point(x, round(y), value);
+        y += k;
+    }
+}
+</code></pre><h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ul>
+<li>David F.Rogers:<ul>
+<li>逼近点不是直线的一个最好的逼近</li>
+</ul>
+</li>
+<li>James D.Foley:<ul>
+<li>首点可能不在象素点上</li>
+<li>只给出0-45第一个八卦象限的描述</li>
+<li>为了避免累计误差采用斜率k</li>
+</ul>
+</li>
+</ul>
+<h3 id="任意方向直线插补算法"><a href="#任意方向直线插补算法" class="headerlink" title="任意方向直线插补算法"></a>任意方向直线插补算法</h3><h2 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h2><p>进一步从光栅角度理解直线，总存在一个方向，当前点在该方向增加1，下一个点在另一个方向要么增加0，要么增加1，中点0.5是一个衡量的标准。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>假设上述方向为x</p>
+<p>（xi,y）为直线上当前点的坐标</p>
+<p>（xi,yi）为当前点对应的栅格点</p>
+<p>d定义为y + k - yi，初值为0</p>
+<p>若d &gt; 1, d -= 1;</p>
+<p>若d &gt;= 0.5, yi+1 = yi + 1; </p>
+<p>若d &lt; 0.5, yi+1 = yi;</p>
+<p>d += k</p>
+<p>0.5有点不舒服，我们加个偏量-0.5</p>
+<p>e定义为d - 0.5, 初值为-0.5</p>
+<p>若e &gt;= 0, …，e -= 1;</p>
+<p>若e &lt; 0, …</p>
+<p>e += k</p>
+<p>注意：这里没有判断e &gt; 0.5是对d的进一步分析，实际是合到了d &gt;= 0.5的判断处处理，只使用d的方法判断会有问题，比如当d增加到0.7，而k=0.1，则yi+1在yi上一行，而yi+2又在yi+1上一行，而实际yi+1和yi+2在同一行，如果使用e的处理，则e&gt;=0，d&gt;=0.5时，就已经-1，这样再增加k就不会造成上述问题。</p>
+<h3 id="Rogers描述"><a href="#Rogers描述" class="headerlink" title="Rogers描述"></a>Rogers描述</h3><pre><code>void BresenhamR(float xe, float ye, float xs, float ys){
+
+    int x, y, dx, dy;
+    float e;
+    x = xs;
+    y = ys;
+    dx = xe - xs;
+    dy = ye - ys;
+    e = dy / dx - 0.5;
+
+    for(int i = 1 ; i &lt;= x; i++){
+
+        draw_point(x, y, value);
+
+        if(e &gt;= 0){
+            y += 1;
+            e -= 1;    
+        }
+        x += 1;
+        e += dy / dx;
+    }
+}
+</code></pre><h3 id="整数Bresenham算法"><a href="#整数Bresenham算法" class="headerlink" title="整数Bresenham算法"></a>整数Bresenham算法</h3><pre><code>void Bresenhan(float xe, float ye, float xs, float ys){
+    int x, y, dx, dy, e;
+    x = xs;
+    y = ys;
+    dx = xe - xs;
+    dy = ye - ys;
+    e = 2 * dy - dxl;
+
+    for(int i = 1; i &lt;= xe; i++){
+
+        draw_point(x, y, value);
+
+        if(e &gt; 0){
+            y += 1;
+            e -= 2 * dx;
+        }
+        x += 1;
+        e += 2 * dy;
+    }
+}
+</code></pre><h3 id="一般Bresenham算法"><a href="#一般Bresenham算法" class="headerlink" title="一般Bresenham算法"></a>一般Bresenham算法</h3><h2 id="中点圆算法"><a href="#中点圆算法" class="headerlink" title="中点圆算法"></a>中点圆算法</h2><p>中点圆算法的思想其实继承于Bresenham算法，也是已知当前点的格点,下一个点的逼近点有两个候选点，同一行的，或者下一行的（对于角度再45-90来说），利用这两个候选点是否在圆内可以选定候选点：在圆内，选取同一行的，否则选取下一行的，可参照下图：</p>
+<p><img src="cg3.png" alt="中点圆算法示意"></p>
+<h3 id="中点圆整数算法实现"><a href="#中点圆整数算法实现" class="headerlink" title="中点圆整数算法实现"></a>中点圆整数算法实现</h3><p>我们可以定义函数d = F(x,y) = x<em>x + y</em>y - r*r</p>
+<p>根据上图，我们可以求出dm</p>
+<p>再求出dmt,相减得 2*x + 3</p>
+<p>同理求出dmb,相减得 2<em>x - 2</em>y + 5</p>
+<p>这意味着什么，我们求一次d需要做3次乘方，但是通过我们求得的递推式，可以化简到用简单乘法来实现。</p>
+<pre><code>void MidPointCircle(int r, int value){
+    int x = 0, y = r;
+    float d = 1 - r; // 注意1
+    while(y &gt; x){
+        draw_point(x, y, value);
+        if(d &lt; 0){
+            d = 2 * x + 3;
+        }
+        else{
+            d = 2 * x - 2 * y + 5;
+            y--;
+        }
+        x++;
+    }
+}
+</code></pre><h3 id="中点圆整数优化算法实现"><a href="#中点圆整数优化算法实现" class="headerlink" title="中点圆整数优化算法实现"></a>中点圆整数优化算法实现</h3><p>####我们重新考虑上述化简算法的思想，其实如果大家对高中圆相关的题目比较有感觉的话，就会知道（x+a）<em> (x+a) + (y +b)</em>(y + b) - r*r这个式子非常好，如果我们用两个点带入其中，将他们相减，就可以约去乘方项，如果再结合一下递推公式我们又可以化去一次方项，从而得到常数加法量级的算法！####</p>
+<p>我们将dmt和dmb都递推一项，比如对于dmt来 说，当前点的下一个点为T，而下一个点又为T，则d2t为(2<em>(x + 1) + 3) - (2</em>x + 3） = 2,<br>同理求得如果下一个点为B，则为2；若当前点的下一个点为B，而下一个点为T，则为2，否则为4；</p>
+<pre><code>void MidPOintCircle(int r, int value){
+    int x = 0, y = r, d = 1 - r, dt = 3, db = - 2 * r + 5;
+    while(y &gt;= x){
+        draw_point(x, y, value);
+        if(d &lt; 0){
+            d = d + dt;
+            dt += 2;
+            db += 2;
+        }
+        else{
+            d = d + db;
+            dt += 2;
+            db += 4;
+            y--;
+        }
+        x++;
+    }
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjula33r3000154upuz7xzxrz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-meteorological_data_analysis" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/04/13/meteorological_data_analysis/" class="article-date">
@@ -416,7 +633,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjuge6ze90001usupoq6cprzk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjula33rg000654upto0ftktg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-data-processing/">python data processing</a></li></ul>
@@ -750,7 +967,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/roughset/" data-id="cjuge6zek0006usupqboux5vg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/29/roughset/" data-id="cjula33ra000454upcl4fe4z1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
@@ -858,7 +1075,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/03/bio_info/" data-id="cjuge6ze30000usupz3hsdopj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/03/bio_info/" data-id="cjula33qx000054upvgshyiox" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FS/">FS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -956,7 +1173,7 @@ if(NULL == p){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjuge6zef0004usup7wyafwni" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjula33re000554up4ue5648n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/">cpp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/malloc/">malloc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/new/">new</a></li></ul>
@@ -1606,7 +1823,7 @@ enum fct{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/pl0_compiler/" data-id="cjuge6zeh0005usupo5kwsfov" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/pl0_compiler/" data-id="cjula33ri000954up0evqf9ns" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/compiler/">compiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
@@ -1670,6 +1887,10 @@ enum fct{
       <ul>
         
           <li>
+            <a href="/2019/04/16/computer-graphics/">computer_graphics</a>
+          </li>
+        
+          <li>
             <a href="/2019/04/13/meteorological_data_analysis/">meteorological data analysis</a>
           </li>
         
@@ -1683,10 +1904,6 @@ enum fct{
         
           <li>
             <a href="/2019/03/02/malloc_and_new/">difference between new and malloc in cpp</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/02/pl0_compiler/">a simple PL0 compiler</a>
           </li>
         
       </ul>
