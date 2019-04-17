@@ -16,7 +16,8 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg1.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg3.png">
-<meta property="og:updated_time" content="2019-04-17T13:35:02.205Z">
+<meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg2.png">
+<meta property="og:updated_time" content="2019-04-17T14:07:14.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="computer_graphics">
 <meta name="twitter:description" content="计算机图形学基础原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直，等">
@@ -270,11 +271,135 @@
         x++;
     }
 }
-</code></pre>
+</code></pre><p>以下是笔者用opengl实现的中点圆整数画圆算法：</p>
+<p>visual stdio 2017 安装opengl可参照<a href="https://www.cnblogs.com/flylinmu/p/7823019.html" target="_blank" rel="noopener">how to get opengl</a></p>
+<pre><code>#include &lt;windows.h&gt;
+#include &lt;GL/glut.h&gt;
+#include &lt;GL/gl.h&gt;
+
+void init(void)
+{
+    glClearColor(0, 0, 0, 0);
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0.0, 600.0, 0.0, 400.0);
+}
+
+void MidPointCircle(void)
+{
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    glPointSize(1);
+    glColor3f(0, 0, 1);
+
+    glBegin(GL_LINES);
+    for (int i = 1; i &lt; 600; i+=10) {
+        glVertex2i(i, 0);
+        glVertex2i(i, 400);
+    }
+
+    for (int i = 1; i &lt; 400; i+=10) {
+        glVertex2i(0, i);
+        glVertex2i(600, i);
+    }
+    glEnd();
+
+    glFlush();
+
+    int r = 100;
+    int x = 0;
+    int y = r;
+    int d = 125 - 10 * r;
+    int dt = 300; 
+    int db = -20 * r + 500;
+
+    glColor3f(1, 0, 0);
+    glPointSize(5);
+    while (y &gt;= x) {
+
+        glBegin(GL_POINTS);
+        glVertex2i(200 + x,200 + y);
+        glVertex2i(200 + x,200 - y);
+        glVertex2i(200 - x,200 + y);
+        glVertex2i(200 - x,200 - y);
+        glVertex2i(200 + y,200 + x);
+        glVertex2i(200 + y,200 - x);
+        glVertex2i(200 - y,200 + x);
+        glVertex2i(200 - y,200 - x);
+        glEnd();
+        glFlush();
+
+        if (d &lt; 0) {
+            d = d + dt;
+            dt += 200;
+            db += 200;
+        }
+        else {
+            d = d + db;
+            dt += 200;
+            db += 400;
+            y-= 10;
+        }
+        x+= 10;
+    }
+
+     r = 100;
+     x = 0;
+     y = r;
+     d = 1 -  r;
+     dt = 3;
+     db = (-2 * r + 5) ;
+
+    glColor3f(0, 1, 0);
+    glPointSize(1);
+
+    while (y &gt;= x) {
+
+        glBegin(GL_POINTS);
+        glVertex2i(200 + x, 200 + y);
+        glVertex2i(200 + x, 200 - y);
+        glVertex2i(200 - x, 200 + y);
+        glVertex2i(200 - x, 200 - y);
+        glVertex2i(200 + y, 200 + x);
+        glVertex2i(200 + y, 200 - x);
+        glVertex2i(200 - y, 200 + x);
+        glVertex2i(200 - y, 200 - x);
+        glEnd();
+        glFlush();
+
+        if (d &lt; 0) {
+            d = d + dt;
+            dt += 2;
+            db += 2;
+        }
+        else {
+            d = d + db;
+            dt += 2;
+            db += 4;
+            y -= 1;
+        }
+        x += 1;
+    }
+}
+
+int main(int argc, char**argv)
+{
+
+    glutInit(&amp;argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowPosition(50, 100);
+    glutInitWindowSize(400, 300);
+    glutCreateWindow(&quot;homework&quot;);
+    init();
+    glutDisplayFunc(MidPointCircle);
+    glutMainLoop();
+    return 0;
+}
+</code></pre><p><img src="cg2.png" alt="opengl实现中点圆整数"></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjula33r3000154upuz7xzxrz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjulaiob200016wup9tf2veog" class="article-share-link">Share</a>
       
       
     </footer>

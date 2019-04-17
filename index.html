@@ -265,11 +265,135 @@
         x++;
     }
 }
-</code></pre>
+</code></pre><p>以下是笔者用opengl实现的中点圆整数画圆算法：</p>
+<p>visual stdio 2017 安装opengl可参照<a href="https://www.cnblogs.com/flylinmu/p/7823019.html" target="_blank" rel="noopener">how to get opengl</a></p>
+<pre><code>#include &lt;windows.h&gt;
+#include &lt;GL/glut.h&gt;
+#include &lt;GL/gl.h&gt;
+
+void init(void)
+{
+    glClearColor(0, 0, 0, 0);
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0.0, 600.0, 0.0, 400.0);
+}
+
+void MidPointCircle(void)
+{
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    glPointSize(1);
+    glColor3f(0, 0, 1);
+
+    glBegin(GL_LINES);
+    for (int i = 1; i &lt; 600; i+=10) {
+        glVertex2i(i, 0);
+        glVertex2i(i, 400);
+    }
+
+    for (int i = 1; i &lt; 400; i+=10) {
+        glVertex2i(0, i);
+        glVertex2i(600, i);
+    }
+    glEnd();
+
+    glFlush();
+
+    int r = 100;
+    int x = 0;
+    int y = r;
+    int d = 125 - 10 * r;
+    int dt = 300; 
+    int db = -20 * r + 500;
+
+    glColor3f(1, 0, 0);
+    glPointSize(5);
+    while (y &gt;= x) {
+
+        glBegin(GL_POINTS);
+        glVertex2i(200 + x,200 + y);
+        glVertex2i(200 + x,200 - y);
+        glVertex2i(200 - x,200 + y);
+        glVertex2i(200 - x,200 - y);
+        glVertex2i(200 + y,200 + x);
+        glVertex2i(200 + y,200 - x);
+        glVertex2i(200 - y,200 + x);
+        glVertex2i(200 - y,200 - x);
+        glEnd();
+        glFlush();
+
+        if (d &lt; 0) {
+            d = d + dt;
+            dt += 200;
+            db += 200;
+        }
+        else {
+            d = d + db;
+            dt += 200;
+            db += 400;
+            y-= 10;
+        }
+        x+= 10;
+    }
+
+     r = 100;
+     x = 0;
+     y = r;
+     d = 1 -  r;
+     dt = 3;
+     db = (-2 * r + 5) ;
+
+    glColor3f(0, 1, 0);
+    glPointSize(1);
+
+    while (y &gt;= x) {
+
+        glBegin(GL_POINTS);
+        glVertex2i(200 + x, 200 + y);
+        glVertex2i(200 + x, 200 - y);
+        glVertex2i(200 - x, 200 + y);
+        glVertex2i(200 - x, 200 - y);
+        glVertex2i(200 + y, 200 + x);
+        glVertex2i(200 + y, 200 - x);
+        glVertex2i(200 - y, 200 + x);
+        glVertex2i(200 - y, 200 - x);
+        glEnd();
+        glFlush();
+
+        if (d &lt; 0) {
+            d = d + dt;
+            dt += 2;
+            db += 2;
+        }
+        else {
+            d = d + db;
+            dt += 2;
+            db += 4;
+            y -= 1;
+        }
+        x += 1;
+    }
+}
+
+int main(int argc, char**argv)
+{
+
+    glutInit(&amp;argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowPosition(50, 100);
+    glutInitWindowSize(400, 300);
+    glutCreateWindow(&quot;homework&quot;);
+    init();
+    glutDisplayFunc(MidPointCircle);
+    glutMainLoop();
+    return 0;
+}
+</code></pre><p><img src="cg2.png" alt="opengl实现中点圆整数"></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjula33r3000154upuz7xzxrz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjulaiob200016wup9tf2veog" class="article-share-link">Share</a>
       
       
     </footer>
@@ -633,7 +757,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjula33rg000654upto0ftktg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjulaiobc00056wupbi3txkaf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-data-processing/">python data processing</a></li></ul>
@@ -967,7 +1091,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/roughset/" data-id="cjula33ra000454upcl4fe4z1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/29/roughset/" data-id="cjulaiobh00096wupjz315rjz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
@@ -1075,7 +1199,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/03/bio_info/" data-id="cjula33qx000054upvgshyiox" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/03/bio_info/" data-id="cjulaiob800046wupnlquzm9g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FS/">FS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -1173,7 +1297,7 @@ if(NULL == p){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjula33re000554up4ue5648n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjulaioaw00006wupzrid9vcn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/">cpp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/malloc/">malloc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/new/">new</a></li></ul>
@@ -1823,7 +1947,7 @@ enum fct{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/pl0_compiler/" data-id="cjula33ri000954up0evqf9ns" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/pl0_compiler/" data-id="cjulaiobe00066wup4js9ndqv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/compiler/">compiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
