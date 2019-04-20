@@ -7,21 +7,21 @@
   
   <title>computer_graphics | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计算机图形学基础原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直，等">
+  <meta name="description" content="计算机图形学基础算法原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直">
 <meta property="og:type" content="article">
 <meta property="og:title" content="computer_graphics">
 <meta property="og:url" content="http://yoursite.com/2019/04/16/computer-graphics/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="计算机图形学基础原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直，等">
+<meta property="og:description" content="计算机图形学基础算法原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg1.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg3.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg2.png">
-<meta property="og:updated_time" content="2019-04-20T14:19:20.203Z">
+<meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg1.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg3.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg2.PNG">
+<meta property="og:updated_time" content="2019-04-20T14:33:51.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="computer_graphics">
-<meta name="twitter:description" content="计算机图形学基础原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直，等">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg1.png">
+<meta name="twitter:description" content="计算机图形学基础算法原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg1.PNG">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -90,7 +90,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="计算机图形学基础原理及实现"><a href="#计算机图形学基础原理及实现" class="headerlink" title="计算机图形学基础原理及实现"></a>计算机图形学基础原理及实现</h1><h2 id="光栅化"><a href="#光栅化" class="headerlink" title="光栅化"></a>光栅化</h2><p>本篇博客的算法及实现皆基于光栅</p>
+        <h1 id="计算机图形学基础算法原理及实现"><a href="#计算机图形学基础算法原理及实现" class="headerlink" title="计算机图形学基础算法原理及实现"></a>计算机图形学基础算法原理及实现</h1><h2 id="光栅化"><a href="#光栅化" class="headerlink" title="光栅化"></a>光栅化</h2><p>本篇博客的算法及实现皆基于光栅</p>
 <ul>
 <li>几个重要概念：<ul>
 <li>光子：显示器能显示的最小发光点</li>
@@ -115,7 +115,7 @@
 <h2 id="DDA（Digital-Differential-Analyzer）"><a href="#DDA（Digital-Differential-Analyzer）" class="headerlink" title="DDA（Digital Differential Analyzer）"></a>DDA（Digital Differential Analyzer）</h2><p>如何在光栅化的视角下构建直线：</p>
 <h3 id="David-F-Rogers描述（所有象限）"><a href="#David-F-Rogers描述（所有象限）" class="headerlink" title="David F.Rogers描述（所有象限）"></a>David F.Rogers描述（所有象限）</h3><p>1.原理</p>
 <p>我们在光栅下任意画一条直线：</p>
-<p><img src="cg1.png" alt="直线与栅格"></p>
+<p><img src="cg1.PNG" alt="直线与栅格"></p>
 <p>发现：</p>
 <ul>
 <li>一条直线和栅格有许多交点</li>
@@ -230,7 +230,7 @@
     }
 }
 </code></pre><h3 id="一般Bresenham算法"><a href="#一般Bresenham算法" class="headerlink" title="一般Bresenham算法"></a>一般Bresenham算法</h3><h2 id="中点圆算法"><a href="#中点圆算法" class="headerlink" title="中点圆算法"></a>中点圆算法</h2><p>中点圆算法的思想其实继承于Bresenham算法，也是已知当前点的格点,下一个点的逼近点有两个候选点，同一行的，或者下一行的（对于角度再45-90来说），利用这两个候选点是否在圆内可以选定候选点：在圆内，选取同一行的，否则选取下一行的，可参照下图：</p>
-<p><img src="cg3.png" alt="中点圆算法示意"></p>
+<p><img src="cg3.PNG" alt="中点圆算法示意"></p>
 <h3 id="中点圆整数算法实现"><a href="#中点圆整数算法实现" class="headerlink" title="中点圆整数算法实现"></a>中点圆整数算法实现</h3><p>我们可以定义函数d = F(x,y) = x<em>x + y</em>y - r*r</p>
 <p>根据上图，我们可以求出dm</p>
 <p>再求出dmt,相减得 2*x + 3</p>
@@ -397,7 +397,7 @@ int main(int argc, char**argv)
     return 0;
 }
 </code></pre><p>以下是笔者实验的结果：</p>
-<p><img src="cg2.png" alt="opengl实现中点圆整数"></p>
+<p><img src="cg2.PNG" alt="opengl实现中点圆整数"></p>
 <h2 id="Cohen-Sutherland算法（以下算法为非光栅化）"><a href="#Cohen-Sutherland算法（以下算法为非光栅化）" class="headerlink" title="Cohen-Sutherland算法（以下算法为非光栅化）"></a>Cohen-Sutherland算法（以下算法为非光栅化）</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>二位观察中，需要在观察坐标系下对窗口进行裁剪，保留窗口内的图形，去掉窗口外的</p>
 <h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>窗口是两条水平和两条垂直的无限长直线围成的矩形，这样其实就把一个二维平面划分成9各区域，对中间区域窗口而言，其他任一区域可以用在他的左边，在他的右边，在他的上面，在他的下面描述，自然我们想到可以用4位二进制数位来表示一个区域，比如最低位表示是否在左边，前一位表示是否在右边，第二位表示是否在下面，最高位表示是否在上面，比如右上区域表示为1010，窗口区域表示为0000</p>
 <h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><ul>
@@ -519,7 +519,7 @@ void LBClioLine(int left, int right, int bottom, int top, float x1, float y1, fl
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjuplcit00001hcuphf94fywl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjuplsk57000118up9ozh0el1" class="article-share-link">Share</a>
       
       
     </footer>
