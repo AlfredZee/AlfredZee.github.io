@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg1.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg3.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg2.PNG">
-<meta property="og:updated_time" content="2019-04-20T14:33:51.259Z">
+<meta property="og:updated_time" content="2019-04-28T06:57:49.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="computer_graphics">
 <meta name="twitter:description" content="计算机图形学基础算法原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直">
@@ -481,20 +481,20 @@ void CSLineClip(float x1, float y1, float x2, float y2, Win w){
     float t;
     int sign = 1;
     if(p &lt; 0){
-        t = q / d;
+        t = q / p;
         if(t &gt; *t2)
             sign = 0;
         else if(t &gt; *t1)
             *t1 = t;
     }
-    else if (d &gt; 0){
-        t = q / d;
+    else if (p &gt; 0){
+        t = q / p;
         if(t &lt; *t1)
             sign = 0;
         else if(t &lt; *t2)
             *t2 = t;
     }
-    else if(q &lt; 0)
+    else if(q &lt; 0) sign = 0; 
     return sign;
 }
 
@@ -519,7 +519,7 @@ void LBClioLine(int left, int right, int bottom, int top, float x1, float y1, fl
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjutma2y7000130up90m9eqww" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjv3i3hm30001mkupskaquglh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -527,6 +527,15 @@ void LBClioLine(int left, int right, int bottom, int top, float x1, float y1, fl
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/04/30/co-occurrence/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          co-occurrence
+        
+      </div>
+    </a>
   
   
     <a href="/2019/04/13/meteorological_data_analysis/" id="article-nav-older" class="article-nav-link-wrap">
@@ -557,7 +566,7 @@ void LBClioLine(int left, int right, int bottom, int top, float x1, float y1, fl
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FS/">FS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compiler/">compiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/malloc/">malloc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/new/">new</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-data-processing/">python data processing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FS/">FS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compiler/">compiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/malloc/">malloc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/new/">new</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-data-processing/">python data processing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
     </div>
   </div>
 
@@ -567,7 +576,7 @@ void LBClioLine(int left, int right, int bottom, int top, float x1, float y1, fl
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/FS/" style="font-size: 10px;">FS</a> <a href="/tags/bioinformatics/" style="font-size: 10px;">bioinformatics</a> <a href="/tags/compiler/" style="font-size: 10px;">compiler</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/malloc/" style="font-size: 10px;">malloc</a> <a href="/tags/memory-management/" style="font-size: 10px;">memory management</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/project/" style="font-size: 20px;">project</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python-data-processing/" style="font-size: 10px;">python data processing</a> <a href="/tags/roughset/" style="font-size: 10px;">roughset</a>
+      <a href="/tags/FS/" style="font-size: 10px;">FS</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/bioinformatics/" style="font-size: 10px;">bioinformatics</a> <a href="/tags/compiler/" style="font-size: 10px;">compiler</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/malloc/" style="font-size: 10px;">malloc</a> <a href="/tags/memory-management/" style="font-size: 10px;">memory management</a> <a href="/tags/new/" style="font-size: 10px;">new</a> <a href="/tags/project/" style="font-size: 20px;">project</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python-data-processing/" style="font-size: 10px;">python data processing</a> <a href="/tags/roughset/" style="font-size: 10px;">roughset</a>
     </div>
   </div>
 
@@ -589,6 +598,10 @@ void LBClioLine(int left, int right, int bottom, int top, float x1, float y1, fl
       <ul>
         
           <li>
+            <a href="/2019/04/30/co-occurrence/">co-occurrence</a>
+          </li>
+        
+          <li>
             <a href="/2019/04/16/computer-graphics/">computer_graphics</a>
           </li>
         
@@ -602,10 +615,6 @@ void LBClioLine(int left, int right, int bottom, int top, float x1, float y1, fl
         
           <li>
             <a href="/2019/03/03/bio_info/">FS and its application in lncRNA and miRNA network</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/02/malloc_and_new/">difference between new and malloc in cpp</a>
           </li>
         
       </ul>
