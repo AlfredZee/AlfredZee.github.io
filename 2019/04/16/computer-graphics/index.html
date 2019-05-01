@@ -7,21 +7,21 @@
   
   <title>computer_graphics | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计算机图形学基础算法原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直">
+  <meta name="description" content="计算机图形学基础算法原理及实现 copyright: 徐渊 大连理工大学电信学部 gitbub: AlfredZee.github.io reference: 计算机图形学 time: 2019-4-16 QQ: 1239820340（联系请注明原因）  光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显">
 <meta name="keywords" content="CG">
 <meta property="og:type" content="article">
 <meta property="og:title" content="computer_graphics">
 <meta property="og:url" content="http://yoursite.com/2019/04/16/computer-graphics/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="计算机图形学基础算法原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直">
+<meta property="og:description" content="计算机图形学基础算法原理及实现 copyright: 徐渊 大连理工大学电信学部 gitbub: AlfredZee.github.io reference: 计算机图形学 time: 2019-4-16 QQ: 1239820340（联系请注明原因）  光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg1.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg3.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg2.PNG">
-<meta property="og:updated_time" content="2019-04-30T08:03:22.273Z">
+<meta property="og:updated_time" content="2019-05-01T08:09:39.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="computer_graphics">
-<meta name="twitter:description" content="计算机图形学基础算法原理及实现光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于： 文本显示：屏幕能显示的字符数 图形显示：屏幕能显示的像素点   像素点：图形显示时按图形显示分辨率所能显示的最小的元素点     光栅化： 把一个显示屏幕看成许多水平，垂直">
+<meta name="twitter:description" content="计算机图形学基础算法原理及实现 copyright: 徐渊 大连理工大学电信学部 gitbub: AlfredZee.github.io reference: 计算机图形学 time: 2019-4-16 QQ: 1239820340（联系请注明原因）  光栅化本篇博客的算法及实现皆基于光栅  几个重要概念： 光子：显示器能显示的最小发光点 屏幕（光栅）分辨率：屏幕能显示的光子个数 显示分辨率（显">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/16/computer-graphics/cg1.PNG">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -95,7 +95,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="计算机图形学基础算法原理及实现"><a href="#计算机图形学基础算法原理及实现" class="headerlink" title="计算机图形学基础算法原理及实现"></a>计算机图形学基础算法原理及实现</h1><h2 id="光栅化"><a href="#光栅化" class="headerlink" title="光栅化"></a>光栅化</h2><p>本篇博客的算法及实现皆基于光栅</p>
+        <h1 id="计算机图形学基础算法原理及实现"><a href="#计算机图形学基础算法原理及实现" class="headerlink" title="计算机图形学基础算法原理及实现"></a>计算机图形学基础算法原理及实现</h1><hr>
+<p><strong>copyright: 徐渊 大连理工大学电信学部</strong></p>
+<p><strong>gitbub: AlfredZee.github.io</strong></p>
+<p><strong>reference: 计算机图形学</strong></p>
+<p><strong>time: 2019-4-16</strong></p>
+<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
+<hr>
+<h2 id="光栅化"><a href="#光栅化" class="headerlink" title="光栅化"></a>光栅化</h2><p>本篇博客的算法及实现皆基于光栅</p>
 <ul>
 <li>几个重要概念：<ul>
 <li>光子：显示器能显示的最小发光点</li>
@@ -524,7 +531,7 @@ void LBClioLine(int left, int right, int bottom, int top, float x1, float y1, fl
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjv4xruwd0006kgupi1oeb2iq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjv4xzsa40006i8upmqlzu82k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CG/">CG</a></li></ul>
