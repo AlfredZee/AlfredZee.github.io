@@ -170,11 +170,101 @@
 <h2 id="反向传播的效率"><a href="#反向传播的效率" class="headerlink" title="反向传播的效率"></a>反向传播的效率</h2><p>为了计算代价函数对某个权重的偏导，如果我们用普通的思想，我们针对该权重赋予一个很小的误差（目的是为了求出偏导），那么对于超高维的权重就要做相应次数的前向传播，这显然是非常低效的</p>
 <p>反向传播确保我们<strong>同时计算</strong>偏导，只需要一次前向传播和一次反向传播，这样每层获得了误差矩阵，每层利用其同时对权重偏置进行更新</p>
 <h2 id="再看反向传播"><a href="#再看反向传播" class="headerlink" title="再看反向传播"></a>再看反向传播</h2><p>由于时间问题，暂时不作讨论，其实本节内容远重要于上述的理论部分，心存高远的读者可以仔细去阅读原著的p46-p49页，探索如何发现并总结出这样的理论</p>
-<h2 id="python实现"><a href="#python实现" class="headerlink" title="python实现"></a>python实现</h2><h2 id="改进方法"><a href="#改进方法" class="headerlink" title="改进方法"></a>改进方法</h2>
+<h2 id="简单神经网络的python实现"><a href="#简单神经网络的python实现" class="headerlink" title="简单神经网络的python实现"></a>简单神经网络的python实现</h2><p>使用Python3.7.3实现，程序非常简单，故没有添加注释，完全按照上面的理论方法来实现，分段解释可能影响整体感，这里只给出部分的内置和np函数接口：</p>
+<ul>
+<li>np.random.rand(a, b)：返回一个a行b列的矩阵，且元素值满足标准正态分布</li>
+<li>zip(a,b,…):将对象中相应元素打包成元组，然后返回元组的列表</li>
+<li><p>np.argmax():对一维输入返回最大值的索引</p>
+<pre><code>import random
+import numpy as np
+
+class Network(object):
+
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
+        self.weights = [np.random.randn(y, x)
+                        for x, y in zip(sizes[:-1], sizes[1:])]
+
+    def feedforward(self, a):
+        for b, w in zip(self.biases, self.weights):
+            a = sigmoid(np.dot(w, a) + b)
+        return a
+
+    def SGD(self, training_data, epochs, mini_batch_size, eta, test_data=None):
+        if test_data:
+            test_data = list(test_data)
+            n_test = len(test_data)
+        training_data = list(training_data)
+        n = len(training_data)
+        for i in range(epochs):
+            random.shuffle(training_data)
+            mini_batches = [training_data[k:k + mini_batch_size]
+                            for k in range(0, n, mini_batch_size)]
+            for mini_batch in mini_batches:
+                self.update_mini_batch(mini_batch, eta)
+            if test_data:
+                print(&quot;Epoch {0} : {1} / {2}&quot;.format(i, self.evaluate(test_data)
+                                                    , n_test))
+            else:
+                print(&quot;Epoch {0} complete&quot;.format(i))
+
+    def update_mini_batch(self, mini_batch, eta):
+        nabla_b = [np.zeros(b.shape) for b in self.biases]
+        nabla_w = [np.zeros(w.shape) for w in self.weights]
+        for x, y in mini_batch:
+            delta_nabla_b, delta_nabla_w = self.backprop(x, y)
+            nabla_b = [nb + dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
+            nabla_w = [nw + dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
+        self.weights = [w - (eta/len(mini_batch)) * nw
+                        for w, nw in zip(self.weights, nabla_w)]
+        self.biases = [b - (eta/len(mini_batch)) * nb
+                        for b, nb in zip(self.biases, nabla_b)]
+
+    def backprop(self, x, y):
+        nabla_b = [np.zeros(b.shape) for b in self.biases]
+        nabla_w = [np.zeros(w.shape) for w in self.weights]
+        activation = x
+        activations = [x]
+        zs = []
+        for b, w in zip(self.biases, self.weights):
+            z = np.dot(w, activation) + b
+            zs.append(z)
+            activation = sigmoid(z)
+            activations.append(activation)
+        delta = self.cost_derivative(activations[-1], y) * sigmoid_prime(zs[-1])
+        nabla_b[-1] = delta
+        nabla_w[-1] = np.dot(delta, activations[-2].transpose())
+        for l in range(2, self.num_layers):
+            z = zs[-l]
+            sp = sigmoid_prime(z)
+            delta = np.dot(self.weights[-l + 1].transpose(), delta) * sp
+            nabla_b[-l] = delta
+            nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
+        return (nabla_b, nabla_w)
+
+    def cost_derivative(self, output_activations, y):
+        return (output_activations - y)
+
+    def evaluate(self, test_data):
+        test_results = [(np.argmax(self.feedforward(x)), y)  
+                        for (x, y) in test_data]
+        return sum(int(x == y) for (x, y) in test_results)
+
+def sigmoid(z):
+    return 1.0/(1.0 + np.exp(-z))
+
+def sigmoid_prime(z):
+    return sigmoid(z) * (1 - sigmoid(z))
+</code></pre></li>
+</ul>
+<p>结果截图：<img src="p7.PNG" alt="结果"></p>
+<h2 id="改进方法"><a href="#改进方法" class="headerlink" title="改进方法"></a>改进方法</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/30/NNDL/" data-id="cjv4gsb410000g8updu24uafr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/30/NNDL/" data-id="cjv4xqgth000058upci16c9fa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -347,7 +437,7 @@ with codecs.open(&quot;ohyol_edge.csv&quot;, &quot;w&quot;, &quot;gbk&quot;) as 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/30/co-occurrence/" data-id="cjv4gsb450001g8upfx055iio" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/30/co-occurrence/" data-id="cjv4xqgu1000658uprnt1mjta" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
@@ -814,7 +904,7 @@ void LBClioLine(int left, int right, int bottom, int top, float x1, float y1, fl
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjv4gsb4b0005g8upe66ivuu3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjv4xqgto000158up5nt0byqw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CG/">CG</a></li></ul>
@@ -1180,7 +1270,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjv4gsb4f0006g8upa0u6xydb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjv4xqgu3000758upnwfc5ppn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-data-processing/">python data processing</a></li></ul>
@@ -1514,7 +1604,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/roughset/" data-id="cjv4gsb4k000ag8upndbszqwx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/29/roughset/" data-id="cjv4xqgu7000b58upw6giuzyb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
@@ -1622,7 +1712,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/03/bio_info/" data-id="cjv4gsb470002g8upsgxdwlap" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/03/bio_info/" data-id="cjv4xqgts000258up04ny0la2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FS/">FS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -1720,7 +1810,7 @@ if(NULL == p){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjv4gsb4h0007g8upe1c7asth" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjv4xqgtz000558up1h6k2bon" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/">cpp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/malloc/">malloc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/new/">new</a></li></ul>
@@ -2370,7 +2460,7 @@ enum fct{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/pl0_compiler/" data-id="cjv4gsb4l000bg8upic25w5vj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/pl0_compiler/" data-id="cjv4xqgu9000c58upetxy0e2d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/compiler/">compiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
