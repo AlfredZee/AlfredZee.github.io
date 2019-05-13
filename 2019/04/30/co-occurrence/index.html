@@ -282,7 +282,7 @@ relationships = {}
 lineNames = []
 </code></pre><p>jieba载入自定义词典</p>
 <pre><code>jieba.load_userdict(&quot;dict1.txt&quot;)
-</code></pre><p>下面是自定义词典的截图：<img src="p1.png" alt="用户词典"></p>
+</code></pre><p>下面是自定义词典的截图：<img src="p1.PNG" alt="用户词典"></p>
 <p>其中第一列为词语，第二列为词频，第三列为词性（nr代表人名，其他词性可参考<a href="https://www.cnblogs.com/adienhsuan/p/5674033.html" target="_blank" rel="noopener">词性</a>，<a href="https://www.imooc.com/article/31577?block_id=tuijian_wz" target="_blank" rel="noopener">自定义词典</a>）</p>
 <p>对文本的每一行进行分词并记录每行出现的人名，统计人名频次和创建相应内部关系字典：</p>
 <pre><code>with codecs.open(&quot;book1.txt&quot;,&quot;r&quot;, &quot;utf-8&quot;) as f:
@@ -320,8 +320,8 @@ with codecs.open(&quot;ohyol_edge.csv&quot;, &quot;w&quot;, &quot;gbk&quot;) as 
         for v, w in edges.items():
             if w &gt; 40:
                 f.write(name + &quot; &quot;  + v + &quot; &quot; + str(w) + &quot;\r\n&quot;)
-</code></pre><h3 id="4-4-结果"><a href="#4-4-结果" class="headerlink" title="$4.4 结果"></a>$4.4 结果</h3><p>节点集：<img src="node.png" alt="节点集"></p>
-<p>边集：<img src="edge.png" alt="边集"></p>
+</code></pre><h3 id="4-4-结果"><a href="#4-4-结果" class="headerlink" title="$4.4 结果"></a>$4.4 结果</h3><p>节点集：<img src="node.PNG" alt="节点集"></p>
+<p>边集：<img src="edge.PNG" alt="边集"></p>
 <h2 id="Gephi的使用"><a href="#Gephi的使用" class="headerlink" title="Gephi的使用"></a>Gephi的使用</h2><p>步骤：</p>
 <ul>
 <li>导入电子表（边表和节点表），分隔符选择空格，编码选择gbk</li>
@@ -329,7 +329,7 @@ with codecs.open(&quot;ohyol_edge.csv&quot;, &quot;w&quot;, &quot;gbk&quot;) as 
 <li>回到概览视图进行平均度和模块化计算（模块化计算时resolution设为0.5）</li>
 <li>设置相应的外观（主窗口左栏）</li>
 <li>设置布局为force atlas，斥度设为200000，吸引强度为1，点击运行，稍后暂停</li>
-<li>得到下图：<img src="p2.png" alt="概览"></li>
+<li>得到下图：<img src="p2.PNG" alt="概览"></li>
 <li>切换到预览视图，左栏显示标签，调节字体，比例大小，点击刷新</li>
 <li>得到下图：<img src="p3.png" alt="预览"></li>
 </ul>
