@@ -62,6 +62,289 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-process-management" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/13/process-management/" class="article-date">
+  <time datetime="2019-05-13T05:50:29.000Z" itemprop="datePublished">2019-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/13/process-management/">process_management</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux-Programming-—-Process-management"><a href="#Linux-Programming-—-Process-management" class="headerlink" title="Linux Programming — Process management"></a>Linux Programming — Process management</h1><h2 id="Forward"><a href="#Forward" class="headerlink" title="Forward"></a>Forward</h2><p>It is really excited that we start to get touch in Linux Programming. It’s truely different from my old coding life, not like implementing a complex library management system or focusing on a hard algorithm problem. It’s more about computer itself, i mean, we are talking about process how a computer really works. And actually this is much complex than a library management system and much mental than algorithm problems. And you can finally tell others you major in CS or CE, not SE after experiencing these.</p>
+<h2 id="The-very-first-task"><a href="#The-very-first-task" class="headerlink" title="The very first task"></a>The very first task</h2><p>Here’s the description of the task in Chinese:</p>
+<p><strong>每个进程都执行自己独立的程序，打印自己的pid，每个父进程打印其子进程的pid;</strong></p>
+<p>and the picture:</p>
+<p><img src="task.PNG" alt="task"></p>
+<p>I had to say it’s really confusing: does parent have to print son2’s pid? If it does, then this task would be quiet difficult as the very first task. Most of my classmates thought this way or, never gave a thought on it, and soon they finished their work. Only a bit idiots like me, made it really complex. But here is my principle:</p>
+<p><strong>Make things easy for your client while making it hard for yourself. Never waste a chance of challenging yourself.</strong></p>
+<p>So next i will do in my complex way.</p>
+<h2 id="PID-and-fork"><a href="#PID-and-fork" class="headerlink" title="PID and fork"></a>PID and fork</h2><p>what is PID:</p>
+<ul>
+<li>Process Identification</li>
+<li>unique and binded to process</li>
+</ul>
+<p>what is fork:</p>
+<ul>
+<li>subprocess <strong>copy</strong> parent process.</li>
+<li>in subprocess, fork return 0. </li>
+<li>in parent process, fork reuturn <strong>subprocess pid</strong></li>
+<li>if error, return -1;</li>
+</ul>
+<p><img src="fork.PNG" alt="fork"></p>
+<p>remember to include header file:</p>
+<pre><code>#include &quot;unistd.h&quot;    //os api access
+#include &quot;sys/types.h&quot;    //so you can use pid_t
+</code></pre><p>so with a little time, we can finish the code below:</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/types.h&gt;
+
+int main(){
+    pid_t subpid = fork();
+    if(subpid == 0){    //subprocess 
+        pid_t subsubpid = fork(); 
+        if(subsubpid == 0){    //subsubprocess
+                printf(&quot;subsubpro&apos;s pid is: %d.\n&quot;, getpid());
+        }
+        else{
+            printf(&quot;subpro&apos;s pid is: %d.\n&quot;, getpid());
+            printf(&quot;subpro&apos;s subpro&apos; pid is %d.\n&quot;, subsubpid);
+        }
+    }
+    else{    //parent process
+        printf(&quot;parents&apos; pid is %d.\n&quot;, getpid());
+         printf(&quot;parents&apos; subpro&apos; pid is %d.\n&quot;, subpid);
+    }
+    return 0;
+}
+</code></pre><p>and here is the result:<img src="layer_by_layer.PNG" alt="result1"></p>
+<h2 id="use-pipe"><a href="#use-pipe" class="headerlink" title="use pipe"></a>use pipe</h2><p>Codes above didn’t move the biggest stone on our way: how parent print son2’s PID? Use pipe like this way:</p>
+<pre><code>int fd[2];
+pipe(fd);
+...
+{    // in subprocess
+    ...
+    close(fd[0]);    // close parents&apos; read
+    write(fd[1], &amp;subsubpid, sizeof(pid_t));    //write pid        
+    ...
+}
+...
+{    // in parent process
+    ...
+    close(fd[1]);    // close child&apos;s write
+    read(fd[0], &amp;subsubpid, sizeof(pid_t));    //read from pipe
+    printf(&quot;parents&apos; subpro&apos; subpro&apos; pid is %d.\n&quot;, subsubpid);
+    ...
+}
+</code></pre><p>You can see we thought really carefully by using function <strong>close()</strong>, intending to maintain some kind of order.</p>
+<p>Here’s the code and the result:</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/types.h&gt;
+
+int main(){
+    int fd[2];
+    pipe(fd);
+    pid_t subpid = fork();
+    pid_t subsubpid;
+    if(subpid == 0){
+        pid_t subsubpid = fork(); 
+        if(subsubpid == 0){
+                printf(&quot;subsubpro&apos;s pid is: %d.\n&quot;, getpid());
+        }
+        else{
+            printf(&quot;subpro&apos;s pid is: %d.\n&quot;, getpid());
+            printf(&quot;subpro&apos;s subpro&apos; pid is %d.\n&quot;, subsubpid);
+            close(fd[0]);    // close parents&apos; read
+            write(fd[1], &amp;subsubpid, sizeof(pid_t));    //write pid
+        }
+    }
+    else{
+        printf(&quot;parents&apos; pid is %d.\n&quot;, getpid());
+         printf(&quot;parents&apos; subpro&apos; pid is %d.\n&quot;, subpid);
+        close(fd[1]);    // close child&apos;s write
+        read(fd[0], &amp;subsubpid, sizeof(pid_t));    //read from pipe
+        printf(&quot;parents&apos; subpro&apos; subpro&apos; pid is %d.\n&quot;, subsubpid);
+    }
+    return 0;
+}    
+</code></pre><p><img src="before_wait.PNG" alt="pipe"></p>
+<p>It’s surprise to see large negative number above, also disappointed to find that your efforts to main order in vain. Be patient and success is close.</p>
+<h2 id="parent-wait"><a href="#parent-wait" class="headerlink" title="parent wait"></a>parent wait</h2><p>To make process in order, we need something efficient: function <strong>wait()</strong></p>
+<p>To use wait, you may alse need a <strong>status</strong>:</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;wait.h&gt;
+
+int main(){
+    int status = -1;
+    int fd[2];
+    pipe(fd);
+    pid_t subpid = fork();
+    pid_t subsubpid;
+    if(subpid == 0){
+        pid_t subsubpid = fork(); 
+        if(subsubpid == 0){
+                printf(&quot;subsubpro&apos;s pid is: %d.\n&quot;, getpid());
+        }
+        else{
+            printf(&quot;subpro&apos;s pid is: %d.\n&quot;, getpid());
+            printf(&quot;subpro&apos;s subpro&apos; pid is %d.\n&quot;, subsubpid);
+            close(fd[0]);    // close parents&apos; read
+            write(fd[1], &amp;subsubpid, sizeof(pid_t));    //write pid
+            WEXITSTATUS(status);
+        }
+    }
+    else{
+        wait(&amp;status);
+        printf(&quot;parents&apos; pid is %d.\n&quot;, getpid());
+         printf(&quot;parents&apos; subpro&apos; pid is %d.\n&quot;, subpid);
+        close(fd[1]);    // close child&apos;s write
+        read(fd[0], &amp;subsubpid, sizeof(pid_t));    //read from pipe
+        printf(&quot;parents&apos; subpro&apos; subpro&apos; pid is %d.\n&quot;, subsubpid);
+    }
+    return 0;
+}    
+</code></pre><p>Finally we get what we want!:</p>
+<p><img src="afer_wait.PNG" alt="wait"></p>
+<h2 id="epilogue"><a href="#epilogue" class="headerlink" title="epilogue"></a>epilogue</h2><p>Hope this blog is helpful, and wish i can use vim as proficiently as sublime someday… </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/13/process-management/" data-id="cjvm1mxql0006b8updyp4vd9i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-normal-form" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/12/normal-form/" class="article-date">
+  <time datetime="2019-05-12T05:53:34.000Z" itemprop="datePublished">2019-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/12/normal-form/">normal form</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关系数据理论"><a href="#关系数据理论" class="headerlink" title="关系数据理论"></a>关系数据理论</h1><h2 id="关系模式"><a href="#关系模式" class="headerlink" title="关系模式"></a>关系模式</h2><p>是一个五元组R（U，D，DOM，F）</p>
+<ul>
+<li>R：关系名</li>
+<li>U：属性集合</li>
+<li>D：域集合</li>
+<li>DOM：属性向域的映像集合</li>
+<li>F：属性间数据依赖关系集合</li>
+</ul>
+<p>化简了的关系模式：R（U，F）</p>
+<h2 id="数据依赖"><a href="#数据依赖" class="headerlink" title="数据依赖"></a>数据依赖</h2><p>什么是数据依赖：</p>
+<ul>
+<li>完整性约束的表现形式</li>
+<li>一个关系内部属性与属性之间的约束关系</li>
+<li>现实世界属性间相互联系的抽象</li>
+<li>数据内在的性质</li>
+<li>语义的体现</li>
+<li>有函数依赖（FD）和多值（MVD）依赖</li>
+</ul>
+<p>有何影响：</p>
+<ul>
+<li>数据冗余太大</li>
+<li>增删改异常</li>
+</ul>
+<h2 id="规范化"><a href="#规范化" class="headerlink" title="规范化"></a>规范化</h2><p>通过<strong>分解关系模式</strong>，<strong>消除数据依赖</strong>的过程</p>
+<h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><p>属性全集U的两个子集X，Y，如果X属性组的取值相同，则Y属性组的取值必然相同，X→Y，X决定Y，X为决定属性组，又称决定因素（Determinant）</p>
+<ul>
+<li>非平凡与平凡：Y不包含于X<ul>
+<li>包含于X的Y自然的被X决定</li>
+</ul>
+</li>
+<li>完全与部分：X中的属性缺一不可的决定Y</li>
+<li>传递与直接：非平凡，且Y不决定X<ul>
+<li>注意传递的含义是指通过某种<strong>中间媒介属性组</strong>，如果Y决定了X，那只是换用了X的另一种表达，是直接，不是传递的概念</li>
+</ul>
+</li>
+</ul>
+<h3 id="范式（NF，normal-form）"><a href="#范式（NF，normal-form）" class="headerlink" title="范式（NF，normal form）"></a>范式（NF，normal form）</h3><ul>
+<li>1NF：各属性不可再分</li>
+<li>2NF：1NF且非主属性完全函数依赖于码<ul>
+<li>如果码只有<strong>一个属性</strong>，必然是2NF</li>
+</ul>
+</li>
+<li>3NF：不存在传递依赖，其中X，Y，Z分别表示码，属性组，不包含于Y的非主属性<ul>
+<li>这里的Y显然不可以是或者包含<strong>另一个码</strong>，不然其实还是停留再直接依赖</li>
+</ul>
+</li>
+<li>BCNF：1NF且非平凡函数依赖的决定因素包含码<ul>
+<li>每一个<strong>决定因素都包含码</strong></li>
+<li>当3NF只有一个候选码，则他也是BCNF</li>
+</ul>
+</li>
+<li>多值依赖：<strong>严格的定义太抽象，我们换用形象一点的方法：想象一个三位空间x-y-z，多值依赖确定了两个面，这两个面分别垂直于xoy,xoz，对于垂直于xoy的面，我们给定一个(x,z)显然y的值仅受限于x，且特别注意，此时的x不决定一个y，可能有多个，对于另一个面相同，这就是多值依赖。</strong><ul>
+<li>非平凡：如果本来就是一个二维平面，那么多值依赖被压缩成函数线段</li>
+</ul>
+</li>
+<li>4NF：任何非平凡多值依赖的决定因素都含有码</li>
+</ul>
+<h2 id="判别方法"><a href="#判别方法" class="headerlink" title="判别方法"></a>判别方法</h2><ul>
+<li>1.非主属性：<ul>
+<li>2NF：是否完全依赖于码</li>
+<li>3NF：是否存在一个不包含码的属性组，某非主属性依赖于它</li>
+</ul>
+</li>
+<li>2.主属性：<ul>
+<li>BCNF：每个主属性，是否依赖于某个不包含它的码，是否存在一个不包含码的属性组，该主属性依赖于它</li>
+</ul>
+</li>
+<li>3.多值依赖：<ul>
+<li>4NF：非平凡的多值依赖是否为函数依赖（看是否1对多，是则不函数依赖）</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/12/normal-form/" data-id="cjvm1mxqj0005b8upgld9znr2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-computer-architecture" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/11/computer-architecture/" class="article-date">
@@ -84,11 +367,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="Computer-Architecture"><a href="#Computer-Architecture" class="headerlink" title="Computer Architecture"></a>Computer Architecture</h1><h2 id="What-is-Computer-Architecture"><a href="#What-is-Computer-Architecture" class="headerlink" title="What is Computer Architecture"></a>What is Computer Architecture</h2><h3 id="Classical-definition"><a href="#Classical-definition" class="headerlink" title="Classical definition"></a>Classical definition</h3><p>the <strong>attributes</strong> of a computing system as seen by the <strong>assembly language</strong> programmer,i.e.,the <strong>conceptual structure</strong> and <strong>functional behavior</strong>, as distinct from the logic design,and the physical implementation.—Amadahl,Blaaw,and Brooks,1964</p>
+<p><strong>attributes</strong> here are like:</p>
+<ul>
+<li>data representation</li>
+<li>addressing rules</li>
+<li>registers definition</li>
+<li>instruction set</li>
+<li>interrupt system</li>
+<li>working state definition and switching</li>
+<li>memory system</li>
+<li>message protection</li>
+<li>I/O structure</li>
+</ul>
+<h3 id="Essence"><a href="#Essence" class="headerlink" title="Essence"></a>Essence</h3><p>a layer between SW and HW.</p>
+<ul>
+<li>logical implementation:computer organization</li>
+<li>physical implementation:computer implementation</li>
+</ul>
+<p>an Architecture can have several organization,or physical implementation.</p>
+<h3 id="Broadest-definition"><a href="#Broadest-definition" class="headerlink" title="Broadest definition"></a>Broadest definition</h3><p>the design of the <strong>abstraction layers</strong> that allow us to implement information processing applications efficiently using available manufacturing technologies.</p>
+<p><img src="p1.PNG" alt="layers"></p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>Computer Architecture is an integrated Approach,what really matters is the functioning of the complete system,and Computer Architecture is not just about transisstors, individual instructions, or  particluar implementations.</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/11/computer-architecture/" data-id="cjvjnk7gu0009wgupb6mt6b0h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/11/computer-architecture/" data-id="cjvm1mxqn0007b8upxosxsafa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -307,7 +612,7 @@ def sigmoid_prime(z):
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/30/NNDL/" data-id="cjvjnk7ge0001wgup3tpy6g40" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/30/NNDL/" data-id="cjvm1mxpz0000b8updfwcsnfs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -480,7 +785,7 @@ with codecs.open(&quot;ohyol_edge.csv&quot;, &quot;w&quot;, &quot;gbk&quot;) as 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/30/co-occurrence/" data-id="cjvjnk7go0005wgup9v2zvmmm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/30/co-occurrence/" data-id="cjvm1mxqd0002b8up2cknhwqq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
@@ -954,7 +1259,7 @@ void LBClioLine(int left, int right, int bottom, int top, float x1, float y1, fl
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjvjnk7gr0006wgup15lq6o70" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjvm1mxr1000bb8upia90ek43" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CG/">CG</a></li></ul>
@@ -1320,7 +1625,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjvjnk7gy000awgupyoumq3q9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjvm1mxr6000fb8upl2p2m3q8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-data-processing/">python data processing</a></li></ul>
@@ -1661,7 +1966,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/roughset/" data-id="cjvjnk7h3000gwgupaek8fryg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/29/roughset/" data-id="cjvm1mxr9000jb8upjngry216" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
@@ -1769,7 +2074,7 @@ plt.show()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/03/bio_info/" data-id="cjvjnk7g60000wgup7c2e8svi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/03/bio_info/" data-id="cjvm1mxq80001b8upl35otfe1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FS/">FS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -1867,7 +2172,7 @@ if(NULL == p){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjvjnk7gl0004wgupjx13dw6m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjvm1mxqv000ab8upnkmd33pm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/">cpp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/malloc/">malloc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/new/">new</a></li></ul>
@@ -1879,657 +2184,12 @@ if(NULL == p){
 
 
   
-    <article id="post-pl0_compiler" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/02/pl0_compiler/" class="article-date">
-  <time datetime="2019-03-01T16:00:00.000Z" itemprop="datePublished">2019-03-02</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/project-record/">project record</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/02/pl0_compiler/">a simple PL0 compiler</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="编译原理课程设计–用C从零开始实现一个PL０编译器"><a href="#编译原理课程设计–用C从零开始实现一个PL０编译器" class="headerlink" title="编译原理课程设计–用C从零开始实现一个PL０编译器"></a>编译原理课程设计–用C从零开始实现一个PL０编译器</h1><hr>
-<p><strong>copyright: 徐渊 大连理工大学电信学部</strong></p>
-<p><strong>gitbub: Tiipitz.github.io</strong></p>
-<p><strong>reference: 编译原理（第三版） 王生原等 清华大学出版社</strong></p>
-<p><strong>time: 2019-3-2</strong></p>
-<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见该书第370页，以下内容均为本人在仔细研读其代码后(约花了近10天），按其总体设计思想一步一步从零开始开始搭建实现（数周），阅读本篇博客可以节省您初次搭建编译器的时间，掌握编译器的总体设计思路，但本文不会对原语言文法等做出仔细的阐述，需要您对PL０语言语法有一定的了解，作者能力有限，如有错误请联系告知更正，谢谢。</p>
-<h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><p>　　首先我们从词法分析入手，词法分析的主要功能是扫描一遍源程序，识别单词。单词主要有两种，一种是用户自定义标识符，另一种是该语言保留的符号，包括＇＋＇，＇－＇等的单字符和保留字（关键字）。</p>
-<p>　　对于后者，我们要不断的将扫描到的符号和保留符号相比对，需要考虑使用合适的数据结构来存储，我们可以事先将保留符号存储起来，通过比照查表的方式来判断扫描到的符号的类别。</p>
-<p>　　我们利用枚举的方式规定符号的类别：</p>
-<pre><code>enum symbol {
-nul,      ident,    number,    plussym,   minussym,
-times,    slash,       oddsym,       eql,       neq,
-lss,      leq,      gtr,        geq,       lparen,
-rparen,   comma,   semicolon,  period,    becomes,
-beginsym, endsym,   ifsym,     thensym,   whilesym,
-writesym, readsym,  dosym,     callsym,   constsym,
-varsym,   procsym,  
-};
-
-说明：大多数名称可联想英文简写得知意义
-</code></pre><p>　　对于单字符，我们直接将单字符的ASCII值映射到类别：</p>
-<pre><code>single[&apos;+&apos;] = plussym;
-single[&apos;-&apos;] = minussym;
-single[&apos;*&apos;] = times;
-single[&apos;(&apos;] = lparen;
-single[&apos;)&apos;] = rparen;
-single[&apos;=&apos;] = eql;
-single[&apos;,&apos;] = comma;
-single[&apos;.&apos;] = period;
-single[&apos;#&apos;] = neq;
-single[&apos;;&apos;] = semicolon;
-</code></pre><p>　　对于保留字，我们逐个将其按升序的方式存储到二维数组中，二分查找得到其序号值，然后根据序号值映射到类别。</p>
-<pre><code>strcpy(key[0],&quot;begin&quot;);
-strcpy(key[1],&quot;call&quot;);
-strcpy(key[2],&quot;const&quot;);
-strcpy(key[3],&quot;do&quot;);
-strcpy(key[4],&quot;end&quot;);
-strcpy(key[5],&quot;if&quot;);
-strcpy(key[6],&quot;odd&quot;);
-strcpy(key[7],&quot;procedure&quot;);
-strcpy(key[8],&quot;read&quot;);
-strcpy(key[9],&quot;then&quot;);
-strcpy(key[10],&quot;var&quot;);
-strcpy(key[11],&quot;while&quot;);
-strcpy(key[12],&quot;write&quot;);
-根据保留字表设置比照表，升序排列便于二分查找比照
-
-keyword[0] = beginsym;
-keyword[1] = callsym;
-keyword[2] = constsym;
-keyword[3] = dosym;
-keyword[4] = endsym;
-keyword[5] = ifsym;
-keyword[6] = oddsym;
-keyword[7] = procsym;
-keyword[8] = readsym;
-keyword[9] = thensym;
-keyword[10] = varsym;
-keyword[11] = whilesym;
-keyword[12] = writesym;
-</code></pre><p>　　于此我们解决了保留符号的存储识别问题。下一步我们开始着手设计扫描器（ｓｃａｎｎｅｒ）。
-　　
-　</p>
-<p>　　扫描器我们可以分为两大部分，其一是读取一行的输入，并且缓存，为另一部分服务，而另一部分指的就是将该行的缓存分解成一个一个的符号（单词）。</p>
-<p>　　我们可以这样设计，以扫描符号为主，调用进行行缓存的函数，同时，我们给行缓存函数分配一些额外的任务：如果该行未处理完，则该函数执行从行缓存中读取下一个字符的功能。于是我们先给出以下程序：</p>
-<pre><code>/*    行缓存并读取一个字符    */
-int getch(){
-    if(firstp == lastp){
-        if(feof(fin)){
-            printf(&quot;到达文件末尾\n&quot;);
-            return -1;
-        }
-        firstp = lastp = 0;
-        fprintf(fout, &quot;%d &quot;, cx);
-        //每到新的一行初始化ch为空
-        ch = &apos; &apos;;
-        //文件输到最后必须换行
-        while(ch != 10){
-            //如果是读到文件末尾
-            if(EOF == fscanf(fin, &quot;%c&quot;, &amp;ch)){
-                line[lastp] = 0;
-                break;
-            }
-            //写到文件中
-            printf(&quot;%c&quot;, ch);
-            fprintf(fout, &quot;%c&quot;, ch);
-            //写到缓存中
-            line[lastp] = ch;
-            lastp++;
-        }
-        //换行写到文件中
-        fprintf(fout, &quot;\n&quot;);
-    }
-    //开始读取每行的缓存，将字符一个一个存入ch
-    ch = line[firstp];
-    firstp++;
-    return 0;
-}
-</code></pre><p>　　而对于主调函数，通过调用上述功能，可以获得一串连续的字符输入，即符号的缓存，再配合分支语句去判别先前定义的符号的类型，即可以完成词法分析的功能，最后我们给出如下程序：</p>
-<pre><code>/*    获取一串符号    */
-int getsymbol(){
-
-    int cursor = 0;
-    //读取第一个有效字符
-    while(ch == &apos; &apos; || ch == 10 || ch == 9){
-        getchOrReturn;
-    }
-
-    //判断是否是数字
-    if(ch &gt;= &apos;0&apos; &amp;&amp; ch &lt;= &apos;9&apos;){
-        sym = number;
-        //计算真实数值
-        int value = 0;
-        while(ch &gt;= &apos;0&apos; &amp;&amp; ch &lt;= &apos;9&apos;){
-            value = 10 * value + ch - &apos;0&apos;;
-            cursor++;
-            getchOrReturn;
-        }
-        num = value;
-        //如果位数越界
-        if(cursor &gt;= intmax){
-            printf(&quot;数字位数过多\n&quot;);
-        }
-    }
-
-    //判断变量名或者保留字
-    else if(ch &gt;= &apos;a&apos; &amp;&amp; ch &lt;= &apos;z&apos;){
-        //存入符号串到name字符缓存数组
-        while((ch &gt;= &apos;a&apos; &amp;&amp; ch &lt;= &apos;z&apos;) || (ch &gt;= &apos;0&apos; &amp;&amp; ch &lt;= &apos;9&apos;)){
-            if(cursor &lt; namemax){
-                name[cursor] = ch;
-                cursor++;
-            }
-            getchOrReturn;
-        }
-        name[cursor] = 0;
-        //二分搜索判断是否是保留字
-        int i = 0, j = keywordnum - 1;
-        int k;
-        do{
-            k = (i + j) / 2;
-            if(strcmp(name, key[k]) &lt;= 0)
-                j = k - 1;
-            if(strcmp(name, key[k]) &gt;= 0)
-                i = k + 1;
-        }while(i &lt;= j);
-        //如果是保留字
-        if(i - 1 &gt; j){
-            sym = keyword[k];
-        }
-        //如果是标识符
-        else {
-            sym = ident;
-        }
-    }
-
-    //判断是否是赋值符号
-    else if(&apos;:&apos; == ch){
-        getchOrReturn;
-        if(&apos;=&apos; == ch){
-            sym = becomes;
-            getchOrReturn;
-        }
-        else 
-            sym = nul;
-    }
-
-    //判断是否是小于或小于等于
-    else if(&apos;&lt;&apos; == ch){
-        getchOrReturn;
-        if(&apos;=&apos; == ch){
-            sym = leq;
-            getchOrReturn;
-        }
-        else 
-            sym = lss;
-
-    }
-
-    //判断是否是大于或大于等于
-    else if(&apos;&gt;&apos; == ch){
-        getchOrReturn;
-        if(&apos;=&apos; == ch){
-            sym = geq;
-            getchOrReturn;
-        }
-        else 
-            sym = gtr;
-    }
-
-    //default为单字符号
-    else {
-        sym = single[ch];
-        if(sym != period)
-            getchOrReturn;
-    }
-    return 0;
-}
-</code></pre><h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><p>　　一遍编扫的编译器通过语法分析调用词法分析来实现，递归下降的语法分析考虑的是你当前读取了一个符号，根据这个符号类别，你下一个应该读取的符号应该是什么类别。</p>
-<p>　　我们以常量处理语法为例，读取了常量声明符号const,我们接下来需要一个ident，然后是=，再是数值，最后我们写入名字表，名字表是用来存储用户自定义的标识符的值，地址，类型等内容，于是我们给出下面的函数：</p>
-<pre><code>/*    常量声明处理    */
-int constdeclaration(int* ptx, int lev, int* pdx){
-    //语法应该为 const ident = num;
-    //const已经读取，开始分析后部语法
-    if(sym == ident){
-        getsymbolOrReturn;
-        if(sym == eql){
-            getsymbolOrReturn;
-            if(sym == number){
-                enter(constant, ptx, lev, pdx);    //写入表中
-                getsymbolOrReturn;
-            }
-            else{
-                printf(&quot;const缺少数字\n&quot;);
-            }
-        }
-        else {
-            printf(&quot;const缺少等号\n&quot;);
-        }
-    }
-    else 
-        printf(&quot;const缺少标识符\n&quot;);
-    return 0;
-}
-</code></pre><p>　　相应的我们可以给出数据类型和名字表的类型结构：</p>
-<pre><code>/*    数据类型      */
-enum object{
-    constant,
-    variable,
-    procedure,
-};
-
-/*    名字表结构    */
-struct tablestruct{
-    char name[namemax];    //    名称
-    enum object kind;    //类型
-    int val;    //数值
-    int level;    //所处层
-    int adr;    //地址
-    int size;    //数据空间
-};
-</code></pre><p>　　同理，按照我们定义好的语法，马上就可以给出各类处理，以下代码均有详细注释，所以不展开讨论，需要注意的是，对于声明的处理，均使用分支语句来处理错误的语法，而对于其余的语法错误，我们使用一个补救函数来处理，其功能大概是首先我们有一个合法的后跟集合，每次读取一个符号，我们都会跟新后跟集合的合法元素，如果下一个扫描的符号不在后跟集合中，我们将采取补救措施：不断的向下读取符号直到该符号是合法的。下面给出各处理函数。</p>
-<pre><code>/*    变量声明处理    */
-int vardeclaration(int* ptx, int lev, int* pdx){
-    //语法应该为 var ident;
-    //var已经读取，开始分析后部语法
-    if(sym == ident){
-        enter(variable, ptx, lev, pdx);
-        getsymbolOrReturn;
-    }
-    else
-        printf(&quot;var缺少标识符\n&quot;);
-    return 0;
-}
-
-
-/*    因子处理    */
-int factor(bool* fsys,int* ptx,int lev){
-    //因子要么是标识符，要么是表达式，要么是数
-    //F→(E)|ident|num
-    int i;
-    bool nxtsys[symnum];
-    testOrReturn(facbegsys,fsys,24);    //测试后跟符号是否合法
-    while(inset(sym,facbegsys)){
-        //是标识符
-        if(sym == ident){
-            //返回序号
-            i = position(name,* ptx);
-            if(i == 0){
-                printf(&quot;标识符不存在&quot;);
-            }
-            //生成机器代码
-            else{
-                switch(table[i].kind){
-                    //常量标识符
-                    case constant:
-                        getcodeOrReturn(lit, 0, table[i].val);
-                        break;
-                    //变量标识符
-                    case variable:
-                        getcodeOrReturn(lod, lev - table[i].level, table[i].adr);
-                        break;
-                    //过程标识符
-                    case procedure:
-                        printf(&quot;标识符为过程&quot;);
-                        break;
-                }
-            }
-            getsymbolOrReturn;
-        }
-        else{
-            //数
-            if(sym == number){
-                if(num &gt; amax){
-                    printf(&quot;数字过大&quot;);
-                    num = 0;
-                }
-                //生成机器代码
-                getcodeOrReturn(lit,0,num);
-                getsymbolOrReturn;
-            }
-            //表达式
-            //F→(E)
-            else{
-                //识别（
-                if(sym == lparen){
-                    getsymbolOrReturn;
-                    //更新后跟符号集
-                    memcpy(nxtsys, fsys, sizeof(bool) * symnum);
-                    nxtsys[rparen] = true;
-                    //调用表达式处理
-                    expressionOrReturn(nxtsys, ptx, lev);
-                    //调用结束识别右括号
-                    if(sym == rparen){
-                        getsymbolOrReturn;
-                    }
-                    else{
-                        printf(&quot;E后缺少)&quot;);
-                    }
-                }
-                testOrReturn(fsys, facbegsys, 23);
-            }
-        }
-    }
-    return 0;
-}
-
-
-/*    项处理    */
-int term(bool* fsys,int* ptx,int lev){
-    //T→T*F|T/F|F
-    enum symbol top;
-    bool nxtsys[symnum];
-    memcpy(nxtsys,fsys,sizeof(bool) * symnum);
-    nxtsys[times] = true;
-    nxtsys[slash] = true;
-    //处理首个因子F
-    factorOrReturn(nxtsys,ptx,lev);
-    //处理完因子F后
-    while(sym == times||sym == slash){
-        top = sym;
-        getsymbolOrReturn;
-        //处理因子F
-        factorOrReturn(nxtsys,ptx,lev);
-        //乘法
-        if(top == times){
-            getcodeOrReturn(opr,0,4);
-        }
-        //除法
-        else{
-            getcodeOrReturn(opr,0,5);
-        }
-    }
-    return 0;
-}
-
-/*    表达式处理    */
-int expression(bool* fsys,int* ptx,int lev){
-    //first集中可能有正负号
-    //E→E+T|T
-    enum symbol eop;    
-    bool nxtsys[symnum];
-    //如果是正负号
-    if(sym == plussym || sym == minussym){
-        eop = sym;    //保存符号
-        getsymbolOrReturn;
-        //跟新后跟集
-        memcpy(nxtsys, fsys, sizeof(bool) * symnum);
-        nxtsys[plussym] = true;
-        nxtsys[minussym] = true;
-        //处理项T
-        termOrReturn(nxtsys,ptx,lev);
-        //如果为负
-        if(eop = minussym){
-            getcodeOrReturn(opr,0,1);
-        }
-    }
-    //直接更新后跟集
-    else{
-        memcpy(nxtsys, fsys, sizeof(bool) * symnum);
-        nxtsys[plussym] = true;
-        nxtsys[minussym] = true;
-        termOrReturn(nxtsys,ptx,lev);
-    }
-    //处理完项T之后
-    while(sym == plussym || sym == minussym){
-        eop = sym;
-        getsymbolOrReturn;
-        //在进行项的分析
-        memcpy(nxtsys, fsys, sizeof(bool) * symnum);
-        nxtsys[plussym] = true;
-        nxtsys[minussym] = true;
-        termOrReturn(nxtsys, ptx, lev);
-        //加法
-        if(eop == plussym){
-            getcodeOrReturn(opr,0,2);
-        }
-        //减法
-        else{
-            getcodeOrReturn(opr,0,3);
-        }
-    }
-    return 0;
-}
-
-
-/*    条件处理    */
-int condition(bool* fsys,int* ptx,int lev){
-    enum symbol relop;
-    bool nxtsys[symnum];
-    //%2
-    if(sym == oddsym){
-        getsymbolOrReturn;
-        expressionOrReturn(fsys,ptx,lev);
-        getcodeOrReturn(opr,0,6);
-    }
-    //表达式
-    else{
-        memcpy(nxtsys, fsys, sizeof(bool) * symnum);
-        nxtsys[eql] = true;
-        nxtsys[neq] = true;
-        nxtsys[lss] = true;
-        nxtsys[leq] = true;
-        nxtsys[gtr] = true;
-        nxtsys[geq] = true;
-        //表达式处理
-        expressionOrReturn(fsys,ptx,lev);
-        if(sym != eql &amp;&amp; sym != neq &amp;&amp; sym != lss &amp;&amp; sym != leq &amp;&amp; sym != gtr &amp;&amp; sym != geq){
-            printf(&quot;需要比较符号&quot;);
-        }
-        else{
-            relop = sym;
-            //去下一个符号并进行表达式处理
-            getsymbolOrReturn;
-            expressionOrReturn(fsys, ptx, lev);
-            //根据relop生成机器代码
-            switch(relop){
-                case eql:
-                    getcodeOrReturn(opr,0,8);
-                    break;
-                case neq:
-                    getcodeOrReturn(opr,0,9);
-                    break;
-                case lss:
-                    getcodeOrReturn(opr,0,10);
-                    break;
-                case geq:
-                    getcodeOrReturn(opr,0,11);
-                    break;
-                case gtr:
-                    getcodeOrReturn(opr,0,12);
-                    break;
-                case leq:
-                    getcodeOrReturn(opr,0,13);
-                    break;
-            }
-        }
-    }
-    return 0;
-}
-</code></pre><p>　　需要指出的是，上述函数中有大量的getcode函数，该函数执行的是根据语法生成机器代码，也就是说本PL0是语法和语义相结合的编译器，在分析语法的时候就相应的输出了机器代码，供下一模块解释执行使用，函数较为简单，通过看入口参数（操作，层次，操作序号）即可猜想其内部实现故不给出具体实现代码仅给出其类型结构：</p>
-<pre><code>/*    虚拟机代码结构    */
-struct instruction{
-    enum fct f;    //指令
-    int l;    //层次差
-    int a;    
-};
-</code></pre><h2 id="解释执行"><a href="#解释执行" class="headerlink" title="解释执行"></a>解释执行</h2><p>　　由上一段文字和getcode函数可知，与词法分析相同，解释执行的操作也需要用枚举存储：</p>
-<pre><code>/*     虚拟机代码      */
-enum fct{
-    lit,    opr,    lod,
-    sto,    cal,    inte,
-    jmp,   jpc,
-};
-</code></pre><p>　　本编译器实现的是模拟栈处理机的执行，通过语法语义分析生成的代码，一行一行的执行栈的相关操作，对熟悉数据结构的您一定相当简单故不作过多解释，下面直接给出代码：</p>
-<pre><code>void interpret(){
-    int p,b,t;    //指针，基址，栈顶
-    struct instruction i;    //存放指令
-    int s[stacksize];    //数据栈
-    printf(&quot;start pl0\n&quot;);
-    //初始化
-    t = 0;
-    b = 0;
-    p = 0;
-    s[0] = s[1] = s[2] = 0;
-    //开始
-    do{
-        //取一条指令
-        i = code[p];
-        p++;
-        switch(i.f){
-            //取值操作
-            case lit:
-                s[t] = i.a;    
-                t++;
-                break;
-            //运算操作
-            case opr:
-                switch (i.a){
-                    case 0:
-                        t = b;
-                        p = s[t + 2];
-                        b = s[t + 1];
-                        break;
-                    case 1:
-                        s[t - 1] = -s[t - 1];
-                        break;
-                    case 2:
-                        t--;
-                        s[t - 1] = s[t - 1] + s[t];
-                        break;
-                    case 3:
-                        t--;
-                        s[t - 1] = s[t - 1] - s[t];
-                        break;
-                    case 4:
-                        t--;
-                        s[t - 1] = s[t - 1] * s[t];
-                        break;
-                    case 5:
-                        t--;
-                        s[t - 1] = s[t - 1] / s[t];
-                        break;
-                    case 6:
-                        s[t - 1] = s[t - 1] % 2;
-                        break;
-                    case 8:
-                        t--;
-                        s[t - 1] = (s[t - 1] == s[t]);
-                        break;
-                    case 9:
-                        t--;
-                        s[t - 1] = (s[t - 1] != s[ t ]);
-                        break;
-                    case 10:
-                        t--;
-                        s[t - 1] = (s[ t- 1] &lt; s[ t ]);
-                        break;
-                    case 11:
-                        t--;
-                        s[t - 1] = (s[t - 1] &gt;= s[t]);
-                        break;
-                    case 12:
-                        t--;
-                        s[t - 1] = (s[t - 1] &gt; s[t]);
-                        break;
-                    case 13:
-                        t--;
-                        s[t - 1] = (s[t - 1] &lt;= s[t]);
-                        break;
-                    case 14:
-                        printf(&quot;%d&quot;, s[t - 1]);
-                        fprintf(fr, &quot;%d&quot;, s[t - 1]);
-                        t--;
-                        break;
-                    case 15:
-                        printf(&quot;\n&quot;);
-                        fprintf(fr, &quot;\n&quot;);
-                        break;
-                    case 16:
-                        printf(&quot;?&quot;);
-                        fprintf(fr, &quot;?&quot;);
-                        scanf(&quot;%d&quot;,&amp;(s[t]));
-                        fprintf(fr, &quot;%d\n&quot;, s[t]);
-                        t++;
-                        break;
-                }
-                break;
-            //装载
-            case lod:
-                s[t] = s[base(i.l, s, b) + i.a];
-                t++;
-                break;
-            //存储
-            case sto:
-                t--;
-                s[base(i.l, s, b) + i.a] = s[t];
-                break;
-            //调用过程
-            case cal:
-                s[t] = base(i.l,s,b);
-                s[t + 1] = b;
-                s[t + 2] = p;
-                b = t;
-                p = i.a;
-                break;
-            //内存分配
-            case inte:
-                t += i.a;
-                break;
-            //跳转
-            case jmp:
-                p = i.a;
-                break;
-            //条件跳转
-            case jpc:
-                t --;
-                if (s[t] == 0)
-                {
-                    p = i.a;
-                }
-                break;
-        }
-    }while (p != 0);
-}
-</code></pre><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>　　本文介绍了一个一遍扫描，栈式运行的PL0编译器的总体框架和设计过程，本课程设计最后得分为90分，经实验可正确运行递归函数，显示输入错误，最后不再给出主调函数和各细节函数，如有需要可联系本人获取源码。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/pl0_compiler/" data-id="cjvjnk7h1000ewgupo4pbxdlf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/compiler/">compiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -2581,6 +2241,14 @@ enum fct{
       <ul>
         
           <li>
+            <a href="/2019/05/13/process-management/">process_management</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/12/normal-form/">normal form</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/11/computer-architecture/">computer_architecture</a>
           </li>
         
@@ -2590,14 +2258,6 @@ enum fct{
         
           <li>
             <a href="/2019/04/30/co-occurrence/">co-occurrence</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/16/computer-graphics/">computer_graphics</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/13/meteorological_data_analysis/">meteorological data analysis</a>
           </li>
         
       </ul>
