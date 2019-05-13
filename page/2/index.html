@@ -1,831 +1,360 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
 
-  
+<head>
   <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-  
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
   
   
-    <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
 </head>
-</html>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+
+<!--
+<body class="home-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close">
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Linux/" class="animsition-link">Linux<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/algorithm/" class="animsition-link">algorithm<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/cppdetails/" class="animsition-link">cppdetails<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/project-record/" class="animsition-link">project record<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/scientific-research/" class="animsition-link">scientific research<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/theory/" class="animsition-link">theory<small>(2)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+</div>
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+                        
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-pl0_compiler" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/02/pl0_compiler/" class="article-date">
-  <time datetime="2019-03-01T16:00:00.000Z" itemprop="datePublished">2019-03-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/project-record/">project record</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/02/pl0_compiler/">a simple PL0 compiler</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="编译原理课程设计–用C从零开始实现一个PL０编译器"><a href="#编译原理课程设计–用C从零开始实现一个PL０编译器" class="headerlink" title="编译原理课程设计–用C从零开始实现一个PL０编译器"></a>编译原理课程设计–用C从零开始实现一个PL０编译器</h1><hr>
-<p><strong>copyright: 徐渊 大连理工大学电信学部</strong></p>
-<p><strong>gitbub: Tiipitz.github.io</strong></p>
-<p><strong>reference: 编译原理（第三版） 王生原等 清华大学出版社</strong></p>
-<p><strong>time: 2019-3-2</strong></p>
-<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见该书第370页，以下内容均为本人在仔细研读其代码后(约花了近10天），按其总体设计思想一步一步从零开始开始搭建实现（数周），阅读本篇博客可以节省您初次搭建编译器的时间，掌握编译器的总体设计思路，但本文不会对原语言文法等做出仔细的阐述，需要您对PL０语言语法有一定的了解，作者能力有限，如有错误请联系告知更正，谢谢。</p>
-<h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><p>　　首先我们从词法分析入手，词法分析的主要功能是扫描一遍源程序，识别单词。单词主要有两种，一种是用户自定义标识符，另一种是该语言保留的符号，包括＇＋＇，＇－＇等的单字符和保留字（关键字）。</p>
-<p>　　对于后者，我们要不断的将扫描到的符号和保留符号相比对，需要考虑使用合适的数据结构来存储，我们可以事先将保留符号存储起来，通过比照查表的方式来判断扫描到的符号的类别。</p>
-<p>　　我们利用枚举的方式规定符号的类别：</p>
-<pre><code>enum symbol {
-nul,      ident,    number,    plussym,   minussym,
-times,    slash,       oddsym,       eql,       neq,
-lss,      leq,      gtr,        geq,       lparen,
-rparen,   comma,   semicolon,  period,    becomes,
-beginsym, endsym,   ifsym,     thensym,   whilesym,
-writesym, readsym,  dosym,     callsym,   constsym,
-varsym,   procsym,  
-};
-
-说明：大多数名称可联想英文简写得知意义
-</code></pre><p>　　对于单字符，我们直接将单字符的ASCII值映射到类别：</p>
-<pre><code>single[&apos;+&apos;] = plussym;
-single[&apos;-&apos;] = minussym;
-single[&apos;*&apos;] = times;
-single[&apos;(&apos;] = lparen;
-single[&apos;)&apos;] = rparen;
-single[&apos;=&apos;] = eql;
-single[&apos;,&apos;] = comma;
-single[&apos;.&apos;] = period;
-single[&apos;#&apos;] = neq;
-single[&apos;;&apos;] = semicolon;
-</code></pre><p>　　对于保留字，我们逐个将其按升序的方式存储到二维数组中，二分查找得到其序号值，然后根据序号值映射到类别。</p>
-<pre><code>strcpy(key[0],&quot;begin&quot;);
-strcpy(key[1],&quot;call&quot;);
-strcpy(key[2],&quot;const&quot;);
-strcpy(key[3],&quot;do&quot;);
-strcpy(key[4],&quot;end&quot;);
-strcpy(key[5],&quot;if&quot;);
-strcpy(key[6],&quot;odd&quot;);
-strcpy(key[7],&quot;procedure&quot;);
-strcpy(key[8],&quot;read&quot;);
-strcpy(key[9],&quot;then&quot;);
-strcpy(key[10],&quot;var&quot;);
-strcpy(key[11],&quot;while&quot;);
-strcpy(key[12],&quot;write&quot;);
-根据保留字表设置比照表，升序排列便于二分查找比照
-
-keyword[0] = beginsym;
-keyword[1] = callsym;
-keyword[2] = constsym;
-keyword[3] = dosym;
-keyword[4] = endsym;
-keyword[5] = ifsym;
-keyword[6] = oddsym;
-keyword[7] = procsym;
-keyword[8] = readsym;
-keyword[9] = thensym;
-keyword[10] = varsym;
-keyword[11] = whilesym;
-keyword[12] = writesym;
-</code></pre><p>　　于此我们解决了保留符号的存储识别问题。下一步我们开始着手设计扫描器（ｓｃａｎｎｅｒ）。
-　　
-　</p>
-<p>　　扫描器我们可以分为两大部分，其一是读取一行的输入，并且缓存，为另一部分服务，而另一部分指的就是将该行的缓存分解成一个一个的符号（单词）。</p>
-<p>　　我们可以这样设计，以扫描符号为主，调用进行行缓存的函数，同时，我们给行缓存函数分配一些额外的任务：如果该行未处理完，则该函数执行从行缓存中读取下一个字符的功能。于是我们先给出以下程序：</p>
-<pre><code>/*    行缓存并读取一个字符    */
-int getch(){
-    if(firstp == lastp){
-        if(feof(fin)){
-            printf(&quot;到达文件末尾\n&quot;);
-            return -1;
-        }
-        firstp = lastp = 0;
-        fprintf(fout, &quot;%d &quot;, cx);
-        //每到新的一行初始化ch为空
-        ch = &apos; &apos;;
-        //文件输到最后必须换行
-        while(ch != 10){
-            //如果是读到文件末尾
-            if(EOF == fscanf(fin, &quot;%c&quot;, &amp;ch)){
-                line[lastp] = 0;
-                break;
-            }
-            //写到文件中
-            printf(&quot;%c&quot;, ch);
-            fprintf(fout, &quot;%c&quot;, ch);
-            //写到缓存中
-            line[lastp] = ch;
-            lastp++;
-        }
-        //换行写到文件中
-        fprintf(fout, &quot;\n&quot;);
-    }
-    //开始读取每行的缓存，将字符一个一个存入ch
-    ch = line[firstp];
-    firstp++;
-    return 0;
-}
-</code></pre><p>　　而对于主调函数，通过调用上述功能，可以获得一串连续的字符输入，即符号的缓存，再配合分支语句去判别先前定义的符号的类型，即可以完成词法分析的功能，最后我们给出如下程序：</p>
-<pre><code>/*    获取一串符号    */
-int getsymbol(){
-
-    int cursor = 0;
-    //读取第一个有效字符
-    while(ch == &apos; &apos; || ch == 10 || ch == 9){
-        getchOrReturn;
-    }
-
-    //判断是否是数字
-    if(ch &gt;= &apos;0&apos; &amp;&amp; ch &lt;= &apos;9&apos;){
-        sym = number;
-        //计算真实数值
-        int value = 0;
-        while(ch &gt;= &apos;0&apos; &amp;&amp; ch &lt;= &apos;9&apos;){
-            value = 10 * value + ch - &apos;0&apos;;
-            cursor++;
-            getchOrReturn;
-        }
-        num = value;
-        //如果位数越界
-        if(cursor &gt;= intmax){
-            printf(&quot;数字位数过多\n&quot;);
-        }
-    }
-
-    //判断变量名或者保留字
-    else if(ch &gt;= &apos;a&apos; &amp;&amp; ch &lt;= &apos;z&apos;){
-        //存入符号串到name字符缓存数组
-        while((ch &gt;= &apos;a&apos; &amp;&amp; ch &lt;= &apos;z&apos;) || (ch &gt;= &apos;0&apos; &amp;&amp; ch &lt;= &apos;9&apos;)){
-            if(cursor &lt; namemax){
-                name[cursor] = ch;
-                cursor++;
-            }
-            getchOrReturn;
-        }
-        name[cursor] = 0;
-        //二分搜索判断是否是保留字
-        int i = 0, j = keywordnum - 1;
-        int k;
-        do{
-            k = (i + j) / 2;
-            if(strcmp(name, key[k]) &lt;= 0)
-                j = k - 1;
-            if(strcmp(name, key[k]) &gt;= 0)
-                i = k + 1;
-        }while(i &lt;= j);
-        //如果是保留字
-        if(i - 1 &gt; j){
-            sym = keyword[k];
-        }
-        //如果是标识符
-        else {
-            sym = ident;
-        }
-    }
-
-    //判断是否是赋值符号
-    else if(&apos;:&apos; == ch){
-        getchOrReturn;
-        if(&apos;=&apos; == ch){
-            sym = becomes;
-            getchOrReturn;
-        }
-        else 
-            sym = nul;
-    }
-
-    //判断是否是小于或小于等于
-    else if(&apos;&lt;&apos; == ch){
-        getchOrReturn;
-        if(&apos;=&apos; == ch){
-            sym = leq;
-            getchOrReturn;
-        }
-        else 
-            sym = lss;
-
-    }
-
-    //判断是否是大于或大于等于
-    else if(&apos;&gt;&apos; == ch){
-        getchOrReturn;
-        if(&apos;=&apos; == ch){
-            sym = geq;
-            getchOrReturn;
-        }
-        else 
-            sym = gtr;
-    }
-
-    //default为单字符号
-    else {
-        sym = single[ch];
-        if(sym != period)
-            getchOrReturn;
-    }
-    return 0;
-}
-</code></pre><h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><p>　　一遍编扫的编译器通过语法分析调用词法分析来实现，递归下降的语法分析考虑的是你当前读取了一个符号，根据这个符号类别，你下一个应该读取的符号应该是什么类别。</p>
-<p>　　我们以常量处理语法为例，读取了常量声明符号const,我们接下来需要一个ident，然后是=，再是数值，最后我们写入名字表，名字表是用来存储用户自定义的标识符的值，地址，类型等内容，于是我们给出下面的函数：</p>
-<pre><code>/*    常量声明处理    */
-int constdeclaration(int* ptx, int lev, int* pdx){
-    //语法应该为 const ident = num;
-    //const已经读取，开始分析后部语法
-    if(sym == ident){
-        getsymbolOrReturn;
-        if(sym == eql){
-            getsymbolOrReturn;
-            if(sym == number){
-                enter(constant, ptx, lev, pdx);    //写入表中
-                getsymbolOrReturn;
-            }
-            else{
-                printf(&quot;const缺少数字\n&quot;);
-            }
-        }
-        else {
-            printf(&quot;const缺少等号\n&quot;);
-        }
-    }
-    else 
-        printf(&quot;const缺少标识符\n&quot;);
-    return 0;
-}
-</code></pre><p>　　相应的我们可以给出数据类型和名字表的类型结构：</p>
-<pre><code>/*    数据类型      */
-enum object{
-    constant,
-    variable,
-    procedure,
-};
-
-/*    名字表结构    */
-struct tablestruct{
-    char name[namemax];    //    名称
-    enum object kind;    //类型
-    int val;    //数值
-    int level;    //所处层
-    int adr;    //地址
-    int size;    //数据空间
-};
-</code></pre><p>　　同理，按照我们定义好的语法，马上就可以给出各类处理，以下代码均有详细注释，所以不展开讨论，需要注意的是，对于声明的处理，均使用分支语句来处理错误的语法，而对于其余的语法错误，我们使用一个补救函数来处理，其功能大概是首先我们有一个合法的后跟集合，每次读取一个符号，我们都会跟新后跟集合的合法元素，如果下一个扫描的符号不在后跟集合中，我们将采取补救措施：不断的向下读取符号直到该符号是合法的。下面给出各处理函数。</p>
-<pre><code>/*    变量声明处理    */
-int vardeclaration(int* ptx, int lev, int* pdx){
-    //语法应该为 var ident;
-    //var已经读取，开始分析后部语法
-    if(sym == ident){
-        enter(variable, ptx, lev, pdx);
-        getsymbolOrReturn;
-    }
-    else
-        printf(&quot;var缺少标识符\n&quot;);
-    return 0;
-}
-
-
-/*    因子处理    */
-int factor(bool* fsys,int* ptx,int lev){
-    //因子要么是标识符，要么是表达式，要么是数
-    //F→(E)|ident|num
-    int i;
-    bool nxtsys[symnum];
-    testOrReturn(facbegsys,fsys,24);    //测试后跟符号是否合法
-    while(inset(sym,facbegsys)){
-        //是标识符
-        if(sym == ident){
-            //返回序号
-            i = position(name,* ptx);
-            if(i == 0){
-                printf(&quot;标识符不存在&quot;);
-            }
-            //生成机器代码
-            else{
-                switch(table[i].kind){
-                    //常量标识符
-                    case constant:
-                        getcodeOrReturn(lit, 0, table[i].val);
-                        break;
-                    //变量标识符
-                    case variable:
-                        getcodeOrReturn(lod, lev - table[i].level, table[i].adr);
-                        break;
-                    //过程标识符
-                    case procedure:
-                        printf(&quot;标识符为过程&quot;);
-                        break;
-                }
-            }
-            getsymbolOrReturn;
-        }
-        else{
-            //数
-            if(sym == number){
-                if(num &gt; amax){
-                    printf(&quot;数字过大&quot;);
-                    num = 0;
-                }
-                //生成机器代码
-                getcodeOrReturn(lit,0,num);
-                getsymbolOrReturn;
-            }
-            //表达式
-            //F→(E)
-            else{
-                //识别（
-                if(sym == lparen){
-                    getsymbolOrReturn;
-                    //更新后跟符号集
-                    memcpy(nxtsys, fsys, sizeof(bool) * symnum);
-                    nxtsys[rparen] = true;
-                    //调用表达式处理
-                    expressionOrReturn(nxtsys, ptx, lev);
-                    //调用结束识别右括号
-                    if(sym == rparen){
-                        getsymbolOrReturn;
-                    }
-                    else{
-                        printf(&quot;E后缺少)&quot;);
-                    }
-                }
-                testOrReturn(fsys, facbegsys, 23);
-            }
-        }
-    }
-    return 0;
-}
-
-
-/*    项处理    */
-int term(bool* fsys,int* ptx,int lev){
-    //T→T*F|T/F|F
-    enum symbol top;
-    bool nxtsys[symnum];
-    memcpy(nxtsys,fsys,sizeof(bool) * symnum);
-    nxtsys[times] = true;
-    nxtsys[slash] = true;
-    //处理首个因子F
-    factorOrReturn(nxtsys,ptx,lev);
-    //处理完因子F后
-    while(sym == times||sym == slash){
-        top = sym;
-        getsymbolOrReturn;
-        //处理因子F
-        factorOrReturn(nxtsys,ptx,lev);
-        //乘法
-        if(top == times){
-            getcodeOrReturn(opr,0,4);
-        }
-        //除法
-        else{
-            getcodeOrReturn(opr,0,5);
-        }
-    }
-    return 0;
-}
-
-/*    表达式处理    */
-int expression(bool* fsys,int* ptx,int lev){
-    //first集中可能有正负号
-    //E→E+T|T
-    enum symbol eop;    
-    bool nxtsys[symnum];
-    //如果是正负号
-    if(sym == plussym || sym == minussym){
-        eop = sym;    //保存符号
-        getsymbolOrReturn;
-        //跟新后跟集
-        memcpy(nxtsys, fsys, sizeof(bool) * symnum);
-        nxtsys[plussym] = true;
-        nxtsys[minussym] = true;
-        //处理项T
-        termOrReturn(nxtsys,ptx,lev);
-        //如果为负
-        if(eop = minussym){
-            getcodeOrReturn(opr,0,1);
-        }
-    }
-    //直接更新后跟集
-    else{
-        memcpy(nxtsys, fsys, sizeof(bool) * symnum);
-        nxtsys[plussym] = true;
-        nxtsys[minussym] = true;
-        termOrReturn(nxtsys,ptx,lev);
-    }
-    //处理完项T之后
-    while(sym == plussym || sym == minussym){
-        eop = sym;
-        getsymbolOrReturn;
-        //在进行项的分析
-        memcpy(nxtsys, fsys, sizeof(bool) * symnum);
-        nxtsys[plussym] = true;
-        nxtsys[minussym] = true;
-        termOrReturn(nxtsys, ptx, lev);
-        //加法
-        if(eop == plussym){
-            getcodeOrReturn(opr,0,2);
-        }
-        //减法
-        else{
-            getcodeOrReturn(opr,0,3);
-        }
-    }
-    return 0;
-}
-
-
-/*    条件处理    */
-int condition(bool* fsys,int* ptx,int lev){
-    enum symbol relop;
-    bool nxtsys[symnum];
-    //%2
-    if(sym == oddsym){
-        getsymbolOrReturn;
-        expressionOrReturn(fsys,ptx,lev);
-        getcodeOrReturn(opr,0,6);
-    }
-    //表达式
-    else{
-        memcpy(nxtsys, fsys, sizeof(bool) * symnum);
-        nxtsys[eql] = true;
-        nxtsys[neq] = true;
-        nxtsys[lss] = true;
-        nxtsys[leq] = true;
-        nxtsys[gtr] = true;
-        nxtsys[geq] = true;
-        //表达式处理
-        expressionOrReturn(fsys,ptx,lev);
-        if(sym != eql &amp;&amp; sym != neq &amp;&amp; sym != lss &amp;&amp; sym != leq &amp;&amp; sym != gtr &amp;&amp; sym != geq){
-            printf(&quot;需要比较符号&quot;);
-        }
-        else{
-            relop = sym;
-            //去下一个符号并进行表达式处理
-            getsymbolOrReturn;
-            expressionOrReturn(fsys, ptx, lev);
-            //根据relop生成机器代码
-            switch(relop){
-                case eql:
-                    getcodeOrReturn(opr,0,8);
-                    break;
-                case neq:
-                    getcodeOrReturn(opr,0,9);
-                    break;
-                case lss:
-                    getcodeOrReturn(opr,0,10);
-                    break;
-                case geq:
-                    getcodeOrReturn(opr,0,11);
-                    break;
-                case gtr:
-                    getcodeOrReturn(opr,0,12);
-                    break;
-                case leq:
-                    getcodeOrReturn(opr,0,13);
-                    break;
-            }
-        }
-    }
-    return 0;
-}
-</code></pre><p>　　需要指出的是，上述函数中有大量的getcode函数，该函数执行的是根据语法生成机器代码，也就是说本PL0是语法和语义相结合的编译器，在分析语法的时候就相应的输出了机器代码，供下一模块解释执行使用，函数较为简单，通过看入口参数（操作，层次，操作序号）即可猜想其内部实现故不给出具体实现代码仅给出其类型结构：</p>
-<pre><code>/*    虚拟机代码结构    */
-struct instruction{
-    enum fct f;    //指令
-    int l;    //层次差
-    int a;    
-};
-</code></pre><h2 id="解释执行"><a href="#解释执行" class="headerlink" title="解释执行"></a>解释执行</h2><p>　　由上一段文字和getcode函数可知，与词法分析相同，解释执行的操作也需要用枚举存储：</p>
-<pre><code>/*     虚拟机代码      */
-enum fct{
-    lit,    opr,    lod,
-    sto,    cal,    inte,
-    jmp,   jpc,
-};
-</code></pre><p>　　本编译器实现的是模拟栈处理机的执行，通过语法语义分析生成的代码，一行一行的执行栈的相关操作，对熟悉数据结构的您一定相当简单故不作过多解释，下面直接给出代码：</p>
-<pre><code>void interpret(){
-    int p,b,t;    //指针，基址，栈顶
-    struct instruction i;    //存放指令
-    int s[stacksize];    //数据栈
-    printf(&quot;start pl0\n&quot;);
-    //初始化
-    t = 0;
-    b = 0;
-    p = 0;
-    s[0] = s[1] = s[2] = 0;
-    //开始
-    do{
-        //取一条指令
-        i = code[p];
-        p++;
-        switch(i.f){
-            //取值操作
-            case lit:
-                s[t] = i.a;    
-                t++;
-                break;
-            //运算操作
-            case opr:
-                switch (i.a){
-                    case 0:
-                        t = b;
-                        p = s[t + 2];
-                        b = s[t + 1];
-                        break;
-                    case 1:
-                        s[t - 1] = -s[t - 1];
-                        break;
-                    case 2:
-                        t--;
-                        s[t - 1] = s[t - 1] + s[t];
-                        break;
-                    case 3:
-                        t--;
-                        s[t - 1] = s[t - 1] - s[t];
-                        break;
-                    case 4:
-                        t--;
-                        s[t - 1] = s[t - 1] * s[t];
-                        break;
-                    case 5:
-                        t--;
-                        s[t - 1] = s[t - 1] / s[t];
-                        break;
-                    case 6:
-                        s[t - 1] = s[t - 1] % 2;
-                        break;
-                    case 8:
-                        t--;
-                        s[t - 1] = (s[t - 1] == s[t]);
-                        break;
-                    case 9:
-                        t--;
-                        s[t - 1] = (s[t - 1] != s[ t ]);
-                        break;
-                    case 10:
-                        t--;
-                        s[t - 1] = (s[ t- 1] &lt; s[ t ]);
-                        break;
-                    case 11:
-                        t--;
-                        s[t - 1] = (s[t - 1] &gt;= s[t]);
-                        break;
-                    case 12:
-                        t--;
-                        s[t - 1] = (s[t - 1] &gt; s[t]);
-                        break;
-                    case 13:
-                        t--;
-                        s[t - 1] = (s[t - 1] &lt;= s[t]);
-                        break;
-                    case 14:
-                        printf(&quot;%d&quot;, s[t - 1]);
-                        fprintf(fr, &quot;%d&quot;, s[t - 1]);
-                        t--;
-                        break;
-                    case 15:
-                        printf(&quot;\n&quot;);
-                        fprintf(fr, &quot;\n&quot;);
-                        break;
-                    case 16:
-                        printf(&quot;?&quot;);
-                        fprintf(fr, &quot;?&quot;);
-                        scanf(&quot;%d&quot;,&amp;(s[t]));
-                        fprintf(fr, &quot;%d\n&quot;, s[t]);
-                        t++;
-                        break;
-                }
-                break;
-            //装载
-            case lod:
-                s[t] = s[base(i.l, s, b) + i.a];
-                t++;
-                break;
-            //存储
-            case sto:
-                t--;
-                s[base(i.l, s, b) + i.a] = s[t];
-                break;
-            //调用过程
-            case cal:
-                s[t] = base(i.l,s,b);
-                s[t + 1] = b;
-                s[t + 2] = p;
-                b = t;
-                p = i.a;
-                break;
-            //内存分配
-            case inte:
-                t += i.a;
-                break;
-            //跳转
-            case jmp:
-                p = i.a;
-                break;
-            //条件跳转
-            case jpc:
-                t --;
-                if (s[t] == 0)
-                {
-                    p = i.a;
-                }
-                break;
-        }
-    }while (p != 0);
-}
-</code></pre><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>　　本文介绍了一个一遍扫描，栈式运行的PL0编译器的总体框架和设计过程，本课程设计最后得分为90分，经实验可正确运行递归函数，显示输入错误，最后不再给出主调函数和各细节函数，如有需要可联系本人获取源码。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/pl0_compiler/" data-id="cjvm3fbg3000gegupxzllupxe" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/compiler/">compiler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
 </section>
+
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+<!-- ============================ Content =========================== -->
+
+<section id="intro">
+    <div class="container">
         
-          <aside id="sidebar">
-  
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/03/02/pl0_compiler/">a simple PL0 compiler</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-03-01T16:00:00.000Z" itemprop="datePublished">
+          2019-03-02
+      </time>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cppdetails/">cppdetails</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project-record/">project record</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/scientific-research/">scientific research</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/theory/">theory</a></li></ul>
-    </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CG/">CG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FS/">FS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NN/">NN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compiler/">compiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-architecture/">computer architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/discrete-mathematics/">discrete mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/normal-form/">normal form</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/os/">os</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/process-management/">process management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-data-processing/">python data processing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
-    </div>
-  </div>
-
-
-  
+    | 
+    <a href="/tags/project/">project</a>,
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CG/" style="font-size: 10px;">CG</a> <a href="/tags/FS/" style="font-size: 10px;">FS</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/bioinformatics/" style="font-size: 10px;">bioinformatics</a> <a href="/tags/compiler/" style="font-size: 10px;">compiler</a> <a href="/tags/computer-architecture/" style="font-size: 10px;">computer architecture</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/discrete-mathematics/" style="font-size: 10px;">discrete mathematics</a> <a href="/tags/memory-management/" style="font-size: 10px;">memory management</a> <a href="/tags/normal-form/" style="font-size: 10px;">normal form</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/process-management/" style="font-size: 10px;">process management</a> <a href="/tags/project/" style="font-size: 20px;">project</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python-data-processing/" style="font-size: 10px;">python data processing</a> <a href="/tags/roughset/" style="font-size: 10px;">roughset</a>
-    </div>
-  </div>
-
-  
+    <a href="/tags/compiler/">compiler</a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/05/13/process-management/">process_management</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/12/normal-form/">normal form</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/11/computer-architecture/">computer_architecture</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/30/NNDL/">NNDL</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/30/co-occurrence/">co-occurrence</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        编译原理课程设计–用C从零开始实现一个PL０编译器
+copyright: 徐渊 大连理工大学电信学部
+gitbub: Tiipitz.github.io
+reference: 编译原理（第三版） 王生原等 清华大学出版社
+time: 2019-3-2
+QQ: 1239820340（联系请注明原因）
 
-  
-</aside>
+前言　　本编译器的实现主要参考了清华大学王生原等编著的编译原理（第三版），权威参考代码可见该书第370页，以下内容均为本人在仔细研读其代码
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/03/02/pl0_compiler/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        <nav class="pagination" role="pagination">
+          <a class="pull-left" href="/">← Newer Posts</a>
+          
+        </nav>
     </div>
-  </div>
+</section>
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+        </div>
+    </div>
+</section>
+<!-- ============================ END Content =========================== -->
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
 
-<script src="/js/script.js"></script>
 
-
-
-  </div>
+      
 </body>
 </html>

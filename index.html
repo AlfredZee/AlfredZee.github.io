@@ -1,2327 +1,761 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
 
-  
+<head>
   <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-  
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
   
   
-    <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
 </head>
-</html>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+
+<!--
+<body class="home-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close">
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Linux/" class="animsition-link">Linux<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/algorithm/" class="animsition-link">algorithm<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/cppdetails/" class="animsition-link">cppdetails<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/project-record/" class="animsition-link">project record<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/scientific-research/" class="animsition-link">scientific research<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/theory/" class="animsition-link">theory<small>(2)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+</div>
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+                        
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-process-management" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/13/process-management/" class="article-date">
-  <time datetime="2019-05-13T05:50:29.000Z" itemprop="datePublished">2019-05-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/13/process-management/">process_management</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Linux-Programming-—-Process-management"><a href="#Linux-Programming-—-Process-management" class="headerlink" title="Linux Programming — Process management"></a>Linux Programming — Process management</h1><h2 id="Forward"><a href="#Forward" class="headerlink" title="Forward"></a>Forward</h2><p>It is really excited that we start to get touch in Linux Programming. It’s truely different from my old coding life, not like implementing a complex library management system or focusing on a hard algorithm problem. It’s more about computer itself, i mean, we are talking about process how a computer really works. And actually this is much complex than a library management system and much mental than algorithm problems. And you can finally tell others you major in CS or CE, not SE after experiencing these.</p>
-<h2 id="The-very-first-task"><a href="#The-very-first-task" class="headerlink" title="The very first task"></a>The very first task</h2><p>Here’s the description of the task in Chinese:</p>
-<p><strong>每个进程都执行自己独立的程序，打印自己的pid，每个父进程打印其子进程的pid;</strong></p>
-<p>and the picture:</p>
-<p><img src="task.png" alt="task"></p>
-<p>I had to say it’s really confusing: does parent have to print son2’s pid? If it does, then this task would be quiet difficult as the very first task. Most of my classmates thought this way or, never gave a thought on it, and soon they finished their work. Only a bit idiots like me, made it really complex. But here is my principle:</p>
-<p><strong>Make things easy for your client while making it hard for yourself. Never waste a chance of challenging yourself.</strong></p>
-<p>So next i will do in my complex way.</p>
-<h2 id="PID-and-fork"><a href="#PID-and-fork" class="headerlink" title="PID and fork"></a>PID and fork</h2><p>what is PID:</p>
-<ul>
-<li>Process Identification</li>
-<li>unique and binded to process</li>
-</ul>
-<p>what is fork:</p>
-<ul>
-<li>subprocess <strong>copy</strong> parent process.</li>
-<li>in subprocess, fork return 0. </li>
-<li>in parent process, fork reuturn <strong>subprocess pid</strong></li>
-<li>if error, return -1;</li>
-</ul>
-<p><img src="fork.png" alt="fork"></p>
-<p>remember to include header file:</p>
-<pre><code>#include &quot;unistd.h&quot;    //os api access
-#include &quot;sys/types.h&quot;    //so you can use pid_t
-</code></pre><p>so with a little time, we can finish the code below:</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;sys/types.h&gt;
-
-int main(){
-    pid_t subpid = fork();
-    if(subpid == 0){    //subprocess 
-        pid_t subsubpid = fork(); 
-        if(subsubpid == 0){    //subsubprocess
-                printf(&quot;subsubpro&apos;s pid is: %d.\n&quot;, getpid());
-        }
-        else{
-            printf(&quot;subpro&apos;s pid is: %d.\n&quot;, getpid());
-            printf(&quot;subpro&apos;s subpro&apos; pid is %d.\n&quot;, subsubpid);
-        }
-    }
-    else{    //parent process
-        printf(&quot;parents&apos; pid is %d.\n&quot;, getpid());
-         printf(&quot;parents&apos; subpro&apos; pid is %d.\n&quot;, subpid);
-    }
-    return 0;
-}
-</code></pre><p>and here is the result:<img src="layer_by_layer.png" alt="result1"></p>
-<h2 id="use-pipe"><a href="#use-pipe" class="headerlink" title="use pipe"></a>use pipe</h2><p>Codes above didn’t move the biggest stone on our way: how parent print son2’s PID? Use pipe like this way:</p>
-<pre><code>int fd[2];
-pipe(fd);
-...
-{    // in subprocess
-    ...
-    close(fd[0]);    // close parents&apos; read
-    write(fd[1], &amp;subsubpid, sizeof(pid_t));    //write pid        
-    ...
-}
-...
-{    // in parent process
-    ...
-    close(fd[1]);    // close child&apos;s write
-    read(fd[0], &amp;subsubpid, sizeof(pid_t));    //read from pipe
-    printf(&quot;parents&apos; subpro&apos; subpro&apos; pid is %d.\n&quot;, subsubpid);
-    ...
-}
-</code></pre><p>You can see we thought really carefully by using function <strong>close()</strong>, intending to maintain some kind of order.</p>
-<p>Here’s the code and the result:</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;sys/types.h&gt;
-
-int main(){
-    int fd[2];
-    pipe(fd);
-    pid_t subpid = fork();
-    pid_t subsubpid;
-    if(subpid == 0){
-        pid_t subsubpid = fork(); 
-        if(subsubpid == 0){
-                printf(&quot;subsubpro&apos;s pid is: %d.\n&quot;, getpid());
-        }
-        else{
-            printf(&quot;subpro&apos;s pid is: %d.\n&quot;, getpid());
-            printf(&quot;subpro&apos;s subpro&apos; pid is %d.\n&quot;, subsubpid);
-            close(fd[0]);    // close parents&apos; read
-            write(fd[1], &amp;subsubpid, sizeof(pid_t));    //write pid
-        }
-    }
-    else{
-        printf(&quot;parents&apos; pid is %d.\n&quot;, getpid());
-         printf(&quot;parents&apos; subpro&apos; pid is %d.\n&quot;, subpid);
-        close(fd[1]);    // close child&apos;s write
-        read(fd[0], &amp;subsubpid, sizeof(pid_t));    //read from pipe
-        printf(&quot;parents&apos; subpro&apos; subpro&apos; pid is %d.\n&quot;, subsubpid);
-    }
-    return 0;
-}    
-</code></pre><p><img src="before_wait.png" alt="pipe"></p>
-<p>It’s surprise to see large negative number above, also disappointed to find that your efforts to main order in vain. Be patient and success is close.</p>
-<h2 id="parent-wait"><a href="#parent-wait" class="headerlink" title="parent wait"></a>parent wait</h2><p>To make process in order, we need something efficient: function <strong>wait()</strong></p>
-<p>To use wait, you may alse need a <strong>status</strong>:</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;sys/types.h&gt;
-#include &lt;wait.h&gt;
-
-int main(){
-    int status = -1;
-    int fd[2];
-    pipe(fd);
-    pid_t subpid = fork();
-    pid_t subsubpid;
-    if(subpid == 0){
-        pid_t subsubpid = fork(); 
-        if(subsubpid == 0){
-                printf(&quot;subsubpro&apos;s pid is: %d.\n&quot;, getpid());
-        }
-        else{
-            printf(&quot;subpro&apos;s pid is: %d.\n&quot;, getpid());
-            printf(&quot;subpro&apos;s subpro&apos; pid is %d.\n&quot;, subsubpid);
-            close(fd[0]);    // close parents&apos; read
-            write(fd[1], &amp;subsubpid, sizeof(pid_t));    //write pid
-            WEXITSTATUS(status);
-        }
-    }
-    else{
-        wait(&amp;status);
-        printf(&quot;parents&apos; pid is %d.\n&quot;, getpid());
-         printf(&quot;parents&apos; subpro&apos; pid is %d.\n&quot;, subpid);
-        close(fd[1]);    // close child&apos;s write
-        read(fd[0], &amp;subsubpid, sizeof(pid_t));    //read from pipe
-        printf(&quot;parents&apos; subpro&apos; subpro&apos; pid is %d.\n&quot;, subsubpid);
-    }
-    return 0;
-}    
-</code></pre><p>Finally we get what we want!:</p>
-<p><img src="after_wait.png" alt="wait"></p>
-<h2 id="epilogue"><a href="#epilogue" class="headerlink" title="epilogue"></a>epilogue</h2><p>Hope this blog is helpful, and wish i can use vim as proficiently as sublime someday… </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/13/process-management/" data-id="cjvm3fbg7000megupq6zceokg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/os/">os</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/process-management/">process management</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-normal-form" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/12/normal-form/" class="article-date">
-  <time datetime="2019-05-12T05:53:34.000Z" itemprop="datePublished">2019-05-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/theory/">theory</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/12/normal-form/">normal form</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="关系数据理论"><a href="#关系数据理论" class="headerlink" title="关系数据理论"></a>关系数据理论</h1><h2 id="关系模式"><a href="#关系模式" class="headerlink" title="关系模式"></a>关系模式</h2><p>是一个五元组R（U，D，DOM，F）</p>
-<ul>
-<li>R：关系名</li>
-<li>U：属性集合</li>
-<li>D：域集合</li>
-<li>DOM：属性向域的映像集合</li>
-<li>F：属性间数据依赖关系集合</li>
-</ul>
-<p>化简了的关系模式：R（U，F）</p>
-<h2 id="数据依赖"><a href="#数据依赖" class="headerlink" title="数据依赖"></a>数据依赖</h2><p>什么是数据依赖：</p>
-<ul>
-<li>完整性约束的表现形式</li>
-<li>一个关系内部属性与属性之间的约束关系</li>
-<li>现实世界属性间相互联系的抽象</li>
-<li>数据内在的性质</li>
-<li>语义的体现</li>
-<li>有函数依赖（FD）和多值（MVD）依赖</li>
-</ul>
-<p>有何影响：</p>
-<ul>
-<li>数据冗余太大</li>
-<li>增删改异常</li>
-</ul>
-<h2 id="规范化"><a href="#规范化" class="headerlink" title="规范化"></a>规范化</h2><p>通过<strong>分解关系模式</strong>，<strong>消除数据依赖</strong>的过程</p>
-<h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><p>属性全集U的两个子集X，Y，如果X属性组的取值相同，则Y属性组的取值必然相同，X→Y，X决定Y，X为决定属性组，又称决定因素（Determinant）</p>
-<ul>
-<li>非平凡与平凡：Y不包含于X<ul>
-<li>包含于X的Y自然的被X决定</li>
-</ul>
-</li>
-<li>完全与部分：X中的属性缺一不可的决定Y</li>
-<li>传递与直接：非平凡，且Y不决定X<ul>
-<li>注意传递的含义是指通过某种<strong>中间媒介属性组</strong>，如果Y决定了X，那只是换用了X的另一种表达，是直接，不是传递的概念</li>
-</ul>
-</li>
-</ul>
-<h3 id="范式（NF，normal-form）"><a href="#范式（NF，normal-form）" class="headerlink" title="范式（NF，normal form）"></a>范式（NF，normal form）</h3><ul>
-<li>1NF：各属性不可再分</li>
-<li>2NF：1NF且非主属性完全函数依赖于码<ul>
-<li>如果码只有<strong>一个属性</strong>，必然是2NF</li>
-</ul>
-</li>
-<li>3NF：不存在传递依赖，其中X，Y，Z分别表示码，属性组，不包含于Y的非主属性<ul>
-<li>这里的Y显然不可以是或者包含<strong>另一个码</strong>，不然其实还是停留再直接依赖</li>
-</ul>
-</li>
-<li>BCNF：1NF且非平凡函数依赖的决定因素包含码<ul>
-<li>每一个<strong>决定因素都包含码</strong></li>
-<li>当3NF只有一个候选码，则他也是BCNF</li>
-</ul>
-</li>
-<li>多值依赖：<strong>严格的定义太抽象，我们换用形象一点的方法：想象一个三位空间x-y-z，多值依赖确定了两个面，这两个面分别垂直于xoy,xoz，对于垂直于xoy的面，我们给定一个(x,z)显然y的值仅受限于x，且特别注意，此时的x不决定一个y，可能有多个，对于另一个面相同，这就是多值依赖。</strong><ul>
-<li>非平凡：如果本来就是一个二维平面，那么多值依赖被压缩成函数线段</li>
-</ul>
-</li>
-<li>4NF：任何非平凡多值依赖的决定因素都含有码</li>
-</ul>
-<h2 id="判别方法"><a href="#判别方法" class="headerlink" title="判别方法"></a>判别方法</h2><ul>
-<li>1.非主属性：<ul>
-<li>2NF：是否完全依赖于码</li>
-<li>3NF：是否存在一个不包含码的属性组，某非主属性依赖于它</li>
-</ul>
-</li>
-<li>2.主属性：<ul>
-<li>BCNF：每个主属性，是否依赖于某个不包含它的码，是否存在一个不包含码的属性组，该主属性依赖于它</li>
-</ul>
-</li>
-<li>3.多值依赖：<ul>
-<li>4NF：非平凡的多值依赖是否为函数依赖（看是否1对多，是则不函数依赖）</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/12/normal-form/" data-id="cjvm3fbg1000eegupyxjzqu0u" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/discrete-mathematics/">discrete mathematics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/normal-form/">normal form</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-computer-architecture" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/11/computer-architecture/" class="article-date">
-  <time datetime="2019-05-11T15:16:32.000Z" itemprop="datePublished">2019-05-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/theory/">theory</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/11/computer-architecture/">computer_architecture</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Computer-Architecture"><a href="#Computer-Architecture" class="headerlink" title="Computer Architecture"></a>Computer Architecture</h1><h2 id="What-is-Computer-Architecture"><a href="#What-is-Computer-Architecture" class="headerlink" title="What is Computer Architecture"></a>What is Computer Architecture</h2><h3 id="Classical-definition"><a href="#Classical-definition" class="headerlink" title="Classical definition"></a>Classical definition</h3><p>the <strong>attributes</strong> of a computing system as seen by the <strong>assembly language</strong> programmer,i.e.,the <strong>conceptual structure</strong> and <strong>functional behavior</strong>, as distinct from the logic design,and the physical implementation.—Amadahl,Blaaw,and Brooks,1964</p>
-<p><strong>attributes</strong> here are like:</p>
-<ul>
-<li>data representation</li>
-<li>addressing rules</li>
-<li>registers definition</li>
-<li>instruction set</li>
-<li>interrupt system</li>
-<li>working state definition and switching</li>
-<li>memory system</li>
-<li>message protection</li>
-<li>I/O structure</li>
-</ul>
-<h3 id="Essence"><a href="#Essence" class="headerlink" title="Essence"></a>Essence</h3><p>a layer between SW and HW.</p>
-<ul>
-<li>logical implementation:computer organization</li>
-<li>physical implementation:computer implementation</li>
-</ul>
-<p>an Architecture can have several organization,or physical implementation.</p>
-<h3 id="Broadest-definition"><a href="#Broadest-definition" class="headerlink" title="Broadest definition"></a>Broadest definition</h3><p>the design of the <strong>abstraction layers</strong> that allow us to implement information processing applications efficiently using available manufacturing technologies.</p>
-<p><img src="p1.png" alt="layers"></p>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>Computer Architecture is an integrated Approach,what really matters is the functioning of the complete system,and Computer Architecture is not just about transisstors, individual instructions, or  particluar implementations.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/11/computer-architecture/" data-id="cjvm3fbfy0009egup4xcqevt5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-architecture/">computer architecture</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-NNDL" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/30/NNDL/" class="article-date">
-  <time datetime="2019-04-30T08:59:20.000Z" itemprop="datePublished">2019-04-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/scientific-research/">scientific research</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/30/NNDL/">NNDL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Neural-Networks-and-Deep-Learning"><a href="#Neural-Networks-and-Deep-Learning" class="headerlink" title="Neural Networks and Deep Learning"></a>Neural Networks and Deep Learning</h1><hr>
-<p><strong>copyright: 徐渊 大连理工大学电信学部</strong></p>
-<p><strong>gitbub: Tiipitz.github.io</strong></p>
-<p><strong>reference: Neural Networks and Deep Learning —Michael Nielsen</strong></p>
-<p><strong>time: 2019-4-30</strong></p>
-<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本项目其实是笔者在大二小学期主要的工作，直到现在才想起要把它整理成博客，当时学NNDL的出发点是想将深度学习和VR结合起来，基于卡内基梅隆的openpose设计一个降低VR设备成本的深度学习算法（虽然最后该项目由于滤波难题不了了之了），总之感谢创院王飞龙老师提供的宝贵学习资料，更应该感谢本篇博客主要参考著作及作者：<strong>Neural Networks and Deep Learning —Michael Nielsen</strong> <a href="http://neuralnetworksanddeeplearning.com/index.html" target="_blank" rel="noopener">传送门</a>，以生动的语言，细致的描述，向笔者介绍了神经网络最深入的原理，和最宏观的视角！</p>
-<h2 id="感知器（perceptron）–-一切的伊始"><a href="#感知器（perceptron）–-一切的伊始" class="headerlink" title="感知器（perceptron）– 一切的伊始"></a>感知器（perceptron）– 一切的伊始</h2><ul>
-<li>多个二进制输入</li>
-<li>权重</li>
-<li>阈值</li>
-<li>一个二进制输出</li>
-</ul>
-<p><img src="p4.png" alt="percetron"></p>
-<p>一开始被证明可以成为一种逻辑部件（与，或，非门）</p>
-<p>但他和硬件逻辑部件不同，是靠权重和偏置来实现的，而权重和偏置是可以通过程序调整的（他本身就是程序而非做死了的硬件），我们自然可以设计<strong>学习算法</strong>，使它响应外部的刺激，也就是<strong>自动计算</strong>+<strong>自主学习</strong></p>
-<h2 id="S型神经元"><a href="#S型神经元" class="headerlink" title="S型神经元"></a>S型神经元</h2><p>学习算法的思想是通过计算输出和实际结果的误差，对权重和偏置做微小的调整，但是感知器无法做到这一点，因为它的输入或输出是非零即一的，他的输出函数是一个阶跃函数，不平滑，这意味着它计算出来的误差要么使其自身不变，要么完全反转</p>
-<p>问题的关键在于平滑输出，这就引入了S型神经元</p>
-<ul>
-<li>多个[0,1]内的输入</li>
-<li>权重</li>
-<li>偏置</li>
-<li>S型函数</li>
-<li>一个[0,1]的输出</li>
-</ul>
-<p>这里的S型函数(sigmoid)定义为：<img src="p3.png" alt="s"></p>
-<ul>
-<li>当z趋于负无穷，输出为0</li>
-<li>当z趋于正无穷，输出为1</li>
-</ul>
-<p>下面是S型函数的示意图：<img src="p2.png" alt="sigmoid"></p>
-<p>于是我们解决了输出的微小变化计算问题：</p>
-<h2 id="神经网络的架构"><a href="#神经网络的架构" class="headerlink" title="神经网络的架构"></a>神经网络的架构</h2><ul>
-<li>输入层，输入神经元</li>
-<li>隐藏层</li>
-<li>输出层</li>
-<li>前馈，递归（反馈回路，休眠到激活）</li>
-</ul>
-<p><img src="p5.png" alt="struct"></p>
-<p>另一些名称：多层感知器，MLP</p>
-<h2 id="简单的手写数字网络"><a href="#简单的手写数字网络" class="headerlink" title="简单的手写数字网络"></a>简单的手写数字网络</h2><ul>
-<li>输入层：28 * 28，[0,1]灰度值</li>
-<li>隐藏层：15</li>
-<li>输出层：10，一次表示判定为0,1,2…10的概率，取最大做最终结果</li>
-</ul>
-<p>原书提到这样一个很有意思的<strong>问题</strong>：我们为什么不同4个输出层神经元来编码表示结果，这样显得更加简洁？</p>
-<p>原因如下：首先实验证明用10个更好，其次我们可以思考这样的启发式规则：分析每个神经元的工作，从输入的图像矩阵来讲，神经元可能更偏向于识别图像的某一部分（比如图像的左上角是否有一个圆弧），而如果我们换用4个输出层神经元，那么神经元的工作将转变为如何从输入图像取判别一个数字的最高位是什么，这显然对于前者更加复杂，看上去牵强不太可实现。</p>
-<p><strong>注意</strong>：提及启发式规则，其实是我们根据结果为这样一种现象找的可能的解释，孟军教授经常和笔者说她的顾虑：目前深度学习有很好的结果，但它内部的原理，也就是这些神经元究竟干了什么具体的工作不可知，这一点有可能成为日后深度学习理论垮塌的隐患，希望读者也能时刻警醒着。</p>
-<h2 id="梯度下降和随机梯度下降"><a href="#梯度下降和随机梯度下降" class="headerlink" title="梯度下降和随机梯度下降"></a>梯度下降和随机梯度下降</h2><p>注：本节公式推导非常多，由于markdown无法插入公式（用别的服务器插入往往会有网络问题），所以只给出大致想法，笔者非常推荐取阅读原著的p16-p18页。</p>
-<p>二次代价函数（均方误差/MSE）：</p>
-<p><strong>问题</strong>：为什么要用二次代价，而不直接使用正确分类的图像数量？</p>
-<p>原因：我们对权重和偏置做出微小改变大多时候并不能改变正确分类的数量（这本质还是非一即零），而二次代价这样的平滑函数可以逐步取减小这样差距</p>
-<p>现在我们只考虑如何使得这样一个多元函数取到最小：</p>
-<ul>
-<li>微积分：当极值点很多时显然已经失效</li>
-<li>梯度下降：想象我们当前处于一个山谷的一点，我们想要向山谷走，牛顿可以帮助我们：我们躺下来让重力自动为我们导航。如果用数学的角度来思考这个问题，就是我们知道当前各元变量的值，也知道当前函数值，我们自然可以利用梯度（梯度的方向可以由偏导获得，我们可以自己再设置一个“学习速率”），让我们自动的向着最低值滚动，同时我们也将根据梯度和学习速率，确定我们下一个点的位置（各变元的值）</li>
-</ul>
-<p><img src="p6.png" alt="SGD"></p>
-<p>随机梯度下降：</p>
-<ul>
-<li>对每个样本都做一遍计算会花费大量时间</li>
-<li>选取小批量数据进行训练</li>
-<li>权重和偏置每次的更新量同比缩小相应倍数（相当于减小了学习速率）</li>
-<li>如此循环直到用完所有的输入称为完成一个训练迭代期（epoch）</li>
-</ul>
-<h2 id="反向传播基础"><a href="#反向传播基础" class="headerlink" title="反向传播基础"></a>反向传播基础</h2><p>注：于上一节相同，甚至本节的数学推到更多，由于本博客的偏重点在思想不在具体推导，不给出推导过程，但笔者非常推荐阅读原著的p37-p42</p>
-<p>两个假设：</p>
-<ul>
-<li>代价函数可以被写成一个在每个训练样本x上的代价函数的均值：反向传播实际对每个<strong>独立</strong>的训练样本计算偏导，然后通过在所有训练样本上进行平均化</li>
-<li>代价可以写成神经网络的输出函数：显然我们的二次代价函数满足这一条件（输出值为变元）</li>
-</ul>
-<p>误差的定义和意义：</p>
-<ul>
-<li>代价函数对第l层第j个神经元输出的偏导</li>
-<li>如果我们能通过代价函数直接调整上述神经元的权重和偏置，那么<strong>自主学习</strong>的问题就解决了</li>
-</ul>
-<p>四个基本方程：</p>
-<ul>
-<li>输出层误差的方程</li>
-<li>使用下一层误差来表示当前层误差</li>
-<li>代价函数关于网络中偏置的改变率</li>
-<li>代价函数关于任何一个权重的改变率</li>
-</ul>
-<p>对应公式：<img src="p1.png" alt="四个基本方程"></p>
-<h2 id="反向传播算法"><a href="#反向传播算法" class="headerlink" title="反向传播算法"></a>反向传播算法</h2><p>1.输入x：为输入层设置对应的激活值a1</p>
-<p>2.前向传播：对每层计算z和a</p>
-<p>3.计算输出层误差</p>
-<p>4.反向误差传播：逐层反向计算误差</p>
-<p>5.梯度下降：根据每层的误差和a更新权重和偏置</p>
-<h2 id="反向传播的效率"><a href="#反向传播的效率" class="headerlink" title="反向传播的效率"></a>反向传播的效率</h2><p>为了计算代价函数对某个权重的偏导，如果我们用普通的思想，我们针对该权重赋予一个很小的误差（目的是为了求出偏导），那么对于超高维的权重就要做相应次数的前向传播，这显然是非常低效的</p>
-<p>反向传播确保我们<strong>同时计算</strong>偏导，只需要一次前向传播和一次反向传播，这样每层获得了误差矩阵，每层利用其同时对权重偏置进行更新</p>
-<h2 id="再看反向传播"><a href="#再看反向传播" class="headerlink" title="再看反向传播"></a>再看反向传播</h2><p>由于时间问题，暂时不作讨论，其实本节内容远重要于上述的理论部分，心存高远的读者可以仔细去阅读原著的p46-p49页，探索如何发现并总结出这样的理论</p>
-<h2 id="简单神经网络的python实现"><a href="#简单神经网络的python实现" class="headerlink" title="简单神经网络的python实现"></a>简单神经网络的python实现</h2><p>使用Python3.7.3实现，程序非常简单，故没有添加注释，完全按照上面的理论方法来实现，分段解释可能影响整体感，这里只给出部分的内置和np函数接口：</p>
-<ul>
-<li>np.random.rand(a, b)：返回一个a行b列的矩阵，且元素值满足标准正态分布</li>
-<li>zip(a,b,…):将对象中相应元素打包成元组，然后返回元组的列表</li>
-<li><p>np.argmax():对一维输入返回最大值的索引</p>
-<pre><code>import random
-import numpy as np
-
-class Network(object):
-
-    def __init__(self, sizes):
-        self.num_layers = len(sizes)
-        self.sizes = sizes
-        self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
-        self.weights = [np.random.randn(y, x)
-                        for x, y in zip(sizes[:-1], sizes[1:])]
-
-    def feedforward(self, a):
-        for b, w in zip(self.biases, self.weights):
-            a = sigmoid(np.dot(w, a) + b)
-        return a
-
-    def SGD(self, training_data, epochs, mini_batch_size, eta, test_data=None):
-        if test_data:
-            test_data = list(test_data)
-            n_test = len(test_data)
-        training_data = list(training_data)
-        n = len(training_data)
-        for i in range(epochs):
-            random.shuffle(training_data)
-            mini_batches = [training_data[k:k + mini_batch_size]
-                            for k in range(0, n, mini_batch_size)]
-            for mini_batch in mini_batches:
-                self.update_mini_batch(mini_batch, eta)
-            if test_data:
-                print(&quot;Epoch {0} : {1} / {2}&quot;.format(i, self.evaluate(test_data)
-                                                    , n_test))
-            else:
-                print(&quot;Epoch {0} complete&quot;.format(i))
-
-    def update_mini_batch(self, mini_batch, eta):
-        nabla_b = [np.zeros(b.shape) for b in self.biases]
-        nabla_w = [np.zeros(w.shape) for w in self.weights]
-        for x, y in mini_batch:
-            delta_nabla_b, delta_nabla_w = self.backprop(x, y)
-            nabla_b = [nb + dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
-            nabla_w = [nw + dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
-        self.weights = [w - (eta/len(mini_batch)) * nw
-                        for w, nw in zip(self.weights, nabla_w)]
-        self.biases = [b - (eta/len(mini_batch)) * nb
-                        for b, nb in zip(self.biases, nabla_b)]
-
-    def backprop(self, x, y):
-        nabla_b = [np.zeros(b.shape) for b in self.biases]
-        nabla_w = [np.zeros(w.shape) for w in self.weights]
-        activation = x
-        activations = [x]
-        zs = []
-        for b, w in zip(self.biases, self.weights):
-            z = np.dot(w, activation) + b
-            zs.append(z)
-            activation = sigmoid(z)
-            activations.append(activation)
-        delta = self.cost_derivative(activations[-1], y) * sigmoid_prime(zs[-1])
-        nabla_b[-1] = delta
-        nabla_w[-1] = np.dot(delta, activations[-2].transpose())
-        for l in range(2, self.num_layers):
-            z = zs[-l]
-            sp = sigmoid_prime(z)
-            delta = np.dot(self.weights[-l + 1].transpose(), delta) * sp
-            nabla_b[-l] = delta
-            nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
-        return (nabla_b, nabla_w)
-
-    def cost_derivative(self, output_activations, y):
-        return (output_activations - y)
-
-    def evaluate(self, test_data):
-        test_results = [(np.argmax(self.feedforward(x)), y)  
-                        for (x, y) in test_data]
-        return sum(int(x == y) for (x, y) in test_results)
-
-def sigmoid(z):
-    return 1.0/(1.0 + np.exp(-z))
-
-def sigmoid_prime(z):
-    return sigmoid(z) * (1 - sigmoid(z))
-</code></pre></li>
-</ul>
-<p>结果截图：<img src="p7.png" alt="结果"></p>
-<h2 id="改进方法"><a href="#改进方法" class="headerlink" title="改进方法"></a>改进方法</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/30/NNDL/" data-id="cjvm3fbf90000egupwlb2kieu" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NN/">NN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-co-occurrence" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/30/co-occurrence/" class="article-date">
-  <time datetime="2019-04-30T04:56:36.000Z" itemprop="datePublished">2019-04-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/project-record/">project record</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/30/co-occurrence/">co-occurrence</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="基于共现关系下的《百年孤独》人物关系提取"><a href="#基于共现关系下的《百年孤独》人物关系提取" class="headerlink" title="基于共现关系下的《百年孤独》人物关系提取"></a>基于共现关系下的《百年孤独》人物关系提取</h1><hr>
-<p><strong>copyright: 徐渊 大连理工大学电信学部</strong></p>
-<p><strong>gitbub: AlfredZee.github.io</strong></p>
-<p><strong>reference: 实验楼</strong></p>
-<p><strong>time: 2019-4-30</strong></p>
-<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
-<hr>
-<h2 id="1项目的提出及意义"><a href="#1项目的提出及意义" class="headerlink" title="$1项目的提出及意义"></a>$1项目的提出及意义</h2><p>这两天刚好在纠结以后往哪个方向发展，林鸿飞教授带领的NLP组是主要考虑之一，就一直想找个相关的任务来做做，最近逛实验楼恰好发现了这样一个项目：提取《釜山行》电影中人物关系；加之大二的时候笔者竟然偷闲看了本《百年孤独》，就想着结合一下做一些自己的分析，没什么特别的意义，总之，keep learning!</p>
-<h2 id="2数据的获取"><a href="#2数据的获取" class="headerlink" title="$2数据的获取"></a>$2数据的获取</h2><p>本项目使用的txt文本是范曄翻译的《百年孤独》，请务必确认好翻译版本，由于英文中译会造成人名的不同，在之后构造词典时需要仔细的核准，笔者在这里花费了大量的时间精力，这是后期各项内容成功实现的基础。</p>
-<h2 id="3共现原理（co-occurrency）"><a href="#3共现原理（co-occurrency）" class="headerlink" title="$3共现原理（co-occurrency）"></a>$3共现原理（co-occurrency）</h2><p>所谓的co-occurrency简单的来说就是某些entity在一定的range内同时出现，比如两个人的人名在一本书的同一章节，同一小节或者同一段出现，这样我们就可以假定他们之间有关系，下面给出一篇简单的介绍性博客（英文）链接：<a href="http://blog.forec.cn/2016/10/03/co-occurrence-structure-capture/" target="_blank" rel="noopener">introduction</a>。</p>
-<p>下面为厌恶英文阅读或精力有限或网络环境较差的读者给出上述博客的主要内容：</p>
-<ul>
-<li>定义<ul>
-<li>实体为节点（V）</li>
-<li>关系为边（E）</li>
-</ul>
-</li>
-<li>实体识别<ul>
-<li>如果我们知道实体的特征，那么自然可以使用二分类模型来找到这些实体</li>
-<li>如果我们不知道这样的特征，但我们知道知道一些实体，那么利用CNN也可以实现</li>
-<li>当我们知道所有实体就不需要识别啦！（当然对于本项目是这样的，一本书中的人名我们问度娘就知道了）</li>
-</ul>
-</li>
-<li>关系识别<ul>
-<li>共现原理（见本节第一段）</li>
-<li>过滤器方法：设置一个阈值，边的权重小于阈值则删去</li>
-<li>网络细分：首先聚类（找到主要实体），然后删去与每个中心相连的不太重要的实体，但本方法和网络自身有较大关系</li>
-</ul>
-</li>
-</ul>
-<p>基于这样一个简单的原理，本项目有了一个可行的解决方案：我们人为的提供一个实体集合，利用共现原理，找到关系集合，再利用可视化软件转化输出结果即可，下面简单介绍Gephi软件。</p>
-<h2 id="4Gephi简介"><a href="#4Gephi简介" class="headerlink" title="$4Gephi简介"></a>$4Gephi简介</h2><p>百度百科：Gephi是一款开源免费跨平台基于JVM的复杂网络分析软件,，其主要用于各种网络和复杂系统，动态和分层图的交互可视化与探测开源工具</p>
-<p>本项目中，我们将边集和点集导入Gephi,调节各种参数以得到适合的可视化结果</p>
-<ul>
-<li><p>官网链接：<a href="https://gephi.org/" target="_blank" rel="noopener">官网</a></p>
-</li>
-<li><p>下载安装提示：安装Gephi不需要太多的技能，但记住Gephi是依赖JAVA环境的，需要配置jdk8（如果不想出一些奇怪的问题，最好和笔者的版本保持一致，Gephi是0.9.2）</p>
-</li>
-</ul>
-<p>顺带一提，如果部分读者和笔者之前一样还不太了解java的一些概念（jvm,jre,jdk），这里也给出相应的介绍：<a href="https://jingyan.baidu.com/article/425e69e6077283be15fc16ed.html" target="_blank" rel="noopener">java</a></p>
-<h2 id="4数据处理"><a href="#4数据处理" class="headerlink" title="$4数据处理"></a>$4数据处理</h2><p>有了以上的基本认识之后，我们就可以开始着手处理数据了</p>
-<h3 id="4-1-jieba库"><a href="#4-1-jieba库" class="headerlink" title="$4.1 jieba库"></a>$4.1 jieba库</h3><p>简单实用的链接<a href="https://www.jianshu.com/p/cdea68108cbf" target="_blank" rel="noopener">jieba</a></p>
-<p>三种分词模式：</p>
-<ul>
-<li>精确模式，试图将句子最精确地切开，适合文本分析</li>
-<li>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义</li>
-<li>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词</li>
-</ul>
-<h3 id="4-2-去除文本中的点"><a href="#4-2-去除文本中的点" class="headerlink" title="$4.2 去除文本中的点"></a>$4.2 去除文本中的点</h3><p>在实际使用jieba库的过程中，发现英文人名中的”·”作为特殊字符，对分词有非常大的影响，笔者一开始考虑阅读以下jieba文档，找找看有没有处理特殊字符的方法，但转念一想，我们可以将词典和书中的”·”都直接去掉，然后正常处理即可，本步骤代码如下：</p>
-<pre><code>def delete_point (infile, outfile):
-    inopen = open(infile, &apos;r&apos;, encoding=&quot;utf-8&quot;)
-    outopen = open(outfile, &apos;w&apos;, encoding=&quot;utf-8&quot;)
-    lines = inopen.readlines()
-    for line in lines:
-        for db in line:
-            if db == &apos;·&apos;:
-                continue
-            outopen.write(db)
-    inopen.close()
-    outopen.close()
-
-delete_point(&quot;book.txt&quot;, &quot;book1.txt&quot;)
-</code></pre><h3 id="4-3-边集点集的提取"><a href="#4-3-边集点集的提取" class="headerlink" title="$4.3 边集点集的提取"></a>$4.3 边集点集的提取</h3><p>names字典保存人物名字和出现频次</p>
-<p>relationships字典保存人物和对应的一个内部关系字典，该字典是和每个人物出现在同一行中的人名和出现频次</p>
-<p>lineNames列表，内部元素是为每行构建的列表，内部列表中保存每行出项的人名</p>
-<pre><code>import os, sys
-import jieba, codecs, math
-import jieba.posseg as pseg
-
-names = {}
-relationships = {}
-lineNames = []
-</code></pre><p>jieba载入自定义词典</p>
-<pre><code>jieba.load_userdict(&quot;dict1.txt&quot;)
-</code></pre><p>下面是自定义词典的截图：<img src="p1.png" alt="用户词典"></p>
-<p>其中第一列为词语，第二列为词频，第三列为词性（nr代表人名，其他词性可参考<a href="https://www.cnblogs.com/adienhsuan/p/5674033.html" target="_blank" rel="noopener">词性</a>，<a href="https://www.imooc.com/article/31577?block_id=tuijian_wz" target="_blank" rel="noopener">自定义词典</a>）</p>
-<p>对文本的每一行进行分词并记录每行出现的人名，统计人名频次和创建相应内部关系字典：</p>
-<pre><code>with codecs.open(&quot;book1.txt&quot;,&quot;r&quot;, &quot;utf-8&quot;) as f:
-    for line in f.readlines():
-        poss = pseg.cut(line)
-        lineNames.append([])
-        for w in poss:
-            if w.flag != &quot;nr&quot; or len(w.word) &lt; 2:
-                continue
-            lineNames[-1].append(w.word)
-            if names.get(w.word) is None:
-                names[w.word] = 0
-                relationships[w.word] = {}
-            names[w.word] += 1
-</code></pre><p>对每行重新扫描以记录边的权重（注意name1和name2是同一行中的）：</p>
-<pre><code>for line in lineNames:
-    for name1 in line:
-        for name2 in line:
-            if name1 == name2:
-                continue
-            if relationships[name1].get(name2) is None:
-                relationships[name1][name2] = 1
-            else:
-                relationships[name1][name2] += 1
-</code></pre><p>设置过滤器，也就是阈值（times &gt; 20 和 w &gt; 40），将结果写入csv格式文件（0.9.2Gephi只能导入csv），以输入Gephi：</p>
-<pre><code>with codecs.open(&quot;ohyol_node.csv&quot;, &quot;w&quot;, &quot;gbk&quot;) as f:
-    f.write(&quot;Id Label Weight\r\n&quot;)
-    for name, times in names.items():
-        if times &gt; 20:
-            f.write(name + &quot; &quot; + name + &quot; &quot; + str(times) + &quot;\r\n&quot;)
-
-with codecs.open(&quot;ohyol_edge.csv&quot;, &quot;w&quot;, &quot;gbk&quot;) as f:
-    f.write(&quot;Source Target Weight\r\n&quot;)
-    for name, edges in relationships.items():
-        for v, w in edges.items():
-            if w &gt; 40:
-                f.write(name + &quot; &quot;  + v + &quot; &quot; + str(w) + &quot;\r\n&quot;)
-</code></pre><h3 id="4-4-结果"><a href="#4-4-结果" class="headerlink" title="$4.4 结果"></a>$4.4 结果</h3><p>节点集：<img src="node.png" alt="节点集"></p>
-<p>边集：<img src="edge.png" alt="边集"></p>
-<h2 id="Gephi的使用"><a href="#Gephi的使用" class="headerlink" title="Gephi的使用"></a>Gephi的使用</h2><p>步骤：</p>
-<ul>
-<li>导入电子表（边表和节点表），分隔符选择空格，编码选择gbk</li>
-<li>选择数据资料视图，删除冗余的数据（笔者去除了奥雷，阿尔卡，明白等等无关或错误的数据），并且填补label列（使用复制数据到其他列）</li>
-<li>回到概览视图进行平均度和模块化计算（模块化计算时resolution设为0.5）</li>
-<li>设置相应的外观（主窗口左栏）</li>
-<li>设置布局为force atlas，斥度设为200000，吸引强度为1，点击运行，稍后暂停</li>
-<li>得到下图：<img src="p2.png" alt="概览"></li>
-<li>切换到预览视图，左栏显示标签，调节字体，比例大小，点击刷新</li>
-<li>得到下图：<img src="p3.png" alt="预览"></li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过复现本项目，希望读者有以下收获：</p>
-<ul>
-<li>熟悉共现网络</li>
-<li>熟悉Gephi及其使用</li>
-<li>了解jvm,jre,jdk三者关系</li>
-<li>熟悉jieba库的相关函数，jieba的三种分词模式</li>
-<li>熟悉如何从本文中挖掘相应的关系的流程</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/30/co-occurrence/" data-id="cjvm3fbft0006egupq9b44xhi" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-computer-graphics" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/16/computer-graphics/" class="article-date">
-  <time datetime="2019-04-16T05:22:06.000Z" itemprop="datePublished">2019-04-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/16/computer-graphics/">computer_graphics</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="计算机图形学基础算法原理及实现"><a href="#计算机图形学基础算法原理及实现" class="headerlink" title="计算机图形学基础算法原理及实现"></a>计算机图形学基础算法原理及实现</h1><hr>
-<p><strong>copyright: 徐渊 大连理工大学电信学部</strong></p>
-<p><strong>gitbub: AlfredZee.github.io</strong></p>
-<p><strong>reference: 计算机图形学</strong></p>
-<p><strong>time: 2019-4-16</strong></p>
-<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
-<hr>
-<h2 id="光栅化"><a href="#光栅化" class="headerlink" title="光栅化"></a>光栅化</h2><p>本篇博客的算法及实现皆基于光栅</p>
-<ul>
-<li>几个重要概念：<ul>
-<li>光子：显示器能显示的最小发光点</li>
-<li>屏幕（光栅）分辨率：屏幕能显示的光子个数</li>
-<li>显示分辨率（显示模式）：显示控制器所能提供的显示模式分辨率，对于：<ul>
-<li>文本显示：屏幕能显示的字符数</li>
-<li>图形显示：屏幕能显示的像素点</li>
-</ul>
-</li>
-<li>像素点：图形显示时按图形显示分辨率所能显示的最小的元素点</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>光栅化：<ul>
-<li>把一个显示屏幕看成许多水平，垂直，等距离的直线</li>
-<li>只有直线的交点可以被显示</li>
-<li>求图形在光栅上的最佳逼近点</li>
-</ul>
-</li>
-</ul>
-<h2 id="DDA（Digital-Differential-Analyzer）"><a href="#DDA（Digital-Differential-Analyzer）" class="headerlink" title="DDA（Digital Differential Analyzer）"></a>DDA（Digital Differential Analyzer）</h2><p>如何在光栅化的视角下构建直线：</p>
-<h3 id="David-F-Rogers描述（所有象限）"><a href="#David-F-Rogers描述（所有象限）" class="headerlink" title="David F.Rogers描述（所有象限）"></a>David F.Rogers描述（所有象限）</h3><p>1.原理</p>
-<p>我们在光栅下任意画一条直线：</p>
-<p><img src="cg1.png" alt="直线与栅格"></p>
-<p>发现：</p>
-<ul>
-<li>一条直线和栅格有许多交点</li>
-<li>交点的个数被起始点和终止点确定</li>
-<li>我们要模拟的直线可以用和交点最近的栅格点来刻画</li>
-<li>从起始点起，我们可以按照某种方式找到所有需要的栅格点，比如说0 &lt;= k &lt; 1时，我们可以从起始点的round(x)值起，每次增1， 求出下一个在栅格上的点的y值。</li>
-<li>基于以上的思考我们有如下实现 </li>
-</ul>
-<p>2.实现</p>
-<pre><code>void DFR(float xe, float ye, float xs, float ys, int value){
-
-    float len, steptx, stepty;
-    len = max(abs(xe - xs), abs(ye - ys));
-    steptx = (xe - xs) / len;
-    stepty = (ye - ys) / len;
-
-    float x, y
-    x = xs;
-    y = ys;
-
-    int i = 1;
-    while(i &lt;= len){
-        darw_point(round(x), round(y), value);
-        x += steptx;
-        y += stepty;
-        i++;
-    }
-}
-</code></pre><h3 id="James-D-Foley描述（第一象限，k-lt-1）"><a href="#James-D-Foley描述（第一象限，k-lt-1）" class="headerlink" title="James D.Foley描述（第一象限，k &lt; 1）"></a>James D.Foley描述（第一象限，k &lt; 1）</h3><p>1.原理</p>
-<p>J的算法其实是省去了D的i变量，既然如果以x为搜索方向，x每次加1，那么可以用x去做循环量，实质上是D的算法的特殊化，且未考虑首点不在光栅上    </p>
-<p>2.实现</p>
-<pre><code>void JDF(int xe, int ye, int xs, int ys, int value){//注意这里的int
-
-    float dx, dy, k;
-    dx = xe - xe;
-    dy = ye - ys;
-    k = dy / dx;
-
-    float y = ys;
-    for(int x = xs; x &lt;= xe; x++){
-        darw_point(x, round(y), value);
-        y += k;
-    }
-}
-</code></pre><h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><ul>
-<li>David F.Rogers:<ul>
-<li>逼近点不是直线的一个最好的逼近</li>
-</ul>
-</li>
-<li>James D.Foley:<ul>
-<li>首点可能不在象素点上</li>
-<li>只给出0-45第一个八卦象限的描述</li>
-<li>为了避免累计误差采用斜率k</li>
-</ul>
-</li>
-</ul>
-<h3 id="任意方向直线插补算法"><a href="#任意方向直线插补算法" class="headerlink" title="任意方向直线插补算法"></a>任意方向直线插补算法</h3><h2 id="Bresenham算法"><a href="#Bresenham算法" class="headerlink" title="Bresenham算法"></a>Bresenham算法</h2><p>进一步从光栅角度理解直线，总存在一个方向，当前点在该方向增加1，下一个点在另一个方向要么增加0，要么增加1，中点0.5是一个衡量的标准。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>假设上述方向为x</p>
-<p>（xi,y）为直线上当前点的坐标</p>
-<p>（xi,yi）为当前点对应的栅格点</p>
-<p>d定义为y + k - yi，初值为0</p>
-<p>若d &gt; 1, d -= 1;</p>
-<p>若d &gt;= 0.5, yi+1 = yi + 1; </p>
-<p>若d &lt; 0.5, yi+1 = yi;</p>
-<p>d += k</p>
-<p>0.5有点不舒服，我们加个偏量-0.5</p>
-<p>e定义为d - 0.5, 初值为-0.5</p>
-<p>若e &gt;= 0, …，e -= 1;</p>
-<p>若e &lt; 0, …</p>
-<p>e += k</p>
-<p>注意：这里没有判断e &gt; 0.5是对d的进一步分析，实际是合到了d &gt;= 0.5的判断处处理，只使用d的方法判断会有问题，比如当d增加到0.7，而k=0.1，则yi+1在yi上一行，而yi+2又在yi+1上一行，而实际yi+1和yi+2在同一行，如果使用e的处理，则e&gt;=0，d&gt;=0.5时，就已经-1，这样再增加k就不会造成上述问题。</p>
-<h3 id="Rogers描述"><a href="#Rogers描述" class="headerlink" title="Rogers描述"></a>Rogers描述</h3><pre><code>void BresenhamR(float xe, float ye, float xs, float ys){
-
-    int x, y, dx, dy;
-    float e;
-    x = xs;
-    y = ys;
-    dx = xe - xs;
-    dy = ye - ys;
-    e = dy / dx - 0.5;
-
-    for(int i = 1 ; i &lt;= x; i++){
-
-        draw_point(x, y, value);
-
-        if(e &gt;= 0){
-            y += 1;
-            e -= 1;    
-        }
-        x += 1;
-        e += dy / dx;
-    }
-}
-</code></pre><h3 id="整数Bresenham算法"><a href="#整数Bresenham算法" class="headerlink" title="整数Bresenham算法"></a>整数Bresenham算法</h3><pre><code>void Bresenhan(float xe, float ye, float xs, float ys){
-    int x, y, dx, dy, e;
-    x = xs;
-    y = ys;
-    dx = xe - xs;
-    dy = ye - ys;
-    e = 2 * dy - dxl;
-
-    for(int i = 1; i &lt;= xe; i++){
-
-        draw_point(x, y, value);
-
-        if(e &gt; 0){
-            y += 1;
-            e -= 2 * dx;
-        }
-        x += 1;
-        e += 2 * dy;
-    }
-}
-</code></pre><h3 id="一般Bresenham算法"><a href="#一般Bresenham算法" class="headerlink" title="一般Bresenham算法"></a>一般Bresenham算法</h3><h2 id="中点圆算法"><a href="#中点圆算法" class="headerlink" title="中点圆算法"></a>中点圆算法</h2><p>中点圆算法的思想其实继承于Bresenham算法，也是已知当前点的格点,下一个点的逼近点有两个候选点，同一行的，或者下一行的（对于角度再45-90来说），利用这两个候选点是否在圆内可以选定候选点：在圆内，选取同一行的，否则选取下一行的，可参照下图：</p>
-<p><img src="cg3.png" alt="中点圆算法示意"></p>
-<h3 id="中点圆整数算法实现"><a href="#中点圆整数算法实现" class="headerlink" title="中点圆整数算法实现"></a>中点圆整数算法实现</h3><p>我们可以定义函数d = F(x,y) = x<em>x + y</em>y - r*r</p>
-<p>根据上图，我们可以求出dm</p>
-<p>再求出dmt,相减得 2*x + 3</p>
-<p>同理求出dmb,相减得 2<em>x - 2</em>y + 5</p>
-<p>这意味着什么，我们求一次d需要做3次乘方，但是通过我们求得的递推式，可以化简到用简单乘法来实现。</p>
-<pre><code>void MidPointCircle(int r, int value){
-    int x = 0, y = r;
-    float d = 1 - r; // 注意1
-    while(y &gt; x){
-        draw_point(x, y, value);
-        if(d &lt; 0){
-            d = 2 * x + 3;
-        }
-        else{
-            d = 2 * x - 2 * y + 5;
-            y--;
-        }
-        x++;
-    }
-}
-</code></pre><h3 id="中点圆整数优化算法实现"><a href="#中点圆整数优化算法实现" class="headerlink" title="中点圆整数优化算法实现"></a>中点圆整数优化算法实现</h3><p>####我们重新考虑上述化简算法的思想，其实如果大家对高中圆相关的题目比较有感觉的话，就会知道（x+a）<em> (x+a) + (y +b)</em>(y + b) - r*r这个式子非常好，如果我们用两个点带入其中，将他们相减，就可以约去乘方项，如果再结合一下递推公式我们又可以化去一次方项，从而得到常数加法量级的算法！####</p>
-<p>我们将dmt和dmb都递推一项，比如对于dmt来 说，当前点的下一个点为T，而下一个点又为T，则d2t为(2<em>(x + 1) + 3) - (2</em>x + 3） = 2,<br>同理求得如果下一个点为B，则为2；若当前点的下一个点为B，而下一个点为T，则为2，否则为4；</p>
-<pre><code>void MidPOintCircle(int r, int value){
-    int x = 0, y = r, d = 1 - r, dt = 3, db = - 2 * r + 5;
-    while(y &gt;= x){
-        draw_point(x, y, value);
-        if(d &lt; 0){
-            d = d + dt;
-            dt += 2;
-            db += 2;
-        }
-        else{
-            d = d + db;
-            dt += 2;
-            db += 4;
-            y--;
-        }
-        x++;
-    }
-}
-</code></pre><p>以下是笔者用opengl实现的中点圆整数画圆算法：</p>
-<p>visual stdio 2017 安装opengl可参照<a href="https://www.cnblogs.com/flylinmu/p/7823019.html" target="_blank" rel="noopener">how to get opengl</a></p>
-<pre><code>#include &lt;windows.h&gt;
-#include &lt;GL/glut.h&gt;
-#include &lt;GL/gl.h&gt;
-
-//copyright:DLUT CS xuyuan 1601
-
-void init(void)
-{
-    glClearColor(0, 0, 0, 0);
-    glMatrixMode(GL_PROJECTION);
-    gluOrtho2D(0.0, 600.0, 0.0, 400.0);
-}
-
-void MidPointCircle(void)
-{
-
-    glClear(GL_COLOR_BUFFER_BIT);
-    glPointSize(1);
-    glColor3f(0, 0, 1);
-
-    glBegin(GL_LINES);
-    for (int i = 1; i &lt; 600; i+=10) {
-        glVertex2i(i, 0);
-        glVertex2i(i, 400);
-    }
-
-    for (int i = 1; i &lt; 400; i+=10) {
-        glVertex2i(0, i);
-        glVertex2i(600, i);
-    }
-    glEnd();
-
-    glFlush();
-
-    int r = 100;
-    int x = 0;
-    int y = r;
-    int d = 125 - 10 * r;
-    int dt = 300; 
-    int db = -20 * r + 500;
-
-    glColor3f(1, 0, 0);
-    glPointSize(5);
-    while (y &gt;= x) {
-
-        glBegin(GL_POINTS);
-        glVertex2i(200 + x,200 + y);
-        glVertex2i(200 + x,200 - y);
-        glVertex2i(200 - x,200 + y);
-        glVertex2i(200 - x,200 - y);
-        glVertex2i(200 + y,200 + x);
-        glVertex2i(200 + y,200 - x);
-        glVertex2i(200 - y,200 + x);
-        glVertex2i(200 - y,200 - x);
-        glEnd();
-        glFlush();
-
-        if (d &lt; 0) {
-            d = d + dt;
-            dt += 200;
-            db += 200;
-        }
-        else {
-            d = d + db;
-            dt += 200;
-            db += 400;
-            y-= 10;
-        }
-        x+= 10;
-    }
-
-     r = 100;
-     x = 0;
-     y = r;
-     d = 1 -  r;
-     dt = 3;
-     db = (-2 * r + 5) ;
-
-    glColor3f(0, 1, 0);
-    glPointSize(1);
-
-    while (y &gt;= x) {
-
-        glBegin(GL_POINTS);
-        glVertex2i(200 + x, 200 + y);
-        glVertex2i(200 + x, 200 - y);
-        glVertex2i(200 - x, 200 + y);
-        glVertex2i(200 - x, 200 - y);
-        glVertex2i(200 + y, 200 + x);
-        glVertex2i(200 + y, 200 - x);
-        glVertex2i(200 - y, 200 + x);
-        glVertex2i(200 - y, 200 - x);
-        glEnd();
-        glFlush();
-
-        if (d &lt; 0) {
-            d = d + dt;
-            dt += 2;
-            db += 2;
-        }
-        else {
-            d = d + db;
-            dt += 2;
-            db += 4;
-            y -= 1;
-        }
-        x += 1;
-    }
-}
-
-int main(int argc, char**argv)
-{
-
-    glutInit(&amp;argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowPosition(50, 100);
-    glutInitWindowSize(400, 300);
-    glutCreateWindow(&quot;homework&quot;);
-    init();
-    glutDisplayFunc(MidPointCircle);
-    glutMainLoop();
-    return 0;
-}
-</code></pre><p>以下是笔者实验的结果：</p>
-<p><img src="cg2.png" alt="opengl实现中点圆整数"></p>
-<h2 id="Cohen-Sutherland算法（以下算法为非光栅化）"><a href="#Cohen-Sutherland算法（以下算法为非光栅化）" class="headerlink" title="Cohen-Sutherland算法（以下算法为非光栅化）"></a>Cohen-Sutherland算法（以下算法为非光栅化）</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>二位观察中，需要在观察坐标系下对窗口进行裁剪，保留窗口内的图形，去掉窗口外的</p>
-<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>窗口是两条水平和两条垂直的无限长直线围成的矩形，这样其实就把一个二维平面划分成9各区域，对中间区域窗口而言，其他任一区域可以用在他的左边，在他的右边，在他的上面，在他的下面描述，自然我们想到可以用4位二进制数位来表示一个区域，比如最低位表示是否在左边，前一位表示是否在右边，第二位表示是否在下面，最高位表示是否在上面，比如右上区域表示为1010，窗口区域表示为0000</p>
-<h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><ul>
-<li>首先很容易想到，如果线段的两个端点都在窗口内，那么直线段全部可见，也就是说编码之或为0</li>
-<li>再来考虑线段全部在窗口外的情况，如果一条线段的两个端点都在都在窗口的同一侧，那么这条线段一定在窗口外边，也就是说编码之与不为0</li>
-<li>否则需要求出交点进行判断</li>
-</ul>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><pre><code>void encode(float x, float y, int* code, Win w){
-    int t = 0;
-    if(x &lt; win.xl) t = t | letf;
-    else if(x &gt; win.xr) t = t | right;
-    if(x &lt; win.yb) t = t | bottom;
-    else if(x &gt; win.yt) t = t | top;
-
-    *code = t;
-    return;
-}
-
-void CSLineClip(float x1, float y1, float x2, float y2, Win w){
-    int code, code1, code2;
-    float x, y;
-    encode(x1, y1, &amp;code1, win);
-    encode(x2, y2, &amp;code2, win);
-    while(code1 != 0 || code2 != 0){
-        if(code1 &amp; code2 != 0)
-            return;
-        code = code1;
-        if(code == 0) code = code2;
-        if((code &amp; left) != 0){
-            x = win.xl;
-            y = y1 + (y2 - y1) / (x2 - x1) * (win.xl - x1);
-        }
-        else if()...//same with r,b,t
-        if(code == code1){
-            x1 = x;
-            y1 = y;
-            encode(x, y, &amp;code1, win);
-        }
-        else {
-            x2 = x;
-            y2 = y;
-            encode(x, y, &amp;code, win);
-        }
-    }
-    draw_line(x1, y1, x2, y2);
-    return;
-}
-</code></pre><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>编码的方式实现了完全可见和不可见的直线段快速接受和拒绝</p>
-<p>求交过程复杂，冗余计算，浮点计算</p>
-<h2 id="Liang-Barsky算法"><a href="#Liang-Barsky算法" class="headerlink" title="Liang-Barsky算法"></a>Liang-Barsky算法</h2><p>该算法比较复杂，主要思想是直线的参数方程（设线段方向为x1到x2）</p>
-<p>x = x1 + u * (x2 - x1)</p>
-<p>y = y1 + u * (y2 - y1)</p>
-<p>尤其注意这里的u，对后面算法的推演有重要意义</p>
-<p>u = 0，x = x1</p>
-<p>u = 1, x = x2</p>
-<p>如果一个点在窗口内，可以得到4个不等式</p>
-<p>left &lt;= x1 + u * (x2 - x1) &lt;= right</p>
-<p>bottom &lt;= y1 + u * (y2 - y1) &lt;= top</p>
-<p>我们将不等式移项变换</p>
-<p>u * (x1 - x2) &lt;= x1 - left</p>
-<p>u * (x2 - x1) &lt;= right - x1</p>
-<p>u * (y1 - y2) &lt;= y1 - bottom</p>
-<p>u * (y2 - y1) &lt;= top - y1</p>
-<p>有 u * pk &lt;= qk（这里的k可以理解为边界）</p>
-<p>如果pk=0（直线平行于边界），此时如果qk&lt;0（思考上面四个不等式的qk的意义），线段完全在窗口外，反之则在内部</p>
-<p>如果pk&lt;0,代表线段从外部向内，pk&gt;0，代表线段从内向外，可以求出与边界k延长线的交点的u值</p>
-<p>注意这里的从外向内和从内向外的含义，对于各条边界来说，将平面分为两个部分，一个部分含有窗口称为内，另一部分不含窗口称为外，这样对于一条直线，对于每条边界，必定从一部分穿越到另一部分，并且，如果不平行与边界，从内到外有两次，从外到内有两次（平行均为一次）</p>
-<p>思考到这里，我们就可以找到算法的核心部分，将u按上述的两种情况分为两堆，一堆为从外向内，pk&lt;0，我们要取u=max(0, u1, u2), 一堆为从内向外，pk&gt;0,我们要取u=min(1，u3，u4)，这里的max和min都是为了取实边界上的点（靠近窗口）</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul>
-<li>输入</li>
-<li>如果为平行于坐标轴的直线<ul>
-<li>平行于y，判断q1,q2是否小于0，有一个满足，则不在窗口内，否则，计算u1,u2</li>
-<li>平行于x，同理（q3,q4,u3,u4赋给u1,u2）</li>
-</ul>
-</li>
-<li>否则，计算u1,u2,u3,u4算出umax,umin付给u1,u2</li>
-<li>如果u1&lt;u2，计算在窗口内坐标，否则在窗口外，结束</li>
-<li>绘制</li>
-</ul>
-<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><pre><code>int clip(float p, float q, float* t1, float* t2){
-    float t;
-    int sign = 1;
-    if(p &lt; 0){
-        t = q / p;
-        if(t &gt; *t2)
-            sign = 0;
-        else if(t &gt; *t1)
-            *t1 = t;
-    }
-    else if (p &gt; 0){
-        t = q / p;
-        if(t &lt; *t1)
-            sign = 0;
-        else if(t &lt; *t2)
-            *t2 = t;
-    }
-    else if(q &lt; 0) sign = 0; 
-    return sign;
-}
-
-void LBClioLine(int left, int right, int bottom, int top, float x1, float y1, float y1, float y2){
-    float t1 = 0, t2 = 1;
-    if(clip(x1 - x2, x1 - left, &amp;t1, &amp;t2))
-        if(clip(x2 - x1, right - x1, &amp;t1, &amp;t2)){
-            if(clip(y1 - y2, y1 - bottom, &amp;t1, &amp;t2))
-                if(clip(y2 - y1, top - y2, &amp;t1, &amp;t2))
-                    if(t2 &lt; 1){
-                        x2 = x1 + t2 * dx;
-                        y2 = y1 + t2 * dy;
-                    }
-                    if(t1 &gt; 0){
-                        x1 = x1 + t1 * dx;
-                        y1 = y1 + t1 * dy;
-                    }
-                    draw_line(x1, y1, x2, y2);
-        }    
-}
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/16/computer-graphics/" data-id="cjvm3fbfl0004egupwuxtgq30" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CG/">CG</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-meteorological_data_analysis" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/13/meteorological_data_analysis/" class="article-date">
-  <time datetime="2019-04-12T16:00:00.000Z" itemprop="datePublished">2019-04-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/project-record/">project record</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/meteorological_data_analysis/">meteorological data analysis</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析"><a href="#利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析" class="headerlink" title="利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析"></a>利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析</h1><hr>
-<p><strong>copyright: 徐渊 大连理工大学电信学部</strong></p>
-<p><strong>gitbub: AlfredZee.github.io</strong></p>
-<p><strong>reference: python数据分析实战，实验楼</strong></p>
-<p><strong>time: 2019-4-13</strong></p>
-<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
-<hr>
-<h2 id="1项目的提出及意义"><a href="#1项目的提出及意义" class="headerlink" title="$1项目的提出及意义"></a>$1项目的提出及意义</h2><p>本项目是个人项目，均由笔者一人完成，在确定项目的研究对象时，选取了笔者生活的长江三角洲，主要目的是锻炼用python处理数据的能力，故选取了比较一般的，易获取的气象数据进行实验，同时也增进对故乡的了解</p>
-<h2 id="2数据获取"><a href="#2数据获取" class="headerlink" title="$2数据获取"></a>$2数据获取</h2><p>本次实验的气象数据取自Openweathermap，该网站上有全球各大城市的历史，实时以及未来预测的气象数据。</p>
-<p>该网站有以下注意点：</p>
-<ul>
-<li>但针对不同权限的用户，有不同的权限限制，freeer用户只能获取实时，未来5天每三小时预报的数据，具体可以参照<a href="https://openweathermap.org/price" target="_blank" rel="noopener">price</a></li>
-<li>下载该网站的数据需要先注册用户，然后用自己的API KEY去调用网站的API，API格式可以参照<a href="https://openweathermap.org/forecast5" target="_blank" rel="noopener">api</a>(5 days per 3 hours)</li>
-<li>调用API时可以按照city name查询（如果你不想自己写脚本去查城市对应的id），注意在城市后面加上country(比如中国CN)，不然可能检索到另一城市数据</li>
-<li>网站提供的数据为json格式核xml格式，如果您非常富有，可以花上10$/city去下载6年以内的数据，并且保存为csv格式，或者您可以查看第三部分数据预处理，将json格式数据转换为csv格式</li>
-<li>特别注意该API文档网站上的example链接并非调用api的链接，而是附着在文档网站上的静态链接，切勿像笔者对着它改了半天还是401，404</li>
-</ul>
-<p>本次实验的数据获取：</p>
-<ul>
-<li>气象数据：刚开始笔者从广泛的长三角地区获取数据（从浙江中部到江苏北部），处理了一部分后发现并没有规律可循，思考后觉得可能时维度跨越过大造成干扰，所以之后改选了维度在30左右（只含江苏中南部和安徽两城市），您在选取城市时请务必考虑此问题，不然就会像笔者一样在数据处理时发现问题再回来重新下载数据，非常浪费时间</li>
-<li>离海距离：该数据的获取可能不太精准，是笔者从高德地图测距获得（请务必选择高德地图）（离海距离这个数据好像实在没有直接获取的地方）</li>
-<li>本次实验选取的城市最好满足相同的条件（受外部干扰少），比如苏州和无锡，紧挨着太湖，一定有较大的偏差，因该避免选取</li>
-<li>最终选择的城市为：启东，南通，泰州，海门，南京，扬州，镇江，马鞍山，合肥，巢湖，滁州</li>
-</ul>
-<h2 id="3数据预处理"><a href="#3数据预处理" class="headerlink" title="$3数据预处理"></a>$3数据预处理</h2><p>本实验的数据预处理主要为json到csv的转换，以及添加离海距离这一列</p>
-<ul>
-<li><p>1.需要import的库：</p>
-<pre><code>import pandas as pd
-import numpy as np
-import json
-</code></pre></li>
-<li><p>2.从文件中加载数据：</p>
-<pre><code># get path and load data
-jsonfile_path = &quot;/home/singularity/桌面/weather_ana/jsonfile/maanshan.json&quot;
-with open(jsonfile_path, &quot;r&quot;, encoding = &quot;utf-8&quot;) as j_obj:
-json_data = json.load(j_obj)
-</code></pre></li>
-<li><p>3.从嵌套列表字典中获取相应key的value的两个函数：</p>
-<pre><code># 2 functions for data fetching
-def get_target_value(key, dic, tmp_list):
-    &quot;&quot;&quot;
-    :param key: 目标key值
-    :param dic: JSON数据
-    :param tmp_list: 用于存储获取的数据
-    :return: list
-    &quot;&quot;&quot;
-    if not isinstance(dic, dict) or not isinstance(tmp_list, list):  # 对传入数据进行格式校验
-        return &apos;argv[1] not an dict or argv[-1] not an list &apos;
-
-    if key in dic.keys():
-        tmp_list.append(dic[key])  # 传入数据存在则存入tmp_list
-    else:
-        for value in dic.values():  # 传入数据不符合则对其value值进行遍历
-            if isinstance(value, dict):
-                get_target_value(key, value, tmp_list)  # 传入数据的value值是字典，则直接调用自身
-            elif isinstance(value, (list, tuple)):
-                _get_value(key, value, tmp_list)  # 传入数据的value值是列表或者元组，则调用_get_value
-    return tmp_list
-
-def _get_value(key, val, tmp_list):
-    for val_ in val:
-        if isinstance(val_, dict):  
-            get_target_value(key, val_, tmp_list)  # 传入数据的value值是字典，则调用get_target_value
-        elif isinstance(val_, (list, tuple)):
-            _get_value(key, val_, tmp_list)
-</code></pre></li>
-<li><p>4.从内存取出数据（下载的数据每个城市有38条，而name这个key在json字典中只有1个，dist为自己添加的列）：</p>
-<pre><code># get data from json
-name_lst = get_target_value(&apos;name&apos;, json_data, [])
-city = name_lst[0]
-name_lst = [city for i in range (1, 39)]
-temp_lst = get_target_value(&apos;temp&apos;, json_data, [])
-temp_min_lst = get_target_value(&apos;temp_min&apos;, json_data, [])
-temp_max_lst = get_target_value(&apos;temp_max&apos;, json_data, [])
-sea_level_lst = get_target_value(&apos;sea_level&apos;, json_data, [])
-grnd_level_lst = get_target_value(&apos;grnd_level&apos;, json_data, [])
-pressure_lst = get_target_value(&apos;pressure&apos;, json_data, [])
-humidity_lst = get_target_value(&apos;humidity&apos;, json_data, [])
-speed_lst = get_target_value(&apos;speed&apos;, json_data, [])
-deg_lst = get_target_value(&apos;deg&apos;, json_data, [])
-description_lst = get_target_value(&apos;description&apos;, json_data, [])
-time_lst = get_target_value(&apos;dt_txt&apos;,json_data,[])
-dist_qidong_lst = [23.5 for i in range(1, 39)]
-dist_haimen_lst = [66.10 for i in range(1, 39)]
-dist_nantong_lst = [89 for i in range(1, 39)]
-dist_taizhou_lst = [122 for i in range(1, 39)]
-dist_yangzhou_lst = [182 for i in range(1, 39)]
-dist_zhenjiang_lst = [190 for i in range(1, 39)]
-dist_nanjing_lst = [258 for i in range(1, 39)]
-dist_chuzhou_lst = [293 for i in range(1, 39)]
-dist_maanshan_lst = [330 for i in range(1, 39)]
-dist_chaohu_lst = [390 for i in range(1, 39)]
-dist_hefei_lst = [440 for i in range(1, 39)]
-</code></pre></li>
-<li><p>5.利用pandas构建data frame，拼接后输出：</p>
-<pre><code># transform data to column
-name_se = pd.Series(name_lst, name = &apos;name&apos;)
-temp_se = pd.Series(temp_lst, name = &apos;temp&apos;)
-temp_min_se = pd.Series(temp_min_lst, name = &apos;temp_min&apos;)
-temp_max_se = pd.Series(temp_max_lst, name = &apos;temp_max&apos;)
-sea_level_se = pd.Series(sea_level_lst, name = &apos;sea_level&apos;)
-grnd_level_se = pd.Series(grnd_level_lst, name = &apos;grnd_level&apos;)
-pressure_se = pd.Series(pressure_lst, name = &apos;pressure&apos;)
-humidity_se = pd.Series(humidity_lst, name = &apos;humidity&apos;)
-speed_se = pd.Series(speed_lst, name = &apos;speed&apos;)
-deg_se = pd.Series(deg_lst, name = &apos;deg&apos;)
-description_se = pd.Series(description_lst, name = &apos;description&apos;)
-time_se = pd.Series(time_lst, name = &apos;time&apos;)
-
-# add dist column
-dist_qidong_se = pd.Series(dist_qidong_lst, name = &apos;dist&apos;)
-dist_haimen_se = pd.Series(dist_haimen_lst, name = &apos;dist&apos;)
-dist_nantong_se = pd.Series(dist_nantong_lst, name = &apos;dist&apos;)
-dist_taizhou_se = pd.Series(dist_taizhou_lst, name = &apos;dist&apos;)
-dist_yangzhou_se = pd.Series(dist_yangzhou_lst, name = &apos;dist&apos;)
-dist_zhenjiang_se = pd.Series(dist_zhenjiang_lst, name = &apos;dist&apos;)
-dist_nanjing_se = pd.Series(dist_nanjing_lst, name = &apos;dist&apos;)
-dist_chuzhou_se = pd.Series(dist_chuzhou_lst, name = &apos;dist&apos;)
-dist_maanshan_se = pd.Series(dist_maanshan_lst, name = &apos;dist&apos;)
-dist_chaohu_se = pd.Series(dist_chaohu_lst, name = &apos;dist&apos;)
-dist_hefei_se = pd.Series(dist_hefei_lst, name = &apos;dist&apos;)
-# put columns together and output
-result_df = pd.concat([name_se, temp_se,temp_min_se, temp_max_se, 
-                        sea_level_se, grnd_level_se, pressure_se, 
-                        humidity_se, speed_se, deg_se, description_se,
-                        time_se, dist_maanshan_se], axis = 1)
-result_df.to_csv(&apos;maanshan.csv&apos;, index = False, sep = &apos;,&apos;)
-</code></pre></li>
-<li><p>说明：上述处理脚本仅为马鞍山市的csv文件输出，其他城市请改变2中json加载文件和5中csv输出文件（由于是一个一个文件处理，如果一开始城市没选好就要重新改一遍文件名再一个一个输出，再次提醒确定好数据的重要性！）</p>
-<h2 id="4数据分析"><a href="#4数据分析" class="headerlink" title="$4数据分析"></a>$4数据分析</h2></li>
-<li><p>1.创建csv数据加载脚本</p>
-<pre><code>import pandas as pd
-
-df_qidong = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/qidong.csv&apos;)
-df_haimen = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/haimen.csv&apos;)
-df_nantong = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/nantong.csv&apos;)
-df_yangzhou = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/yangzhou.csv&apos;)
-df_zhenjiang = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/zhenjiang.csv&apos;)
-df_nanjing = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/nanjing.csv&apos;)
-df_chuzhou = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/chuzhou.csv&apos;)
-df_maanshan = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/maanshan.csv&apos;)
-df_chaohu = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/chaohu.csv&apos;)
-df_hefei = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/hefei.csv&apos;)
-df_taizhou = pd.read_csv(&apos;/home/singularity/桌面/weather_ana/csvfile_30/taizhou.csv&apos;)
-</code></pre></li>
-<li><p>2.生成离海距离-温度，离海距离-气压，离海距离-适度，离海距离-风速的图像，下以离海距离-温度为例：</p>
-</li>
-</ul>
-<pre><code>import data_load as dl
-
-import matplotlib.pyplot as plt
-
-dist_lst = [dl.df_qidong[&apos;dist&apos;][0],
-            dl.df_haimen[&apos;dist&apos;][0],
-            dl.df_nantong[&apos;dist&apos;][0],
-            dl.df_taizhou[&apos;dist&apos;][0],
-            dl.df_yangzhou[&apos;dist&apos;][0],
-            dl.df_zhenjiang[&apos;dist&apos;][0],
-            dl.df_nanjing[&apos;dist&apos;][0],
-            dl.df_chuzhou[&apos;dist&apos;][0],
-            dl.df_maanshan[&apos;dist&apos;][0],
-            dl.df_chaohu[&apos;dist&apos;][0],
-            dl.df_hefei[&apos;dist&apos;][0],
-]
-
-temp_lst = [dl.df_qidong[&apos;temp&apos;].sum()/38,
-            dl.df_haimen[&apos;temp&apos;].sum()/38,
-            dl.df_nantong[&apos;temp&apos;].sum()/38,
-            dl.df_taizhou[&apos;temp&apos;].sum()/38,
-            dl.df_yangzhou[&apos;temp&apos;].sum()/38,
-            dl.df_zhenjiang[&apos;temp&apos;].sum()/38,
-            dl.df_nanjing[&apos;temp&apos;].sum()/38,
-            dl.df_chuzhou[&apos;temp&apos;].sum()/38,
-            dl.df_maanshan[&apos;temp&apos;].sum()/38,
-            dl.df_chaohu[&apos;temp&apos;].sum()/38,
-            dl.df_hefei[&apos;temp&apos;].sum()/38,
-]
-
-temp_max_lst = [dl.df_qidong[&apos;temp&apos;].max(),
-            dl.df_haimen[&apos;temp&apos;].max(),
-            dl.df_nantong[&apos;temp&apos;].max(),
-            dl.df_taizhou[&apos;temp&apos;].max(),
-            dl.df_yangzhou[&apos;temp&apos;].max(),
-            dl.df_zhenjiang[&apos;temp&apos;].max(),
-            dl.df_nanjing[&apos;temp&apos;].max(),
-            dl.df_chuzhou[&apos;temp&apos;].max(),
-            dl.df_maanshan[&apos;temp&apos;].max(),
-            dl.df_chaohu[&apos;temp&apos;].max(),
-            dl.df_hefei[&apos;temp&apos;].max(),
-]
-
-temp_min_lst = [dl.df_qidong[&apos;temp&apos;].min(),
-            dl.df_haimen[&apos;temp&apos;].min(),
-            dl.df_nantong[&apos;temp&apos;].min(),
-            dl.df_taizhou[&apos;temp&apos;].min(),
-            dl.df_yangzhou[&apos;temp&apos;].min(),
-            dl.df_zhenjiang[&apos;temp&apos;].min(),
-            dl.df_nanjing[&apos;temp&apos;].min(),
-            dl.df_chuzhou[&apos;temp&apos;].min(),
-            dl.df_maanshan[&apos;temp&apos;].min(),
-            dl.df_chaohu[&apos;temp&apos;].min(),
-            dl.df_hefei[&apos;temp&apos;].min(),
-]
-
-&apos;&apos;&apos;
-    1.use codes below only when you need to get the fig for you still
-      need codes above to do SVR 
-    2.replace temp_lst with temp_min_lst and temp_max_lst
-&apos;&apos;&apos;
-
-&apos;&apos;&apos;
-fig, ax = plt.subplots()
-plt.plot(dist_lst, temp_lst, &apos;go&apos;)
-plt.savefig(&quot;/home/singularity/桌面/weather_ana/result/dist_avetemp_conn&quot;)
-plt.show()
-&apos;&apos;&apos;
-</code></pre><ul>
-<li>3.根据图像猜测可能存在的线性关系：</li>
-</ul>
-<p>通过下面的离海距离-日均气温，我们发现好像两者并没有什么关系，我们猜想可能最高气温和最低气温相互抵消，需要进一步分析离海距离和最高，最低气温的关系。</p>
-<p>this is a test</p>
-<p><img src="dist_avetemp_conn.png" alt="离海距离-日平均气温"></p>
-<p>由下面结果可知，果然，离海距离和最高最低气温存在着一定的关系，就最高气温而言，随着离海距离的增大，最高气温逐渐升高，到某一距离后，最高气温不变，因为白天温度高，最高气温一定出现再白天，由于海水比热容大，白天海边温度低，所以有以上现象。</p>
-<p><img src="dist_maxtemp_conn.png" alt="离海距离-日最高气温"></p>
-<p><img src="dist_mintemp_conn.png" alt="离海距离-日最低气温"></p>
-<p>同样我们可以分析离海距离和平均，最高，最低湿度的关系，下面平均湿度和最低湿度由于数据量问题，好像并发现不到什么线性关系，而就最高湿度而言，在某一距离之内，最高湿度和离海距离存在着线性关系</p>
-<p><img src="dist_avehumidity_conn.png" alt="离海距离-日平均湿度"></p>
-<p><img src="dist_maxhumidity_conn.png" alt="离海距离-日最高湿度"></p>
-<p><img src="dist_minhumidity_conn.png" alt="离海距离-日最低湿度"></p>
-<p>而对于平均气压，我们发现了与湿度类似的结论，只不过就气压而言，在某一距离之内，是最低气压和离海距离存在着线性关系，我们再进一步思考，其实着体现了湿度和气压之间的关系，湿度越大，空气中水汽越充分，气压就会越小</p>
-<p><img src="dist_avepressure_conn.png" alt="离海距离-日平均气压"></p>
-<p><img src="dist_maxpressure_conn.png" alt="离海距离-日最高气压"></p>
-<p><img src="dist_minpressure_conn.png" alt="离海距离-日最低气压"></p>
-<p>对于风速来说，我们得出了与常识一致的结果，一定距离内，离海越远，风速越小，而到了内陆，风速与离海距离没有什么关系<br><img src="dist_avespeed_conn.png" alt="离海距离-日平均风速"></p>
-<ul>
-<li><p>4.通过3中的分析使用SVR进行直线拟合，下以离海距离-日最高温度为例：</p>
-<pre><code>import dist_tmp_conn as dtc
-
-from sklearn.svm import SVR
-from scipy.optimize import fsolve
-import matplotlib.pyplot as plt
-import numpy as np
-
-# set arange and change formatter
-dist1 = dtc.dist_lst[0:6]
-dist2 = dtc.dist_lst[4:11]
-dist1 = [[x] for x in dist1]
-dist2 = [[x] for x in dist2]
-temp1 = dtc.temp_max_lst[0:6]
-temp2 = dtc.temp_max_lst[4:11]
-
-# get linear SVR obj
-svr_line1 = SVR(kernel = &apos;linear&apos;, C = 1e3)
-svr_line2 = SVR(kernel = &apos;linear&apos;, C = 1e3)
-
-# input data
-svr_line1.fit(dist1, temp1)
-svr_line2.fit(dist2, temp2)
-
-# draw predicted line
-xp1 = np.arange(10, 210, 10).reshape((20, 1))
-xp2 = np.arange(150, 500, 50).reshape((7, 1))
-yp1 = svr_line1.predict(xp1)
-yp2 = svr_line2.predict(xp2)
-
-fig, ax = plt.subplots()
-&apos;&apos;&apos;
-# plot
-plt.plot(xp1, yp1, c = &apos;g&apos;, label = &apos;strong sea effect&apos;)
-plt.plot(xp2, yp2, c = &apos;b&apos;, label = &apos;weak sea effect&apos;)
-plt.plot(dtc.dist_lst, dtc.temp_max_lst, &apos;ro&apos;)
-plt.savefig(&quot;/home/singularity/桌面/weather_ana/result/dist_maxtemp_conn_SVR&quot;)
-plt.show()
-&apos;&apos;&apos;
-
-# get x,y
-
-def line1(x):
-    a1 = svr_line1.coef_[0][0]
-    b1 = svr_line1.intercept_[0]
-    return a1 * x + b1
-
-def line2(x):
-    a2 = svr_line2.coef_[0][0]
-    b2 = svr_line2.intercept_[0]
-    return a2 * x + b2
-
-def find_intersection(fun1, fun2, x0):
-    return fsolve(lambda x : fun1(x) - fun2(x), x0)
-
-result = find_intersection(line1, line2, 0.0)
-print(&quot;[x,y] = [%d,%d]&quot; % (result, line1(result)))
-x = np.linspace(150, 250, 10)
-plt.plot(x, line1(x), x, line2(x), result, line1(result), &apos;ro&apos;)
-plt.savefig(&quot;/home/singularity/桌面/weather_ana/result/dist_maxtemp_intsec&quot;)
-plt.show()
-</code></pre></li>
-<li><p>5.下面是4中得到的拟合结果</p>
-</li>
-</ul>
-<p><img src="dist_maxtemp_conn_SVR.png" alt="离海距离-日最高气温"></p>
-<p><img src="dist_maxtemp_intsec.png" alt="离海距离-日最高气温交点"></p>
-<p><img src="dist_mintemp_conn_SVR.png" alt="离海距离-日最低气温"></p>
-<p><img src="dist_mintemp_intsec.png" alt="离海距离-日最低气温交点"></p>
-<p><img src="dist_maxhumidity_conn_SVR.png" alt="离海距离-日最高湿度"></p>
-<p><img src="dist_minpressure_conn_SVR.png" alt="离海距离-日最低气压"></p>
-<p><img src="dist_speed_conn_SVR.png" alt="离海距离-日平均风速"></p>
-<h2 id="5结论"><a href="#5结论" class="headerlink" title="$5结论"></a>$5结论</h2><p>由$4.5中的结果我们可以得出有关维度在30度左右长江三角洲地区气象数据和离海距离的一些结论：</p>
-<ul>
-<li>长江三角洲的城市离海距离越远，受气温海洋影响越弱，在170km左右最高气温达到饱和，更远基本不受海洋作用，在110km左右最低气温达到最低，而更远之后最低气温开始反常升高，可能与地势等原因相关</li>
-<li>在各自对应的距离内，最高湿度（300km）和最低气压（100km）符合一致的趋势：离海距离越远，最高湿度越小，最低气压越大，此处进一步分析可知，最后两个点代表的城市：巢湖市和合肥市，边上有一个较大的巢湖，可能会影响到这两个城市气压和湿度，也就是说最高湿度和最低气压符合的下降趋势的距离可能超过当前得出海洋的作用距离，需要进一步实验搜集更多数据验证</li>
-<li>由于海洋和大陆比热容的不同，在两者交界处存在大量的气流交换，所以越是离海岸近，风速越大，对于长江三角洲而言，该作用范围在150km左右以内</li>
-</ul>
-<h2 id="6总结"><a href="#6总结" class="headerlink" title="$6总结"></a>$6总结</h2><p>重现本项目可获得的经验：</p>
-<ul>
-<li>利用API获得网络数据</li>
-<li>永久性掌握json格式转csv格式</li>
-<li>熟悉pandas的.Series .concat .read_csv方法</li>
-<li>掌握json文件数据的读取</li>
-<li>熟悉matplotlib中pyplot库的一般使用</li>
-<li>了解sklearn中svm的SVR直线拟合</li>
-<li>了解scipy中optimize的fsolve方法</li>
-<li>了解如何一步一步发现，分析数据中的规律</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/meteorological_data_analysis/" data-id="cjvm3fbfp0005egupb06cpiw4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-data-processing/">python data processing</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-roughset" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/29/roughset/" class="article-date">
-  <time datetime="2019-03-28T16:00:00.000Z" itemprop="datePublished">2019-03-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/scientific-research/">scientific research</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/29/roughset/">roughset</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="仰之弥高，钻之弥坚，瞻之在前，忽焉在后"><a href="#仰之弥高，钻之弥坚，瞻之在前，忽焉在后" class="headerlink" title="仰之弥高，钻之弥坚，瞻之在前，忽焉在后"></a>仰之弥高，钻之弥坚，瞻之在前，忽焉在后</h3><hr>
-<p><strong>copyright: 徐渊 大连理工大学电信学部</strong></p>
-<p><strong>gitbub: AlfredZee.github.io</strong></p>
-<p><strong>reference: 智能计算-曾黄麟</strong></p>
-<p><strong>time: 2019-3-29</strong></p>
-<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
-<hr>
-<h1 id="0粗糙集能干什么"><a href="#0粗糙集能干什么" class="headerlink" title="$0粗糙集能干什么"></a>$0粗糙集能干什么</h1><p>(1) 它能处理各种数据，包括不完整（incomplete) 的数据以及拥有众多变量的数据；</p>
-<p>(2) 它能处理数据的不精确性和模棱两可（ambiguity），包括确定性和非确定性的情况；</p>
-<p>(3) 它能求得知识的最小表达（reduct) 和知识的各种不同颗粒（granularity) 层次；</p>
-<p>(4) 它能从数据中揭示出概念简单，易于操作的模式（pattern) ;</p>
-<p>(5) 它能产生精确而又易于检查和证实的规则，特别适于智能控制中规则的自动生成.</p>
-<h1 id="1智能数据预处理及知识系统表达"><a href="#1智能数据预处理及知识系统表达" class="headerlink" title="$1智能数据预处理及知识系统表达"></a>$1智能数据预处理及知识系统表达</h1><h2 id="数据表知识表达系统"><a href="#数据表知识表达系统" class="headerlink" title="数据表知识表达系统"></a>数据表知识表达系统</h2><h3 id="智能数据"><a href="#智能数据" class="headerlink" title="智能数据"></a>智能数据</h3><p>处理对象可能是语言，或是数据，可能是精确的，也可能是不精确的，可能完整，也可能缺省部分信息：需要人的智能来处理的数据</p>
-<h3 id="KRS"><a href="#KRS" class="headerlink" title="KRS"></a>KRS</h3><p>knowledge representation system </p>
-<p>一张表，论域U，条件属性C，结果属性D，属性值的集合V，信息函数f：U X R -&gt; V </p>
-<p>每行都是一个对象</p>
-<h3 id="表格表达法-决策表（dicision-table）"><a href="#表格表达法-决策表（dicision-table）" class="headerlink" title="表格表达法/决策表（dicision table）"></a>表格表达法/决策表（dicision table）</h3><h2 id="不完整不精确数据预处理"><a href="#不完整不精确数据预处理" class="headerlink" title="不完整不精确数据预处理"></a>不完整不精确数据预处理</h2><h3 id="删除法"><a href="#删除法" class="headerlink" title="删除法"></a>删除法</h3><h3 id="补偿法（特殊值，统计方法）"><a href="#补偿法（特殊值，统计方法）" class="headerlink" title="补偿法（特殊值，统计方法）"></a>补偿法（特殊值，统计方法）</h3><h3 id="不可分辨关系"><a href="#不可分辨关系" class="headerlink" title="不可分辨关系"></a>不可分辨关系</h3><ul>
-<li><p>四个概念</p>
-<p>  扩充可辨别矩阵：M（i,j）为矩阵第i行第j列的元素，i和j 对应对象i和对象j，矩阵的元素是一个集合，集合中是这样的属性–对象i和对象j的属性值非空且不等（如字面意思，可辨识）</p>
-<p>  空缺属性集：对一个对象i,属性值为空缺的属性的集合，记作MASi</p>
-<p>  无差别对象集：对一个对象i,满足这样条件的对象j的集合–M（i，j）= 0 (i与j目前不可辨识) NSi</p>
-<p>  空缺对象集：对一个信息系统S，空缺属性集不为空的对象的集合，记作MOS</p>
-</li>
-<li><p>算法流程</p>
-<p>  1.初始化</p>
-<p>  2.1对于非空缺对象集中所有对象（也就是说他们信息完整），属性值不变</p>
-<p>  2.2对于每个空缺对象集中的对象，计算他们的无差别对象集（尝试利用尽可能相似及不可辨识的对象去补全信息）</p>
-<p>  2.3对于每个空缺对象集中的对象</p>
-<p>  2.3.1如果他们的无差别对象集基数为1，则利用其中的对象的非空属性值去补全本对象中的空缺属性值</p>
-<p>  2.3.2如果他们的无差别对象集基数大于1，如果存在两其中的对象，相同属性下他们的属性值不同，则将本对象该属性置为空缺，（也就是说其不可辨识对象的取值不定，应将其取为不定）如果只存在一个对象，有本对象空缺属性的属性值，则将本对象该属性置为其值（也就是说其不可辨识对象的取值一定，所以可将其取为一定），其余情况置为空缺（都为空缺）</p>
-<p>  3.得到新的信息系统Sr+1，如果Sr+1=Sr，结束，否则返回2</p>
-</li>
-<li><p>！！！思想！！！</p>
-<p>  该算法的思想是利用不可辨识关系，使得具有空缺属性的对象与信息系统中其他相似（不可辨识）对象的属性值尽可能保持一致，这样对分类规则具有很高的支持度，规则集中。</p>
-</li>
-</ul>
-<h2 id="属性值的离散归一化处理"><a href="#属性值的离散归一化处理" class="headerlink" title="属性值的离散归一化处理"></a>属性值的离散归一化处理</h2><ul>
-<li><p>为什么</p>
-<p>  属性值的定性定量描述都是连续值，定性的概念可能是模糊的，定量的数据可能是不精确的，而粗集理论方法分析的决策基础是有限的离散化数据表。</p>
-</li>
-<li><p>满足：</p>
-<p>  1.每一离散归一化后的属性值种类尽量少</p>
-<p>  2.信息丢失尽量少</p>
-</li>
-<li><p>！！！本质！！！：</p>
-<p>  利用选取的断点来为条件属性空间进行划分，使得在同一空间中的对象决策值相同</p>
-</li>
-</ul>
-<h3 id="离散化"><a href="#离散化" class="headerlink" title="离散化"></a>离散化</h3><ul>
-<li><p>局部离散归一化</p>
-<p>  1.等距</p>
-<p>  2.等频</p>
-<p>  3.其他</p>
-</li>
-<li><p>全局离散归一化</p>
-<p>  全局聚类分析方法</p>
-<ul>
-<li>计算Euclidean距离 dij</li>
-<li>选取最小的两个对象进行聚类，并且计算新类与其他对象的距离</li>
-<li>重复直到划分的协调度&gt;=原始数据的协调度（协调度？）</li>
-<li>假设得到k类，则对每个属性ci有K个属性值聚类</li>
-<li>对每一属性ci，每一聚类定义属性值区间（取该聚类的最小和最大）</li>
-<li><p>合并相似的区间并且编码（不同类中的对象可能某一属性值相似）</p>
-<p>布尔逻辑与粗糙集理论结合 </p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="2知识与分类，近似于粗集的基本概念"><a href="#2知识与分类，近似于粗集的基本概念" class="headerlink" title="$2知识与分类，近似于粗集的基本概念"></a>$2知识与分类，近似于粗集的基本概念</h1><h2 id="知识与分类"><a href="#知识与分类" class="headerlink" title="知识与分类"></a>知识与分类</h2><h3 id="集合表达"><a href="#集合表达" class="headerlink" title="集合表达"></a>集合表达</h3><ul>
-<li>！！！知识源于人类以及其他物种的分类能力！！！</li>
-<li><p>！！！知识的分类表达形式就是知识系统的集合表达形式！！！</p>
-</li>
-<li><p>！！！理解！！！</p>
-<p>  知识本质是一种分类，分类其实就是等价关系，集合是根据某一特征和目的将对象放在一起，本质也是一种分类，所以，知识的分类表达形式，就是知识系统的集合表达形式，而这种分类我们通过等价关系来刻画，所以什么是知识库，就是已经根据某种要求对论域U进行特定分类的分类族</p>
-</li>
-</ul>
-<h3 id="等价与不可分辨关系"><a href="#等价与不可分辨关系" class="headerlink" title="等价与不可分辨关系"></a>等价与不可分辨关系</h3><ul>
-<li><p>等价关系，等价类，分类</p>
-<p>  按照等价关系进行分类可得到等价类</p>
-</li>
-<li><p>分类族，知识库</p>
-<p>  族的概念（很多分类？？？？？？？）</p>
-<p>  定义R为关系，可以是属性，也可以说是知识，或是规则等</p>
-<p>  分类族定义了知识库，是特定论域U的分类</p>
-</li>
-</ul>
-<ul>
-<li><p>基本范畴(basic category)</p>
-<p>  根据某种关系得到等价类，等价类对于该关系是没有区别的，每个等价类就称为基本范畴（没有区别指的是这些等价类都拥有这个关系）</p>
-<p>  即具有特定属性的物体构成的子集</p>
-</li>
-</ul>
-<p>优点：</p>
-<ul>
-<li>分类概念清楚</li>
-<li><p>运算简单（信息运算转换为集合运算）可形成初等范畴</p>
-</li>
-<li><p>！！！等价与不可分辨关系！！！</p>
-<p>  等价关系是指满足自反对称传递性质的关系</p>
-<p>  等价类是指在某一等价关系下划分形成的元素的集合</p>
-<p>  每一个等价类是一个基本范畴（元素的集合，这些元素具有某种等价关系）</p>
-<p>  当论域的两个子集在关系R下不可分辨，记作ind(R)，这表明他们属于R关系下的同一个范畴（同一个等价类）</p>
-<p>  如果不可分辨关系用属性集表达时，P中全部等价关系的交集称为P上不可分辨关系（ind(P)）如此可以定义等价关系中的不可分辨的等价类（比如说属性集P：名字，性别，则不可分辨关系ind(P)为具有相同特定名字和性别的属性值的组合，这也是一种等价关系）</p>
-<p>  相同的描述？？？？？？？？？？？？？？？</p>
-</li>
-<li><p>特化</p>
-<p>  将范畴分割成更小的单元</p>
-</li>
-<li><p>推广 </p>
-<p>  将某些范畴组合在一起</p>
-</li>
-</ul>
-<h2 id="集合近似与粗集概念"><a href="#集合近似与粗集概念" class="headerlink" title="集合近似与粗集概念"></a>集合近似与粗集概念</h2><h3 id="集合近似与粗集"><a href="#集合近似与粗集" class="headerlink" title="集合近似与粗集"></a>集合近似与粗集</h3><ul>
-<li><p>粗集基础概念：</p>
-<p>  分类和范畴</p>
-</li>
-<li><p>范畴：</p>
-<p>  特征子集对对象的描述</p>
-</li>
-<li><p>精确集与粗集</p>
-</li>
-<li>下近似集</li>
-<li>上近似集</li>
-<li>边界</li>
-<li><p>正域</p>
-<p>  什么是正域，就是已有一种分类形成的许多等价类，这些等价类全部包含于你要的一个集合，这实际上就构成了一种条件分类到决策分类的多（一）对一的映射</p>
-</li>
-<li><p>负域</p>
-</li>
-<li><p>！！！理解！！！</p>
-<p>  想象由这样一个空间，已经根据等价关系R划分为几个子空间，如果要求的子集X恰巧是R划分的数个子空间的并集，则X是精确集，即可以用R定义X，否则（如果X沾了某个子集的部分）则为粗糙集，则可用所谓的近似的方法去描述这个粗集，想象把沾的那些多余的元素去掉，就得到了下近似集也称为X的R正域，如果把沾的那些多余元素所在的R下的子集补全，就得到了上近似集，上减去下得到边界，全减去上得到负域，各概念代表的意义也一目了然，这些集合共同构成了！！！X集合的近似！！！</p>
-</li>
-</ul>
-<h3 id="近似集合的性质"><a href="#近似集合的性质" class="headerlink" title="近似集合的性质"></a>近似集合的性质</h3><h3 id="成员关系，粗等价，粗包含"><a href="#成员关系，粗等价，粗包含" class="headerlink" title="成员关系，粗等价，粗包含"></a>成员关系，粗等价，粗包含</h3><ul>
-<li>下成员关系</li>
-<li>上成员关系</li>
-<li>下等价</li>
-<li>上等价</li>
-<li>等价</li>
-</ul>
-<h2 id="集合近似以及分类近似的度量"><a href="#集合近似以及分类近似的度量" class="headerlink" title="集合近似以及分类近似的度量"></a>集合近似以及分类近似的度量</h2><h3 id="集合近似以及分类近似的度量-1"><a href="#集合近似以及分类近似的度量-1" class="headerlink" title="集合近似以及分类近似的度量"></a>集合近似以及分类近似的度量</h3><ul>
-<li>边界域</li>
-<li><p>近似精度d</p>
-<p>  计算公式：下近似集基数/上近似集基数<br>  实质上反映了了解集合X的知识的完全程度</p>
-</li>
-<li><p>粗糙度p</p>
-<p>  计算公式：1-d</p>
-</li>
-<li><p>分类近似</p>
-<p>  分类划分出多个集合，对每个集合都有集合近似，扩展成分类近似</p>
-</li>
-</ul>
-<h3 id="分类近似质量与系统参数重要性"><a href="#分类近似质量与系统参数重要性" class="headerlink" title="分类近似质量与系统参数重要性"></a>分类近似质量与系统参数重要性</h3><ul>
-<li><p>系统参数的重要性</p>
-<p>  计算公式：（U-边界）/U<br>  表达的是基于系统参数R的分类来描述对象的！！！隶属度！！！情况</p>
-</li>
-<li><p>！！！应用！！！</p>
-<p>  可以用来进行系统特征参数排序</p>
-<p>  对每个特征的特征值，离散归一化处理，得到对应特征对论域的一种划分，计算对该特征的上下近似集，求出边界，利用系统参数重要性求得每个特征的重要性</p>
-</li>
-</ul>
-<h1 id="3知识系统的简化及逻辑表达"><a href="#3知识系统的简化及逻辑表达" class="headerlink" title="$3知识系统的简化及逻辑表达"></a>$3知识系统的简化及逻辑表达</h1><h2 id="知识的化简"><a href="#知识的化简" class="headerlink" title="知识的化简"></a>知识的化简</h2><h3 id="简化"><a href="#简化" class="headerlink" title="简化"></a>简化</h3><ul>
-<li>可省略和不可省略</li>
-<li><p>独立</p>
-</li>
-<li><p>！！！解释！！！</p>
-<p>  一个等价关系族R，如果去掉其中的一个等价关系r，不改变原不可辨识关系，则称r是R中可省略的，如果R中没有可以省略的r，则R是独立的，也就是说R中可能存在冗余的等价关系（属性）</p>
-</li>
-<li><p>化简</p>
-<p>  还得满足不能再省略的条件</p>
-<p>  可能存在多种化简</p>
-<p>  记作red（P），P为属性子集</p>
-</li>
-</ul>
-<h3 id="核"><a href="#核" class="headerlink" title="核"></a>核</h3><ul>
-<li><p>核</p>
-<p>  化简集的交称为核</p>
-<p>  记作core(P)</p>
-<p>  代表了必要知识</p>
-</li>
-</ul>
-<h2 id="知识的相对化简"><a href="#知识的相对化简" class="headerlink" title="知识的相对化简"></a>知识的相对化简</h2><ul>
-<li><p>一个分类相对于另一个分类的正域</p>
-<p>  POSp(S) </p>
-<p>  S的P正域</p>
-<p>  S是一个等价类集，对里面每一个等价类（集合）的子集，如果存在于P（也就是说找那些包含于S中的P中集合，能够完全归入S的元素），则选取它的全部元素，更进一步理解是P分类的等价类中都能一对一映射到S分类的等价类，这样S分类就可以用P分类来代替</p>
-</li>
-<li><p>！！！理解！！！</p>
-<p>  S是结果属性集，P是条件属性集，我们要找的正域就是那些通过条件属性集划分可以完全归入结果属性集划分的等价类的元素</p>
-</li>
-<li><p>知识的相对化简</p>
-<p>  如果去掉P中一个属性能保持正域不变，则可以省略，同样有化简和核的概念</p>
-</li>
-<li><p>！！！注意！！！</p>
-<p>  这里的正域不变不代表P去掉某属性后其划分不变，而是保证了肯定能被S归类的元素不变</p>
-</li>
-</ul>
-<h2 id="范畴的化简"><a href="#范畴的化简" class="headerlink" title="范畴的化简"></a>范畴的化简</h2><ul>
-<li><p>！！！疑问！！！</p>
-<p>  基本范畴是等价类，等价类之间没有交集，这里的范畴是指初等的？提及系统的表达，什么是系统的表达？</p>
-</li>
-</ul>
-<p>基本范畴是一种知识，他是根据不可分辨关系定义的等价类</p>
-<ul>
-<li><p>更少概念的交集</p>
-</li>
-<li><p>更少概念的并集</p>
-</li>
-<li><p>核</p>
-</li>
-</ul>
-<h2 id="范畴的相对化简"><a href="#范畴的相对化简" class="headerlink" title="范畴的相对化简"></a>范畴的相对化简</h2><h2 id="知识的依赖性"><a href="#知识的依赖性" class="headerlink" title="知识的依赖性"></a>知识的依赖性</h2><ul>
-<li><p>两点认识</p>
-<p>  部分属性表达（部分推出自身）</p>
-<p>  一个给定知识推出另外一个知识（部分推出另一部分）</p>
-</li>
-<li><p>依赖与可导</p>
-<p>  S依赖于P，S是从P中可导的</p>
-</li>
-<li><p>部分可导性</p>
-<p>  ｋ＝ｒｐ（Ｓ）＝ｃａｒｄ（ＰＯＳｐ（Ｓ））／ｃａｒｄ（Ｕ）</p>
-<p>  ！！！可解释为对对象的分类能力！！！</p>
-</li>
-</ul>
-<p>-　全可导，粗可导，全不可导 </p>
-<ul>
-<li><p>！！！判定系统条件属性是否可以化简的两种方式！！！</p>
-<p>  k = 1（系统数据协调） + 知识的相对化简公式</p>
-<p>  Ir(S) = rR(S) - rR-r(S)</p>
-</li>
-<li><p>！！！思想！！！</p>
-<p>  k = 1时数据协调，也就是说P可以成为S的全权代理，是全可导的。</p>
-<p>  由于没有考虑组合问题，如果按排序由高到低选取特征，那么可能反而结果不好（特征存在相关性），试着反向思考，从特征整体出发，逐个去除特征（去除冗余）</p>
-</li>
-</ul>
-<h2 id="知识表达系统数据的协调性"><a href="#知识表达系统数据的协调性" class="headerlink" title="知识表达系统数据的协调性"></a>知识表达系统数据的协调性</h2><ul>
-<li><p>两种情况</p>
-<ul>
-<li><p>知识系统表达的化简</p>
-</li>
-<li><p>决策条件属性与决策结果关系之间表达的化简</p>
-</li>
-</ul>
-</li>
-<li><p>决策表</p>
-<p>  具有条件属性和决策属性的表</p>
-</li>
-<li><p>决策规则</p>
-<p>  记录的一行，用什么条件属性推出哪种决策属性</p>
-</li>
-<li><p>决策规则的标识符</p>
-<p>  U中的元素（标号）</p>
-</li>
-<li><p>决策规则的条件和决策</p>
-<p>  dX|C,dX|D</p>
-</li>
-<li><p>判断是否协调的两种方法</p>
-<p>  计算k</p>
-<p>  利用决策表，相同条件值推出不同决策值则不协调</p>
-</li>
-<li><p>！！！思考！！！</p>
-<p>  关于第一种方法的理解：即什么是协调性，什么是依赖性，两者的关系，怎样是不协调的，即如果相同的条件属性推出了不同的决策属性，那么就是不协调的，依赖性指的是一种分类完全可以由另外一种分类推出，即一种知识由另一种导出，K的值=1，意味着card(POSc(D)) = card(U),也就是说D的C正域，所有利用条件属性能被划入决策属性归类的元素数为元素总数，试想如果存在两个对象，他们的条件属性相同但是决策属性不同（不协调），那么计算card(POSc(D))时，对于这两个元素，在条件属性分类中属于同一等价类，而在决策中属于不同等价类，则这两个元素必定不在正域中（k≠1）！！！本质是因为条件属性的等价类到决策属性等价类的映射不能是一对多的（协调性的定义）！！！</p>
-<p>  以上两种方法实质是一致的，相同条件推出了不同决策，那么决策必然对条件的依赖&lt;1（条件属性无法全权代理决策属性）</p>
-</li>
-</ul>
-<h2 id="知识表达系统属性的简化"><a href="#知识表达系统属性的简化" class="headerlink" title="知识表达系统属性的简化"></a>知识表达系统属性的简化</h2><ul>
-<li><p>要求</p>
-<p>  系统的数据要协调</p>
-</li>
-<li><p>两种方法</p>
-<p>  知识的相对化简方法</p>
-<p>  对数据协调的系统，分别去掉条件属性，考察是否协调，是则可省略</p>
-</li>
-</ul>
-<ul>
-<li><p>！！！思考！！！</p>
-<p>  对于第二种方法，去掉某一属性如果还是协调就是说某一属性对分类没有影响，如果不协调了就相当于去掉的是将两个原本属于不同分类而其他属性又相同的重要属性</p>
-</li>
-</ul>
-<h2 id="知识表达系统决策规则化简"><a href="#知识表达系统决策规则化简" class="headerlink" title="知识表达系统决策规则化简"></a>知识表达系统决策规则化简</h2><h3 id="协调系统的决策规则简化"><a href="#协调系统的决策规则简化" class="headerlink" title="协调系统的决策规则简化"></a>协调系统的决策规则简化</h3><ul>
-<li><p>组合决策规则</p>
-</li>
-<li><p>方法1</p>
-<ul>
-<li>判断协调</li>
-<li>属性化简</li>
-<li>范畴相对简化</li>
-</ul>
-</li>
-<li><p>方法2</p>
-<ul>
-<li>重复信息合并，不协调信息删除</li>
-<li>属性化简</li>
-<li>决策规则简化，得到核值</li>
-</ul>
-</li>
-<li><p>最小决策算法</p>
-<h3 id="不协调系统的决策规则简化"><a href="#不协调系统的决策规则简化" class="headerlink" title="不协调系统的决策规则简化"></a>不协调系统的决策规则简化</h3></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/roughset/" data-id="cjvm3fbg5000legupvq34usn0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-bio_info" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/03/bio_info/" class="article-date">
-  <time datetime="2019-03-03T13:18:33.000Z" itemprop="datePublished">2019-03-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/project-record/">project record</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/03/bio_info/">FS and its application in lncRNA and miRNA network</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="特征选择算法及其在lncRNA与miRNA互作网络中的应用1-0（前期调研结束，未完待续）"><a href="#特征选择算法及其在lncRNA与miRNA互作网络中的应用1-0（前期调研结束，未完待续）" class="headerlink" title="特征选择算法及其在lncRNA与miRNA互作网络中的应用1.0（前期调研结束，未完待续）"></a>特征选择算法及其在lncRNA与miRNA互作网络中的应用1.0（前期调研结束，未完待续）</h1><hr>
-<p><strong>copyright: 徐渊 大连理工大学电信学院</strong></p>
-<p><strong>gitbub: AlfredZee.github.io</strong></p>
-<p><strong>reference: really much</strong></p>
-<p><strong>time: 2019-3-2</strong></p>
-<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
-<hr>
-<h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><h3 id="背景和意义"><a href="#背景和意义" class="headerlink" title="背景和意义"></a>背景和意义</h3><p>　　人类基因组中大约有70%的转录本能够转录，其中能够用于蛋白质编码的核酸序列仅占其中的1%~2%，其余的非编码RNA按其链长可分为小非编码RNA（sncRNA）和长链非编码RNA（lncRNA）,并且人们发现lncRNA与miRNA（小非编码RNA的一类）都对基因有着调节作用，而lncRNA与miRNA之间存在着相互调控机制，两者通过竞争结合mRNA，海绵效应等方式，对生物的生长发育起着重要的作用，目前对于动物的相关研究已有许多成果，而植物的却相对较少。</p>
-<p>　　同时考虑到在成千上万的lncRNA与miRNA中逐一进行生物学实验需要耗费大量的人力财力，如何利用计算机技术对海量的生物信息经行处理逐渐成为研究的热点。由于生物信息数据量大，特征维度高的特点，数据可能存在无关项或冗余项，因此好的特征选择（FS，Feature selection）算法显得至关重要。</p>
-<p>　　本课题于以上两点出发，希望找到一种适用于生物信息学的特征选择算法，选出最优的特征组合用于植物lncRNA与miRNA互作网络模型的构建，并进行预测，以减少生物实验的开销，用于相关基因组学的研究。</p>
-<h3 id="研究内容"><a href="#研究内容" class="headerlink" title="研究内容"></a>研究内容</h3><h4 id="lncRNA-miRNA特征研究"><a href="#lncRNA-miRNA特征研究" class="headerlink" title="lncRNA,miRNA特征研究"></a>lncRNA,miRNA特征研究</h4><p>　　在进行特征研究时，首先应该明确特征的概念是什么，笔者在进行前期调研时着实在概念上花费许多时间，严谨权威的解释读者可以上百度谷歌搜索得到，下面仅给出笔者的理解。</p>
-<p>　　特征是数据的另一种更高层次的抽象表示。以本课题为例，数据是一串RNA序列，由ACGT四种碱基排列而成，但是我们输入到机器学习模型（同时也需要注意的概念）中的只能是数字，对于这样的字符序列怎么处理呢，就需要我们换一种数据的表达方式，从原始数据中提炼出其含有的信息，也就是特征，去表示，代替原始输入，我们称之为特征提取，是数据预处理的一部分。</p>
-<p>　　那么对于RNA序列来说，特征究竟有哪些呢？了解一些生物知识的读者可能知道，RNA序列由一级结构和二级结构，其中二级结构与其功能有很大关系，所以我们关注的RNA特征包括以上两种结构。</p>
-<p>　　对于一级结构来说，也就是RNA序列本身，我们可以想到的是GC的含量，显然原数据中GC越多的数据，GC含量就越大，我们将这一特点提取出来，就是特征提取的过程，当然这里选择GC的含量而不是AT等别的是有其中的生物学的原因的，本博客并非论文，这里不作展开。</p>
-<p>　　对于二级结构来说，想必大家都知道碱基互补配对原则，那配对互补的碱基数也是特征之一，此外还有最小自由能（MFE）等等，涉及生物知识过多，这里暂时先跳过。</p>
-<p>　　这些特征的提取一般有两种方法来进行，像一级结构特征这类比较简单的，我们可以自己编写Python脚本来提取，而设计二级结构的较为复杂，首先得用二级结构预测软件得到其二级结构（因为仅凭一级结构特征无法确定他碱基如何配对），然后在前面的结果中提取。本课题也是综合采用了这两者方式，提取了很多维数的特征。</p>
-<h4 id="生物信息学中的特征选择算法"><a href="#生物信息学中的特征选择算法" class="headerlink" title="生物信息学中的特征选择算法"></a>生物信息学中的特征选择算法</h4><p>　　前面提到了很多维数的特征，这就点出了生物信息学中的一个重要的特点，数据特征维数高，特征存在冗余或者无关项，这就需要特征选择算法来解决（Feature Selection）</p>
-<p>　　特征选择算法按其字面意思就是一种从众多特征中找到优良的特征组合的算法，可以认为是要解决组合优化问题。</p>
-<p>　　对算法熟悉的读者一听到组合优化，就会联想到搜索，是的，生物信息学中的特征选择算法说白了就是各种搜索算法。目前可分为三类：穷举搜索，枚举组合可以找到最优结果但是在高纬度数据中耗费巨大；启发式搜索，各类群智能优化，模拟退火，遗传算法（笔者曾做过用GA解决TSP问题的小实验），在大量特征选择时能快速得到较好结果，但是容易相如局部最优；混合式搜索，利用启发式搜索或分层的方案减小穷举范围，结合了两者特点兼顾效率和最优。</p>
-<p>　　当然我们还得设计衡量标准，这涉及许多机器学习和深度学习模型，概论中不作展开，之后会提及。</p>
-<h4 id="lncRNA与miRNA互作网络"><a href="#lncRNA与miRNA互作网络" class="headerlink" title="lncRNA与miRNA互作网络"></a>lncRNA与miRNA互作网络</h4><p>　　在我们成功地找到了一组优良的特征组合后，我们就可以将这些特征输入到相应软件中去构建互作网络，之后我们还会进行GO功能注释和富集分析，去预测两者之间的功能关系。</p>
-<h3 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a>研究方法</h3><p>　　及整体规划或实验设计，将按以下的方式进行：</p>
-<p>　　１.数据获取</p>
-<p>　　２.特征提取</p>
-<p>　　３.特征选择</p>
-<p>　　４.特征评估</p>
-<p>　　５.网络构建</p>
-<p>　　６.功能分析</p>
-<h2 id="数据获取和特征提取"><a href="#数据获取和特征提取" class="headerlink" title="数据获取和特征提取"></a>数据获取和特征提取</h2><h3 id="数据的获取"><a href="#数据的获取" class="headerlink" title="数据的获取"></a>数据的获取</h3><p>　　本次课题采用的是玉米的数据，数据集来源于以下两个网站：</p>
-<p>　　<a href="http://structuralbiology.can.edu.cn/PNRD/" target="_blank" rel="noopener">zea mays miRNA</a></p>
-<p>　　<a href="http://greenc.sciencedesigners.com/wiki/Main_Page" target="_blank" rel="noopener">zea mays lncRNA</a></p>
-<p>　　<strong>注意:网站可能由于某些原因在某些时段不提供访问</strong></p>
-<p>　　本课题经去重处理后获取了207条miRNA和17684条lncRNA，使用psRNATarget工具对两者进行互作预测，将预测结果用作正集，而从剩下的lncRNA中选取干扰能力较强的构建负集。</p>
-<p>　　如此我们将获得正集lncRNA,负集lncRNA,正负集miRNA，接下来我们对其进行特征提取。</p>
-<h3 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h3><p>　　按提取方式分，可划分为两类：</p>
-<h4 id="1-python脚本"><a href="#1-python脚本" class="headerlink" title="1.python脚本"></a>1.python脚本</h4><p>　　一级序列等简单的特征可自己编写脚本提取，例如下ipyng文件：</p>
-<pre><code>&quot;#提取正集miRNA的G+C含量\n&quot;,
-&quot;\n&quot;,
-&quot;import re\n&quot;,
-&quot;\n&quot;,
-&quot;file1 = open(\&quot;C:/Users/Wo1ve/Desktop/实验/数据/正集/正集的miRNA1.fasta\&quot;, \&quot;r\&quot;, encoding = &apos;utf-8&apos;)\n&quot;,
-&quot;file2 = open(\&quot;C:/Users/Wo1ve/Desktop/实验/数据/我的数据/特征/正集的miRNA1的G+C含量.fasta\&quot;, \&quot;w\&quot;)\n&quot;,
-&quot;\n&quot;,
-&quot;lines1 = file1.readlines()\n&quot;,
-&quot;\n&quot;,
-&quot;count = 0\n&quot;,
-&quot;b = &apos;GC&apos; \n&quot;,
-&quot;for line in lines1:\n&quot;,
-&quot;    a = re.match(r&apos;&gt;zma-miR+&apos;, line)\n&quot;,
-&quot;    if a:\n&quot;,
-&quot;        count = 0\n&quot;,
-&quot;        continue\n&quot;,
-&quot;    else:\n&quot;,
-&quot;        for d in line:        \n&quot;,
-&quot;            if d in b:\n&quot;,
-&quot;                count += 1 \n&quot;,
-&quot;        line = line.strip()\n&quot;,
-&quot;        c = count/len(line)\n&quot;,
-&quot;       \n&quot;,
-&quot;       \n&quot;,
-&quot;        file2.write(str(c) + &apos;\\n&apos;)\n&quot;,
-&quot;file1.close()\n&quot;,
-&quot;file2.close()\n&quot;,
-&quot;    &quot;
-</code></pre><h4 id="2-相关软件"><a href="#2-相关软件" class="headerlink" title="2.相关软件"></a>2.相关软件</h4><p>　　复杂的特征需要使用已经开发好的软件：<br>　　<br>　　<br>   未完待续….</p>
-<p>　　</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/03/bio_info/" data-id="cjvm3fbff0001egupp4zt51mm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FS/">FS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-malloc_and_new" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/02/malloc_and_new/" class="article-date">
-  <time datetime="2019-03-02T13:18:33.000Z" itemprop="datePublished">2019-03-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/cppdetails/">cppdetails</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/02/malloc_and_new/">difference between new and malloc in cpp</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="C-中new运算符和malloc的区别"><a href="#C-中new运算符和malloc的区别" class="headerlink" title="C++中new运算符和malloc的区别"></a>C++中new运算符和malloc的区别</h1><hr>
-<p><strong>copyright: 徐渊 大连理工大学电信学院</strong></p>
-<p><strong>gitbub: AlfredZee.github.io</strong></p>
-<p><strong>reference: <a href="http://blog.jobbole.com/102002/" target="_blank" rel="noopener">http://blog.jobbole.com/102002/</a></strong></p>
-<p><strong>time: 2019-3-2</strong></p>
-<p><strong>QQ: 1239820340（联系请注明原因）</strong></p>
-<hr>
-<h2 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h2><p>　　对new来说，其分配的内存在自由存储区（free store）。</p>
-<p>　　对malloc来说，其分配的内存在堆区（heap）。</p>
-<p>　　存储区大类可分为动态和静态，而动态存储区又可分为堆区和栈区，malloc申请的内存必定分配在堆区，而对new来说，则分配在称为自由存储区的位置，具体在堆区还是其他地方取决于operator new的实现，甚至有的将其分配在静态存储区，笔者在c++ primer plus中注意到提及new时，原文总是用“在自由存储区（free store或者堆区（heap））”。</p>
-<h2 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h2><p>　　这里的安全性指的返回类型。</p>
-<p>　　new的成功返回值是一个确定指向类型的指针，正如我们看到的，两处int确保了类型与对象的严格匹配：</p>
-<pre><code>int* p = new int;
-</code></pre><p>　　malloc的成功返回值是一个void*指针，也正如看到的，将其赋给左边时需要强制类型转换：</p>
-<pre><code>int* p = (int*)malloc(sizeof(ex));
-</code></pre><p>　　不用进行类型转换的new是安全的操作符。</p>
-<h2 id="失败返回值"><a href="#失败返回值" class="headerlink" title="失败返回值"></a>失败返回值</h2><p>　　new分配内存失败时抛出异常bac_alloc。</p>
-<pre><code>try{
-    int a = new int;
-}
-catch(bac_alloc){
-    pass;
-}
-</code></pre><p>　　malloc分配内存时返回NULL。</p>
-<pre><code>int* p = (int*)malloc(sizeof(ex));
-if(NULL == p){
-    pass;
-}
-</code></pre><p>　　不要再在使用new时用==NULL的方法。</p>
-<h2 id="指定内存大小"><a href="#指定内存大小" class="headerlink" title="指定内存大小"></a>指定内存大小</h2><p>　　new不需要指定内存大小，编译器根据类型自行计算。</p>
-<p>　　malloc需要显示地给出即其后面的sizeof()</p>
-<h2 id="是否调用析构构造函数"><a href="#是否调用析构构造函数" class="headerlink" title="是否调用析构构造函数"></a>是否调用析构构造函数</h2><p>　　使用new操作符来分配对象内存时会经历三个步骤：</p>
-<p>　　第一步：调用operator new 函数（对于数组是operator new[]）分配一块足够大的，原始的，未命名的内存空间以便存储特定类型的对象。</p>
-<p>　　第二步：编译器运行相应的构造函数以构造对象，并为其传入初值。</p>
-<p>　　第三部：对象构造完成后，返回一个指向该对象的指针。</p>
-<p>　　使用delete操作符来释放对象内存时会经历两个步骤：</p>
-<p>　　第一步：调用对象的析构函数。</p>
-<p>　　第二步：编译器调用operator delete(或operator delete[])函数释放内存空间。</p>
-<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>　　new需要配套使用new[]和delete[]来处理数组，防止内存泄漏（memory leak）。</p>
-<p>　　malloc需要手动定制数组长度。</p>
-<h2 id="相互调用"><a href="#相互调用" class="headerlink" title="相互调用"></a>相互调用</h2><p>　　new可以调用malloc，但malloc不能调用new。</p>
-<h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><p>　　new可以重载：</p>
-<pre><code> 1 //这些版本可能抛出异常
- 2 void * operator new(size_t);
- 3 void * operator new[](size_t);
- 4 void * operator delete (void * )noexcept;
- 5 void * operator delete[](void *0）noexcept;
- 6 //这些版本承诺不抛出异常
- 7 void * operator new(size_t ,nothrow_t&amp;) noexcept;
- 8 void * operator new[](size_t, nothrow_t&amp; );
- 9 void * operator delete (void *,nothrow_t&amp; )noexcept;
-10 void * operator delete[](void *0,nothrow_t&amp; ）noexcept;
-</code></pre><p>　　malloc不可以。</p>
-<h2 id="重新分配"><a href="#重新分配" class="headerlink" title="重新分配"></a>重新分配</h2><p>　　malloc可以使用realloc，首先判断是否有足够连续空间，有则原地扩大，否则重新找一片足够的空间，拷贝，释放。</p>
-<h2 id="客户处理内存分配不足"><a href="#客户处理内存分配不足" class="headerlink" title="客户处理内存分配不足"></a>客户处理内存分配不足</h2><p>　　new在抛出异常之前会调用一个用户指定的错误处理函数（使用new_handler）</p>
-<p>　　malloc直接返回NULL</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/02/malloc_and_new/" data-id="cjvm3fbfz000aegupbl0x02en" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cpp/">cpp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory-management/">memory management</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
-
 </section>
+
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+<!-- ============================ Content =========================== -->
+
+<section id="intro">
+    <div class="container">
         
-          <aside id="sidebar">
-  
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/05/13/process-management/">process_management</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-05-13T05:50:29.000Z" itemprop="datePublished">
+          2019-05-13
+      </time>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cppdetails/">cppdetails</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project-record/">project record</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/scientific-research/">scientific research</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/theory/">theory</a></li></ul>
-    </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CG/">CG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FS/">FS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NN/">NN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bioinformatics/">bioinformatics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/compiler/">compiler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-architecture/">computer architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/discrete-mathematics/">discrete mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memory-management/">memory management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/normal-form/">normal form</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/os/">os</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/process-management/">process management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-data-processing/">python data processing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/roughset/">roughset</a></li></ul>
-    </div>
-  </div>
-
-
-  
+    | 
+    <a href="/tags/os/">os</a>,
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CG/" style="font-size: 10px;">CG</a> <a href="/tags/FS/" style="font-size: 10px;">FS</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/bioinformatics/" style="font-size: 10px;">bioinformatics</a> <a href="/tags/compiler/" style="font-size: 10px;">compiler</a> <a href="/tags/computer-architecture/" style="font-size: 10px;">computer architecture</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/discrete-mathematics/" style="font-size: 10px;">discrete mathematics</a> <a href="/tags/memory-management/" style="font-size: 10px;">memory management</a> <a href="/tags/normal-form/" style="font-size: 10px;">normal form</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/process-management/" style="font-size: 10px;">process management</a> <a href="/tags/project/" style="font-size: 20px;">project</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python-data-processing/" style="font-size: 10px;">python data processing</a> <a href="/tags/roughset/" style="font-size: 10px;">roughset</a>
-    </div>
-  </div>
-
-  
+    <a href="/tags/process-management/">process management</a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        Linux Programming — Process managementForwardIt is really excited that we start to get touch in Linux Programming. It’s truely different from my old coding life, not like implementing a complex library management system 
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/05/13/process-management/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
-          <li>
-            <a href="/2019/05/13/process-management/">process_management</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/12/normal-form/">normal form</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/11/computer-architecture/">computer_architecture</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/30/NNDL/">NNDL</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/30/co-occurrence/">co-occurrence</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/05/12/normal-form/">normal form</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-05-12T05:53:34.000Z" itemprop="datePublished">
+          2019-05-12
+      </time>
+    
+    
+    | 
+    <a href="/tags/normal-form/">normal form</a>,
+    
+    <a href="/tags/discrete-mathematics/">discrete mathematics</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        关系数据理论关系模式是一个五元组R（U，D，DOM，F）
 
-  
-</aside>
+R：关系名
+U：属性集合
+D：域集合
+DOM：属性向域的映像集合
+F：属性间数据依赖关系集合
+
+化简了的关系模式：R（U，F）
+数据依赖什么是数据依赖：
+
+完整性约束的表现形式
+一个关系内部属性与属性之间的约束关系
+现实世界属性间相互联系的抽象
+数据内在的性质
+语义的体现
+有函数依赖（FD）和多值（MVD）依赖
+
+有何影响：
+
+数据冗余太大
+增删改异常
+
+规范化通过分解关系模式
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/05/12/normal-form/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/05/11/computer-architecture/">computer_architecture</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-05-11T15:16:32.000Z" itemprop="datePublished">
+          2019-05-11
+      </time>
+    
+    
+    | 
+    <a href="/tags/computer-architecture/">computer architecture</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        Computer ArchitectureWhat is Computer ArchitectureClassical definitionthe attributes of a computing system as seen by the assembly language programmer,i.e.,the conceptual structure and functional behavior, as distinct fr
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/05/11/computer-architecture/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/04/30/NNDL/">NNDL</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-04-30T08:59:20.000Z" itemprop="datePublished">
+          2019-04-30
+      </time>
+    
+    
+    | 
+    <a href="/tags/project/">project</a>,
+    
+    <a href="/tags/NN/">NN</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        Neural Networks and Deep Learning
+copyright: 徐渊 大连理工大学电信学部
+gitbub: Tiipitz.github.io
+reference: Neural Networks and Deep Learning —Michael Nielsen
+time: 2019-4-30
+QQ: 1239820340（联系请注明原因）
+
+前言本项目其实是笔者在大二小学期主要的工作，直到现在才想起要把它
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/04/30/NNDL/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/04/30/co-occurrence/">co-occurrence</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-04-30T04:56:36.000Z" itemprop="datePublished">
+          2019-04-30
+      </time>
+    
+    
+    | 
+    <a href="/tags/project/">project</a>,
+    
+    <a href="/tags/NLP/">NLP</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        基于共现关系下的《百年孤独》人物关系提取
+copyright: 徐渊 大连理工大学电信学部
+gitbub: AlfredZee.github.io
+reference: 实验楼
+time: 2019-4-30
+QQ: 1239820340（联系请注明原因）
+
+$1项目的提出及意义这两天刚好在纠结以后往哪个方向发展，林鸿飞教授带领的NLP组是主要考虑之一，就一直想找个相关的任务来做做，最近逛实验楼恰好发现了这样一个项目：提取《釜山行》电影
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/04/30/co-occurrence/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/04/16/computer-graphics/">computer_graphics</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-04-16T05:22:06.000Z" itemprop="datePublished">
+          2019-04-16
+      </time>
+    
+    
+    | 
+    <a href="/tags/CG/">CG</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        计算机图形学基础算法原理及实现
+copyright: 徐渊 大连理工大学电信学部
+gitbub: AlfredZee.github.io
+reference: 计算机图形学
+time: 2019-4-16
+QQ: 1239820340（联系请注明原因）
+
+光栅化本篇博客的算法及实现皆基于光栅
+
+几个重要概念：
+光子：显示器能显示的最小发光点
+屏幕（光栅）分辨率：屏幕能显示的光子个数
+显示分辨率（显示模式）：显示控制器所能提供的显示模式分
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/04/16/computer-graphics/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/04/13/meteorological_data_analysis/">meteorological data analysis</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-04-12T16:00:00.000Z" itemprop="datePublished">
+          2019-04-13
+      </time>
+    
+    
+    | 
+    <a href="/tags/project/">project</a>,
+    
+    <a href="/tags/python-data-processing/">python data processing</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        利用SVR进行长三角地区气象数据与离海距离及气象数据间的关系分析
+copyright: 徐渊 大连理工大学电信学部
+gitbub: AlfredZee.github.io
+reference: python数据分析实战，实验楼
+time: 2019-4-13
+QQ: 1239820340（联系请注明原因）
+
+$1项目的提出及意义本项目是个人项目，均由笔者一人完成，在确定项目的研究对象时，选取了笔者生活的长江三角洲，主要目的是锻炼用pyt
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/04/13/meteorological_data_analysis/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/03/29/roughset/">roughset</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-03-28T16:00:00.000Z" itemprop="datePublished">
+          2019-03-29
+      </time>
+    
+    
+    | 
+    <a href="/tags/roughset/">roughset</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        仰之弥高，钻之弥坚，瞻之在前，忽焉在后
+copyright: 徐渊 大连理工大学电信学部
+gitbub: AlfredZee.github.io
+reference: 智能计算-曾黄麟
+time: 2019-3-29
+QQ: 1239820340（联系请注明原因）
+
+$0粗糙集能干什么(1) 它能处理各种数据，包括不完整（incomplete) 的数据以及拥有众多变量的数据；
+(2) 它能处理数据的不精确性和模棱两可（ambiguity
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/03/29/roughset/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/03/03/bio_info/">FS and its application in lncRNA and miRNA network</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-03-03T13:18:33.000Z" itemprop="datePublished">
+          2019-03-03
+      </time>
+    
+    
+    | 
+    <a href="/tags/python/">python</a>,
+    
+    <a href="/tags/FS/">FS</a>,
+    
+    <a href="/tags/bioinformatics/">bioinformatics</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        特征选择算法及其在lncRNA与miRNA互作网络中的应用1.0（前期调研结束，未完待续）
+copyright: 徐渊 大连理工大学电信学院
+gitbub: AlfredZee.github.io
+reference: really much
+time: 2019-3-2
+QQ: 1239820340（联系请注明原因）
+
+概论背景和意义　　人类基因组中大约有70%的转录本能够转录，其中能够用于蛋白质编码的核酸序列仅占其中的1%~2%，其
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/03/03/bio_info/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2019/03/02/malloc_and_new/">difference between new and malloc in cpp</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2019-03-02T13:18:33.000Z" itemprop="datePublished">
+          2019-03-02
+      </time>
+    
+    
+    | 
+    <a href="/tags/cpp/">cpp</a>,
+    
+    <a href="/tags/memory-management/">memory management</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        C++中new运算符和malloc的区别
+copyright: 徐渊 大连理工大学电信学院
+gitbub: AlfredZee.github.io
+reference: http://blog.jobbole.com/102002/
+time: 2019-3-2
+QQ: 1239820340（联系请注明原因）
+
+位置　　对new来说，其分配的内存在自由存储区（free store）。
+　　对malloc来说，其分配的内存在堆区（heap
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2019/03/02/malloc_and_new/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <nav class="pagination" role="pagination">
+          
+          <a class="pull-right" href="/page/2/">Older Posts →</a>
+        </nav>
     </div>
-  </div>
+</section>
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+        </div>
+    </div>
+</section>
+<!-- ============================ END Content =========================== -->
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
 
-<script src="/js/script.js"></script>
 
-
-
-  </div>
+      
 </body>
 </html>
