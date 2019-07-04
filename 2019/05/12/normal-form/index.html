@@ -60,7 +60,7 @@
       </li>
       <li>
         
-    更新 <time datetime="2019-05-13T07:59:43.861Z" itemprop="dateUpdated">2019-05-13</time>
+    更新 <time datetime="2019-05-15T00:11:29.063Z" itemprop="dateUpdated">2019-05-15</time>
 
       </li>
       <li id="busuanzi_container_page_pv">
@@ -143,6 +143,19 @@
 <li>4NF：非平凡的多值依赖是否为函数依赖（看是否1对多，是则不函数依赖）</li>
 </ul>
 </li>
+</ul>
+<h2 id="完全二分图和多值依赖的构造"><a href="#完全二分图和多值依赖的构造" class="headerlink" title="完全二分图和多值依赖的构造"></a>完全二分图和多值依赖的构造</h2><p>下面是完全二分图：</p>
+<p><img src="wanquan.png" alt="完全二分图"></p>
+<p>我们可以看到每个wi对应了一组sin，一组cim，而sin与cim之间是全连接的，所以我们无论我们m取了几，都对应了这组sin，而这组sin是完全由wi来决定的，这就是多值依赖</p>
+<p>下面是几个构造多值依赖的要点：</p>
+<ul>
+<li>wi的一对多关系</li>
+<li>sin与cim之间的<strong>相互</strong>全连接关系</li>
+</ul>
+<p>例子：</p>
+<ul>
+<li>每个仓库有多个管理员，有多个商品（这里体现<strong>wi一对多</strong>）</li>
+<li>管理员管理所有商品，商品被所有管理员管理（<strong>这里体现sin与cim相互全连接</strong>）</li>
 </ul>
 
       </div>
